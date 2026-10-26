@@ -2,6 +2,7 @@ import {createServer} from 'node:http';
 import {readFile} from 'node:fs/promises';
 import {createUploadHandler,uploadConfig} from './upload-service.js';
 const handleUpload=createUploadHandler(await uploadConfig());
+import {livePriceCheck} from './price-check.js';
 const allowed = new Map([
  ['/', ['index.html','text/html']], ['/index.html',['index.html','text/html']],
  ['/LICENSE',['LICENSE','text/plain']],
@@ -13,6 +14,7 @@ const allowed = new Map([
 ]);
 const server=createServer(async(req,res)=>{
  if(await handleUpload(req,res))return;
+ if(req.method==='GET'&&req.url==='/api/prices'){try{const body=JSON.stringify(await livePriceCheck());res.writeHead(200,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'});res.end(body);}catch{res.writeHead(502);res.end('{}');}return;}
  if(!['GET','HEAD'].includes(req.method)){res.writeHead(405);res.end();return;}
  let path;try{path=new URL(req.url,'http://127.0.0.1').pathname;}catch{res.writeHead(400);res.end();return;}
  const entry=allowed.get(path);

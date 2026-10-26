@@ -102,10 +102,23 @@ loadPreviews(recipes,colours).then(decodePreviewSet).then(loaded=>{if(initialVer
  const loader=document.querySelector('.loader'),count=loader?.querySelector('.loader-count');
  const finish=()=>{root.classList.add('is-loaded');setTimeout(()=>loader?.remove(),1200);};
  if(!loader||reduce)finish();
- else{const start=performance.now(),duration=900;const tick=now=>{const p=Math.min(1,(now-start)/duration);count.textContent=String(Math.round((1-Math.pow(1-p,3))*100)).padStart(3,'0');if(p<1)requestAnimationFrame(tick);else setTimeout(finish,120);};requestAnimationFrame(tick);}
+ else{const start=performance.now(),duration=600;const tick=now=>{const p=Math.min(1,(now-start)/duration);if(count)count.textContent=String(Math.round((1-Math.pow(1-p,3))*100)).padStart(3,'0');if(p<1)requestAnimationFrame(tick);else setTimeout(finish,120);};requestAnimationFrame(tick);}
  const observer=new IntersectionObserver(entries=>{for(const entry of entries)if(entry.isIntersecting){entry.target.classList.add('in');observer.unobserve(entry.target);}},{rootMargin:'0px 0px -8% 0px'});
  const watch=()=>document.querySelectorAll('[data-reveal]:not(.in),.look-card:not(.in),.basket-item:not(.in)').forEach(node=>observer.observe(node));
  watch();new MutationObserver(watch).observe(document.querySelector('main'),{childList:true,subtree:true});
  if(!reduce){const images=[...document.querySelectorAll('.hero-panels .panel img')];let queued=false;
   addEventListener('scroll',()=>{if(queued)return;queued=true;requestAnimationFrame(()=>{const y=Math.min(scrollY,900);images.forEach((image,i)=>image.style.setProperty('--py',`${y*(0.03+i*0.015)}px`));queued=false;});},{passive:true});}
+})();
+
+// Live retailer check (server route /api/prices). Verifies the snapshot; it never changes the basket.
+(async()=>{
+ const badge=document.querySelector('#live-prices');if(!badge)return;
+ try{
+  const res=await fetch('/api/prices',{cache:'no-store'});if(!res.ok)return;
+  const r=await res.json();const time=new Date(r.checkedAt).toLocaleTimeString('en-ZA',{hour:'2-digit',minute:'2-digit'});
+  badge.textContent=r.changed||r.unreadable||r.outOfStock.length
+   ?`Live check ${time}: ${r.match}/${r.total} prices match · ${r.changed} changed · ${r.unreadable} unreadable · ${r.outOfStock.length} not in stock — confirm with the retailer`
+   :`Live check ${time}: all ${r.total} refill and case prices match the retailer today · all in stock`;
+  badge.dataset.state=r.changed||r.outOfStock.length?'warn':'ok';badge.hidden=false;
+ }catch{}
 })();

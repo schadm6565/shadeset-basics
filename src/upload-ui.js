@@ -29,7 +29,7 @@ export function setupPhotoUpload({onChange,onResult,onSample,onError}){
  const quotaText=()=>`${remaining} renders available for this session/run; each photo uses three. Maximum nine per server run and six per session.`;
  async function refresh(){
   try{const response=await fetch('/api/upload/status',{cache:'no-store'});if(!response.ok)throw Error();const data=await response.json();token=data.token;enabled=data.enabled;remaining=data.remaining;status.textContent=enabled?quotaText():'Personal-photo previews are unavailable on this server. The sample still works.';}
-  catch{enabled=false;status.textContent='Upload service unavailable. The sample still works.';}
+  catch{enabled=false;status.textContent='Own-photo previews run in the local version, which holds the private YouCam key. The sample works here.';}
   controls();
  }
  consent.addEventListener('change',controls);

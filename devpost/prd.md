@@ -17,7 +17,7 @@ Choose several eye looks and find one complete purchase covering their recipes. 
 One page with introduction, sample look cards and a basket/comparison section. Three desktop cards collapse into a single mobile column. Basket details stay readable at 390px without horizontal scrolling. Empty basket explains the next action. Buttons have visible focus and explicit text states.
 
 ## Look and Feel
-Image-led layout with a dark, full-height hero and three expanding panels showing genuine YouCam eye-look crops. Short headings introduce the light recipe-card grid and dark basket comparison. Inter Tight and JetBrains Mono are bundled locally; square corners, fine rules and reduced-motion-aware presentation effects remain. Placement labels, repeated per-item price-source caveats and the comparison explanation paragraph are visually hidden at Chad’s request; recipe data, exact product links, prices and the compact pricing/fair-test notes remain.
+Image-led layout. The header shows only the wordmark, and there is no footer, so the landing page is a single screen. HERO (dark, one screen): top-left label "Eye-look planner"; top-right note "Creative Glamour prices · ZAR" (no date); the headline; three expanding panels showing genuine YouCam eye-look crops, labelled on a dark translucent chip; the intro "Approve the looks you love. Get one kit that makes them all."; the Try the sample button; and a slim, seamless marquee that never pauses. The hero has no result line: R550 and R193 appear only in the basket and comparison after Try the sample. BASKET: one note line, "Prices recorded 26 Oct 2026 · SA delivery only · Not a checkout: buy via the product links · Preview colour is approximate", plus the live price-check badge. COMPARISON PANEL: dark, with the fair-test explanation visible as a short paragraph in small text. Short headings introduce the light recipe-card grid. Inter Tight and JetBrains Mono are bundled locally; square corners, fine rules and reduced-motion-aware presentation effects. Placement labels and repeated per-item price-source lines are visually hidden at Chad's request; recipe data, exact product links and prices remain.
 
 ## Features and Behaviour
 Source: scope.md > The POC Boundary.
@@ -28,17 +28,21 @@ Source: scope.md > The POC Boundary.
 - Appearance approval binds photo bytes, full recipe and output bytes by hash. Replacement of any component invalidates approval.
 - Genuine previews carry provenance and colour approximation notices. Missing previews show a plain unavailable state with recipe swatches; this is not evidence of a finished visual demo.
 
+- **Use your own photo:** before upload the person ticks a consent box explaining the photo is sent to YouCam (Perfect Corp) for rendering. The same three recipes render on their photo, up to the 9-render cap; when the cap is reached the app says so and the sample still works. Changing the photo clears all approvals. The local server does not save or log photos; YouCam’s generally 30-day retention is disclosed before consent.
+- **Check live prices:** a button re-reads each product page and shows, per item, "price matches" or "price changed to Rx" and "in stock" or "not listed in stock", with the time checked. If the retailer can't be reached the app says so and keeps the dated snapshot. The basket and comparison never change because of this check.
+
 ## States and Boundaries
 No approvals: no purchase recommendation or delivery charge. Rejection: remove that look only. No feasible basket: explain catalogue cannot cover the selection, never show partial coverage as complete. Missing image: show unavailable state. Invalidated approval: explain why re-approval is needed. Selections exist in memory and reset on reload; no personal data is stored.
 
 ## Product Decisions
+Scope change, 26 October 2026 about 21:15 SAST: after reviewing the build, Chad added "use your own photo" and a live price/stock check (hard stop 22:05, reverted if not working); checkout stays cut. Chad reviewed and approved these sections at 21:23 SAST.
 Chad's brief fixes the recipes, catalogue, fair comparison and cuts. The agent proposed a single-page layout and Chad approved it. Genuine image readiness was verified after Chad separately authorised three one-unit renders. This PRD does not authorise additional spending.
 
 ## What We're Building
 The core journey, tested optimiser and baseline, verifiable approval identity, responsive local demonstration and local shipping materials. Source: scope.md > What "Working" Looks Like.
 
 ## Non-Goals
-No camera/upload, live public API, accounts, payments, live stock, currency conversion, export, retailer partnership or deployment. Cocoa alternative is deferred until all core requirements pass.
+No live camera capture, checkout, accounts, payments, currency conversion, export, retailer partnership or deployment. Personal rendering is capped at 9 renders. Cocoa alternative remains deferred.
 
 ## Open Questions
 Render funding and provenance are resolved: Chad authorised three existing bonus units, three one-unit renders succeeded, and their exact parameters and original output hashes are recorded. Features are frozen; remaining work is publication, the demo video and Chad’s own submission answers.

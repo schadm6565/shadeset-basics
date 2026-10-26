@@ -7,18 +7,14 @@
 <link rel="stylesheet" href="/src/style.css">
 </head>
 <body>
-<div class="loader" aria-hidden="true"><span class="loader-word">ShadeSet</span><span class="loader-count">000</span></div>
+<div class="loader" aria-hidden="true"><span class="loader-word">ShadeSet</span></div>
 <header class="site-header">
   <a class="wordmark" href="/">ShadeSet</a>
-  <nav aria-label="Page">
-    <a href="#about">Pricing basis</a>
-    <span class="tag">ZA · ZAR</span>
-  </nav>
 </header>
 
 <main>
   <section class="hero">
-    <div class="hero-top"><p class="eyebrow">Eye-look planner</p><p class="eyebrow">South Africa · 2026</p></div>
+    <div class="hero-top"><p class="eyebrow">Eye-look planner</p><p id="about" class="eyebrow hero-note">Creative Glamour prices · ZAR</p></div>
     <h1><span class="line"><span>Three looks.</span></span><span class="line"><span>One kit.</span></span></h1>
     <div class="hero-panels">
       <figure class="panel"><img src="/public/soft-taupe.png" alt="Soft taupe eye look on a synthetic sample face"><figcaption><span>01</span>Soft taupe</figcaption></figure>
@@ -29,12 +25,11 @@
       <p class="intro">Approve the looks you love.<br>Get one kit that makes them all.</p>
       <button id="start" class="primary" type="button">Try the sample <span aria-hidden="true">→</span></button>
     </div>
+      <div class="marquee hero-marquee" aria-hidden="true"><div class="marquee-track">
+      <span><i style="background:#897064"></i>Soft taupe</span><span><i style="background:#c59648"></i>Golden hour</span><span><i style="background:#704653"></i>Plum after dark</span><span><i style="background:#f4f4f1"></i>One kit</span><span><i style="background:#897064"></i>Soft taupe</span><span><i style="background:#c59648"></i>Golden hour</span><span><i style="background:#704653"></i>Plum after dark</span><span><i style="background:#f4f4f1"></i>One kit</span><span><i style="background:#897064"></i>Soft taupe</span><span><i style="background:#c59648"></i>Golden hour</span><span><i style="background:#704653"></i>Plum after dark</span><span><i style="background:#f4f4f1"></i>One kit</span><span><i style="background:#897064"></i>Soft taupe</span><span><i style="background:#c59648"></i>Golden hour</span><span><i style="background:#704653"></i>Plum after dark</span><span><i style="background:#f4f4f1"></i>One kit</span>
+    </div></div>
   </section>
 
-  <div class="marquee" aria-hidden="true"><div class="marquee-track">
-    <span><i style="background:#897064"></i>Soft taupe</span><span><i style="background:#c59648"></i>Golden hour</span><span><i style="background:#704653"></i>Plum after dark</span><span><i style="background:#f4f4f1"></i>One kit</span>
-    <span><i style="background:#897064"></i>Soft taupe</span><span><i style="background:#c59648"></i>Golden hour</span><span><i style="background:#704653"></i>Plum after dark</span><span><i style="background:#f4f4f1"></i>One kit</span>
-  </div></div>
 
   <section id="sample" hidden aria-labelledby="sample-heading">
     <div class="section-head" data-reveal>
@@ -63,22 +58,14 @@
         <button id="reset" class="quiet" type="button">Clear approvals</button>
       </div>
       <p id="announcement" class="meta" role="status" aria-live="polite"></p>
+      <p id="live-prices" class="live-badge" hidden></p>
+      <p class="meta basket-note">Prices recorded 26 Oct 2026 · SA delivery only · Not a checkout: buy via the product links · Preview colour is approximate</p>
       <div id="result"></div>
     </section>
   </section>
 
-  <section id="about" class="about" data-reveal>
-    <div><span class="eyebrow">Prices</span><p>Creative Glamour, 26 Oct 2026 snapshot. ZAR incl. VAT, R95 local delivery. Not live stock or a checkout.</p></div>
-    <div><span class="eyebrow">Fair test</span><p>Each look's cheapest kit, combined, duplicates removed. One delivery on both sides.</p></div>
-    <div><span class="eyebrow">Previews</span><p>YouCam Makeup VTO on a synthetic face. Colour is approximate. No retailer partnership.</p></div>
-  </section>
 </main>
 
-<footer class="site-footer">
-  <span class="wordmark">ShadeSet</span>
-  <span>A Build With AI: Basics proof of concept.</span>
-  <span>MIT licence · <a href="/LICENSE">Read</a></span>
-</footer>
 <script type="module" src="/src/app.js"></script>
 </body>
 </html>
