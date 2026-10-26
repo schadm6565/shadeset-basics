@@ -81,7 +81,10 @@ function renderResult() {
  const details=element('details');details.append(element('summary','','Inspect the separate-kit basket'),basketList(result.baseline,looks));comparison.append(details);
  layout.append(items,comparison);root.append(layout);
 }
-document.querySelector('#start').addEventListener('click',()=>{document.querySelector('#sample').hidden=false;document.querySelector('#sample-heading').focus();document.querySelector('#sample').scrollIntoView({block:'start'});});
+const openSample=()=>{document.body.classList.add('in-sample');document.querySelector('#sample').hidden=false;window.scrollTo(0,0);document.querySelector('#sample-heading').focus({preventScroll:true});};
+const closeSample=()=>{document.body.classList.remove('in-sample');document.querySelector('#sample').hidden=true;window.scrollTo(0,0);document.querySelector('#start').focus({preventScroll:true});};
+document.querySelector('#start').addEventListener('click',openSample);
+document.querySelector('#back-home')?.addEventListener('click',closeSample);
 document.querySelector('#reset').addEventListener('click',()=>{actionVersion++;busy=false;approvals.clear();selected.clear();renderResult();});
 renderLooks();renderResult();
 

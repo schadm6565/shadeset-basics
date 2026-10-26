@@ -556,3 +556,10 @@ button:focus-visible, a:focus-visible, summary:focus-visible, [tabindex]:focus-v
 .hero-marquee .marquee-track { animation-duration: 60s; }
 .basket-note { display: block; margin: 0 0 20px; }
 .comparison p:not(.saving):not(.eyebrow) { display: block; font-size: 12px; }
+
+/* Try the sample opens the sample as its own page */
+.in-sample .hero { display: none; }
+.in-sample .site-header { background: var(--bg); color: var(--ink); }
+.in-sample #sample { padding-top: 32px; animation: rise .6s cubic-bezier(.2, .7, .2, 1) both; }
+.back-link { justify-self: start; border: 0; min-height: 0; padding: 0; margin-bottom: 16px; font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+.back-link:hover { color: var(--ink); background: none; }
