@@ -11,7 +11,6 @@
 <header class="site-header">
   <a class="wordmark" href="/">ShadeSet</a>
   <nav aria-label="Page">
-    <a href="#how">How it works</a>
     <a href="#about">Pricing basis</a>
     <span class="tag">ZA · ZAR</span>
   </nav>
@@ -19,45 +18,28 @@
 
 <main>
   <section class="hero">
-    <div class="hero-copy">
-      <p class="eyebrow">Eye-look planner · South Africa</p>
-      <h1><span class="line"><span>Three looks.</span></span><span class="line"><span>One kit.</span></span></h1>
-      <p class="intro">Preview eye looks on a face, approve the ones you'd wear, and get the cheapest single basket in this catalogue that makes all of them — checked against buying each look's kit separately.</p>
-      <div class="hero-actions">
-        <button id="start" class="primary" type="button">Try the sample <span aria-hidden="true">→</span></button>
-        <span class="meta">No account · about a minute</span>
-      </div>
-      <dl class="hero-stats">
-        <div><dt>Looks</dt><dd>3</dd></div>
-        <div><dt>Shades needed</dt><dd>5</dd></div>
-        <div><dt>Catalogue</dt><dd>12 refills</dd></div>
-      </dl>
+    <div class="hero-top"><p class="eyebrow">Eye-look planner</p><p class="eyebrow">South Africa · 2026</p></div>
+    <h1><span class="line"><span>Three looks.</span></span><span class="line"><span>One kit.</span></span></h1>
+    <div class="hero-panels">
+      <figure class="panel"><img src="/public/soft-taupe.png" alt="Soft taupe eye look on a synthetic sample face"><figcaption><span>01</span>Soft taupe</figcaption></figure>
+      <figure class="panel"><img src="/public/golden-hour.png" alt="Golden hour eye look on a synthetic sample face"><figcaption><span>02</span>Golden hour</figcaption></figure>
+      <figure class="panel"><img src="/public/plum-after-dark.png" alt="Plum after dark eye look on a synthetic sample face"><figcaption><span>03</span>Plum after dark</figcaption></figure>
     </div>
-    <figure class="hero-media">
-      <div class="hero-strip">
-        <div><img src="/public/soft-taupe.png" alt="Soft taupe eye look on a synthetic sample face"><span>01 Everyday — Soft taupe</span></div>
-        <div><img src="/public/golden-hour.png" alt="Golden hour eye look on a synthetic sample face"><span>02 Dinner — Golden hour</span></div>
-        <div><img src="/public/plum-after-dark.png" alt="Plum after dark eye look on a synthetic sample face"><span>03 Evening — Plum after dark</span></div>
-      </div>
-      <figcaption><span>Genuine YouCam previews</span><span>Synthetic sample face</span></figcaption>
-    </figure>
+    <div class="hero-bottom">
+      <p class="intro">Approve the looks you love.<br>Get one kit that makes them all.</p>
+      <button id="start" class="primary" type="button">Try the sample <span aria-hidden="true">→</span></button>
+    </div>
   </section>
 
   <div class="marquee" aria-hidden="true"><div class="marquee-track">
-    <span><i style="background:#897064"></i>Soft taupe</span><span><i style="background:#c59648"></i>Golden hour</span><span><i style="background:#704653"></i>Plum after dark</span><span><i style="background:#111110"></i>One kit</span>
-    <span><i style="background:#897064"></i>Soft taupe</span><span><i style="background:#c59648"></i>Golden hour</span><span><i style="background:#704653"></i>Plum after dark</span><span><i style="background:#111110"></i>One kit</span>
+    <span><i style="background:#897064"></i>Soft taupe</span><span><i style="background:#c59648"></i>Golden hour</span><span><i style="background:#704653"></i>Plum after dark</span><span><i style="background:#f4f4f1"></i>One kit</span>
+    <span><i style="background:#897064"></i>Soft taupe</span><span><i style="background:#c59648"></i>Golden hour</span><span><i style="background:#704653"></i>Plum after dark</span><span><i style="background:#f4f4f1"></i>One kit</span>
   </div></div>
-
-  <section id="how" class="steps" aria-label="How it works">
-    <div data-reveal><span class="step-no">01</span><h2>Preview</h2><p>Each look is a fixed recipe of three shades, rendered on the same sample face.</p></div>
-    <div data-reveal><span class="step-no">02</span><h2>Approve</h2><p>Nothing counts until you approve it. If the image or recipe changes, the approval resets.</p></div>
-    <div data-reveal><span class="step-no">03</span><h2>One basket</h2><p>Every valid palette, refill and case combination is searched for the cheapest complete purchase.</p></div>
-  </section>
 
   <section id="sample" hidden aria-labelledby="sample-heading">
     <div class="section-head" data-reveal>
       <p class="eyebrow">Step 01 — The looks</p>
-      <h2 id="sample-heading" tabindex="-1">Approve the looks you'd wear.</h2>
+      <h2 id="sample-heading" tabindex="-1">Pick your looks.</h2>
       <p id="sample-notice" class="notice" role="status">Recipe-selection demo: genuine previews are unavailable until verified. Selecting a recipe does not approve its appearance on a face.</p>
     </div>
     <div id="looks" class="looks"></div>
@@ -66,7 +48,7 @@
       <div class="section-head row" data-reveal>
         <div>
           <p class="eyebrow">Step 02 — Your basket</p>
-          <h2 id="basket-heading">One purchase for every approved look.</h2>
+          <h2 id="basket-heading">Your one kit.</h2>
         </div>
         <button id="reset" class="quiet" type="button">Clear approvals</button>
       </div>
@@ -75,14 +57,10 @@
     </section>
   </section>
 
-  <section id="about" class="about">
-    <div data-reveal><p class="eyebrow">Pricing basis</p>
-    <h2>What the numbers mean.</h2></div>
-    <div class="about-grid" data-reveal>
-      <div><h3>Snapshot prices</h3><p>Creative Glamour prices in South African rand, VAT included, recorded on 17 October 2026. Local Pretoria/Johannesburg delivery estimated at R95. Not live stock and not a checkout.</p></div>
-      <div><h3>Fair comparison</h3><p>For each look we find every cheapest kit, then pick the combination most favourable to buying separately. Identical configurations count once, and both sides pay one delivery.</p></div>
-      <div><h3>Approximate colour</h3><p>Previews come from the YouCam Makeup VTO API on a synthetic face. Screen colour doesn't guarantee how physical makeup looks. No retailer partnership.</p></div>
-    </div>
+  <section id="about" class="about" data-reveal>
+    <div><span class="eyebrow">Prices</span><p>Creative Glamour, 17 Oct 2026 snapshot. ZAR incl. VAT, R95 local delivery. Not live stock or a checkout.</p></div>
+    <div><span class="eyebrow">Fair test</span><p>Each look's cheapest kit, combined, duplicates removed. One delivery on both sides.</p></div>
+    <div><span class="eyebrow">Previews</span><p>YouCam Makeup VTO on a synthetic face. Colour is approximate. No retailer partnership.</p></div>
   </section>
 </main>
 

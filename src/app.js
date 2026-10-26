@@ -98,6 +98,6 @@ loadPreviews(recipes,colours).then(decodePreviewSet).then(loaded=>{if(initialVer
  const observer=new IntersectionObserver(entries=>{for(const entry of entries)if(entry.isIntersecting){entry.target.classList.add('in');observer.unobserve(entry.target);}},{rootMargin:'0px 0px -8% 0px'});
  const watch=()=>document.querySelectorAll('[data-reveal]:not(.in),.look-card:not(.in),.basket-item:not(.in)').forEach(node=>observer.observe(node));
  watch();new MutationObserver(watch).observe(document.querySelector('main'),{childList:true,subtree:true});
- if(!reduce){const images=[...document.querySelectorAll('.hero-strip img')];let queued=false;
+ if(!reduce){const images=[...document.querySelectorAll('.hero-panels .panel img')];let queued=false;
   addEventListener('scroll',()=>{if(queued)return;queued=true;requestAnimationFrame(()=>{const y=Math.min(scrollY,900);images.forEach((image,i)=>image.style.setProperty('--py',`${y*(0.03+i*0.015)}px`));queued=false;});},{passive:true});}
 })();

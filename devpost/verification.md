@@ -55,3 +55,6 @@
 
 ## Redesigned UI acceptance — 26 October 2026
 `npm test` passed 15/15 after integration. Desktop at 1470px and mobile at 390×844: three approvals give R550/R743/R193, expanded separate-kit basket readable, rejecting Plum gives R419, reset gives zero. All nine images loaded; document width equals viewport. Mobile approval buttons48px/reset44px. No browser error/warning logs. Five fonts are bundled behind exact allowlisted paths; external Google font requests removed and CSP unchanged. Source inspection confirms reduced-motion animation/transition overrides. Evidence: redesign-hero.png, redesign-desktop.png, redesign-mobile.png. No further API calls.
+
+## Final motion handoff — 26 October 2026
+After “Claude done”, the final dark hero and shortened layout were inspected. Restored hidden placements and fair-comparison explanation; connected parallax to current panels and retained reduced-motion suppression. `npm test` passed15/15. Desktop and390px checks observed loader dismissal,9 loaded images, R550/R743/R193, expanded baseline, R419 after rejection and reset0. No overflow or console errors/warnings. CSS/JS source review covers reduced-motion behaviour; OS preference emulation not run. Source hashes remained stable. Evidence: final-motion-hero.png, final-motion-desktop.png, final-motion-mobile.png.

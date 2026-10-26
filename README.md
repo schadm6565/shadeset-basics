@@ -30,4 +30,4 @@ See devpost/verification.md and devpost/checklist.md. Planning was committed bef
 Application code is MIT licensed; see LICENSE. Third-party names and research remain attributed facts. The Skill Pack is separately sourced by skills-lock.json.
 
 ## UI revision
-The Chad-requested redesign uses eye-focused CSS crops of the unchanged genuine images, a three-look hero strip and a dark basket comparison. Inter Tight and JetBrains Mono are bundled locally; their SIL Open Font Licences and source notes are in public/fonts/. Approval and basket logic are unchanged.
+The Chad-requested redesign uses eye-focused CSS crops of the unchanged genuine images, three dark hero panels, reduced-motion-aware presentation effects and a dark basket comparison. Inter Tight and JetBrains Mono are bundled locally; their SIL Open Font Licences and source notes are in public/fonts/. Approval and basket logic are unchanged.
