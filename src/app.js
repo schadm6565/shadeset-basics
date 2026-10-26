@@ -70,6 +70,7 @@ function renderResult() {
  }
  const root=document.querySelector('#result');root.replaceChildren();
  const looks=recipes.filter(r=>selected.has(r.id));
+ document.body.classList.toggle('has-basket',looks.length>0);
  document.querySelector('#announcement').textContent=previews.size?`${looks.length} of 3 looks approved.`:`${looks.length} of 3 recipes selected.`;
  if(!looks.length){root.append(element('div','empty',previews.size?'Approve a look above to see a complete costed basket. Nothing is approved for you.':'Select a recipe above to see a complete costed basket. Nothing is selected for you.'));return;}
  let result;try{result=compareLooks(looks,offers);}catch{root.append(element('div','notice','This catalogue cannot cover the selected shades. No incomplete basket is shown.'));return;}

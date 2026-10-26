@@ -632,3 +632,12 @@ body:not(.show-looks) #looks, body:not(.show-looks) .basket-area, body:not(.show
 .show-looks .choice-own::before, .show-looks .choice-own::after { display: none; }
 .choice-own::before { left: 74%; } .choice-own::after { left: 74%; }
 @media (max-width: 720px) { .choice-own::before, .choice-own::after { display: none; } }
+
+/* Basket appears only after an approval; status lines sit quietly under it */
+body:not(.has-basket) .basket-area { display: none; }
+#announcement { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.basket-area { display: flex; flex-direction: column; }
+.basket-area > .section-head { order: 1; }
+.basket-area > #result { order: 2; }
+.basket-area > .live-badge { order: 3; margin: 24px 0 6px; }
+.basket-area > .basket-note { order: 4; margin: 0; }
