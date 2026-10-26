@@ -42,7 +42,7 @@ The demo works at desktop width and 390px and can be shown in a short screen rec
 
 ## Rendering Decision
 Chad explicitly authorised a dedicated YouCam key and three existing bonus units for this separate Basics entry on 26 October 2026. Three one-unit Makeup VTO renders succeeded, with both skin-smoothing parameters set to zero. The provider usage log confirms a total of three units spent. Original output PNGs, exact parameters and hashes are recorded in public/previews.json. No additional render allowance remains. Swatch fallback remains explicitly labelled as recipe reference, never appearance approval.
-No old source or old render files are read from the YouCam repository. Only app/catalogue-evidence.json may be read there as permitted research data. Any later authorised asset reuse must be disclosed, not represented as newly generated.
+All application code and render images are created fresh in this repository. Any asset reuse must be disclosed, not represented as newly generated.
 
 ## Later
 After the core release gate only: a side-by-side Cocoa evening alternative requiring fresh approval, and optional static hosting. Neither is required to prove the joint-basket idea.
