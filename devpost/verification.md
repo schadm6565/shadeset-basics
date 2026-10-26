@@ -29,3 +29,17 @@
 - Restarted server in session 48169. New approval/preview modules and manifest return 200; missing sample image, private files, arbitrary PNG and traversal requests return 404; POST returns 405.
 - Browser-profile question remains pending: My Hero was not in discovery, and no alternative profile has been authorised for this separate task.
 - Official Makeup VTO documentation consulted read-only: https://docs.perfectcorp.com/reference/makeup_vto/section/overview . It confirms POST /s2s/v2.0/task/makeup-vto and task-status polling. No actual request or paid unit was used.
+
+## Browser verification — My Hero
+- Chad connected the required profile, discovered as myherostudio.com / browser5. Tested the app in a new dedicated tab.
+- Desktop: one-click sample opens three cards; selections progress0→1→2→3. Totals observed419/419 for one and two compatible recipes, then550/743 with193 saving and26.0% for all three. Expanded baseline shows two distinct custom-four configurations. Product/refill/case links and individual prices are visible.
+-390px by844px viewport: document width390px, no horizontal overflow; buttons48px or50px high. Readable stacked cards and cost rows. Removing plum returns two selections and419/419; reset shows zero selections and no basket/delivery.
+- No console warnings/errors reported. Restored default viewport and left the local app tab available as a deliverable.
+- Screenshots: evidence/desktop-recipe-comparison.jpg and evidence/mobile-390-recipe-comparison.jpg. These show the current recipe-selection flow, not genuine preview approval.
+- Remaining browser evidence: actual image paint and appearance approval require genuine assets.
+
+## Synthetic source preparation
+- Fresh fictional adult source portrait generated with the built-in image_gen tool and inspected visually. Saved to public/sample.png; exact prompt, source type and SHA-256 recorded in public/sample-provenance.json. It is not a genuine YouCam output.
+- The public preview manifest remains unavailable with no output records; the source photo alone does not enable appearance approval.
+- Official unit-consumption documentation confirms 1 unit per Makeup VTO render: https://docs.perfectcorp.com/reference/makeup_vto/section/overview/unit-consumption . Three required renders would consume 3 units. No YouCam calls made.
+- A project-specific funding/key question is pending. Never paste credentials into chat or transfer the original project's allowance.

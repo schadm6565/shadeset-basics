@@ -30,3 +30,9 @@ This audit does not mark the full goal complete. It distinguishes implementation
 2. Authorised browser connection. Discovery shows chad and Andrea, not My Hero. Chad replied that he will connect My Hero; this is not authorisation to switch to either available profile. Once connected, observe the local app at desktop and 390px, exercise all sample selections and empty/reset states, then review image-paint and appearance approval when actual assets exist.
 
 These gaps were identified in the first implementation checkpoint and persist across the subsequent product-link and preview-integration checkpoints. Meaningful independent implementation has continued; they must not be replaced by claims that swatches are genuine previews or source inspection is visual testing.
+
+## Subsequent browser evidence
+My Hero was connected and the recipe-selection journey is now observed at desktop and 390px. Screenshots, totals, removal/reset and console results are recorded in verification.md. This resolves the browser-access dependency and recipe-layout checks; it does not resolve actual image paint or appearance approval, because genuine render assets are still absent. Slice 1 is complete.
+
+## Subsequent source preparation
+A new synthetic source portrait now exists at public/sample.png, with exact image-generation prompt/hash in public/sample-provenance.json. This resolves source-face preparation only. Three genuine YouCam outputs, confirmed project-specific funding/key and real appearance-approval browser checks are still missing.

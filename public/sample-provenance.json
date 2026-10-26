@@ -1,0 +1,11 @@
+{
+  "asset": "public/sample.png",
+  "kind": "synthetic-source-portrait",
+  "generator": "built-in image_gen tool",
+  "generatedDate": "2026-10-26",
+  "prompt": "Use case: photorealistic-natural. Asset type: synthetic source portrait for a local makeup virtual try-on demonstration. Create one photorealistic entirely fictional adult woman about 28 years old, medium brown skin, dark brown eyes, dark hair neatly pulled away from her face. Straight-on head-and-shoulders portrait, camera at eye level, relaxed neutral expression, eyes fully open and clearly visible, symmetrical even soft daylight, plain warm light-grey background. Entire forehead, chin and both ears in frame; face large and centred with modest margin. Natural skin texture, completely bare eyelids, no eyeshadow, eyeliner, mascara, foundation, smoothing or beauty filter. Plain neutral crew-neck top, no jewellery, glasses, hats, text, watermark or logo. This is a synthetic reference face, not a before/after or makeup result. Square composition.",
+  "sha256": "d46abe5f914dc9f66ce327984e407263c6bcd1d45ab0ae38e503d0f16f03ac77",
+  "youcamOutput": false,
+  "youcamUnitsUsed": 0,
+  "inspection": "Frontal fictional adult face, eyes visible, neutral light, bare eyelids; not a try-on result."
+}

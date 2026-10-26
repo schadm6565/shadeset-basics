@@ -6,7 +6,7 @@ status: approved
 Build mode: fast, from the supplied brief. Routine review and approval decisions delegated by Chad on 26 October 2026. Hands-on participation is not fabricated.
 
 ## Slices
-- [ ] **1. Inspect the sample recipes and calculate a fair complete basket**
+- [x] **1. Inspect the sample recipes and calculate a fair complete basket**
   Becomes usable: One-click sample opens three recipe cards; selecting recipes produces a real catalogue calculation and transparent baseline.
   Why now: Proves the unique kernel and filler-choice risk before image or styling work. Missing previews stay explicit.
   PRD ref: `prd.md > The Core Journey`, `prd.md > Features and Behaviour`
@@ -38,7 +38,7 @@ Build mode: fast, from the supplied brief. Routine review and approval decisions
 
 ## Hands-on Checkpoints
 User requested no routine approval prompts. Agent verification replaces blocking review checkpoints under delegated authority; no hands-on user activity is claimed.
-- [ ] Early usable behaviour inspected by agent
+- [x] Early usable behaviour inspected by agent — My Hero desktop and 390px recipe flow
 - [ ] Final desktop/mobile exploration completed by agent
 
 ## Final Review
@@ -46,8 +46,8 @@ User requested no routine approval prompts. Agent verification replaces blocking
 - [ ] All required release gates verified; unresolved items explicitly reported
 
 ## Code Tour and App Map
-- [ ] Brief evidence-based recap prepared and shared
-- [ ] Optional exercise/reflection omitted per user's no-question preference; no learning claim made
+- [x] Brief evidence-based recap prepared and shared — fair filler choices, their regression tests and observed basket totals
+- [x] Optional exercise/reflection omitted per user's no-question preference; no learning claim made
 - [ ] devpost/app-map.html generated, checked and shown
 
 ## Revisions
