@@ -13,7 +13,7 @@ npm test
 npm run dev
 ```
 
-Open http://127.0.0.1:5173 and choose **Try the sample**, then **Try it on our model** (or **Try it on you**). Add looks to your kit, then choose **See your kit →** for the basket and the fair comparison. Each product has a **Shop ↗** link to the retailer.
+Open http://127.0.0.1:5173 and choose **Try the sample**, then **Try it on our model** (or **Try it on you**). Choose **Add to kit** on a look to open your kit, then add more looks from **Add another look**; the basket and fair comparison update as you go. Each product has a **Shop ↗** link to the retailer.
 
 ## Current status
 The catalogue calculation is implemented and independently reviewed. The sample trio calculates R550 delivered versus R743 for separate kits, retaining all cheapest filler choices. This is calculated from the supplied catalogue, not hardcoded output.
