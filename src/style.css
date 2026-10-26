@@ -736,3 +736,17 @@ body.show-looks.has-basket:not(.show-kit) .kit-bar { position: static; display: 
 .comparison .product-links a { border-color: rgba(255, 255, 255, .4); }
 .comparison .product-links a:hover { background: #fff; color: var(--ink); }
 .show-kit .product-links li { padding: 4px 0; }
+
+/* Viewfinder v3: face-tracking dot mesh */
+.viewfinder svg { width: 66%; margin-top: 0; opacity: 1; overflow: visible; }
+.viewfinder svg circle { opacity: .5; animation: dot 2.8s ease-in-out infinite alternate; }
+.viewfinder svg circle.e { fill: #c59648; opacity: .9; }
+.viewfinder svg circle:nth-child(3n) { animation-delay: .9s; }
+.viewfinder svg circle:nth-child(3n+1) { animation-delay: 1.8s; }
+@keyframes dot { from { opacity: .25; } to { opacity: .75; } }
+.viewfinder svg circle.e { animation: none; }
+.viewfinder .scan { height: 1px; box-shadow: 0 0 10px 1px rgba(197, 150, 72, .55); background: linear-gradient(90deg, transparent, #c59648 30%, #b07a8a 70%, transparent); }
+@media (prefers-reduced-motion: reduce) { .viewfinder svg circle { animation: none; } }
+.viewfinder svg { width: 92%; }
+.viewfinder svg circle { r: 1.25; }
+.viewfinder svg circle.e { r: 1.6; }

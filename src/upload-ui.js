@@ -26,7 +26,7 @@ export function setupPhotoUpload({onChange,onResult,onSample,onError}){
  const status=document.querySelector('#photo-status');
  let token='',enabled=false,remaining=0,maxFileBytes=5*1024*1024,inFlight=false,generation=0,controller;
  const controls=()=>{submit.disabled=inFlight||!enabled||remaining<3||!consent.checked||!file.files?.length;file.disabled=inFlight||!enabled||remaining<3;consent.disabled=inFlight||!enabled||remaining<3;};
- const quotaText=()=>`${Math.floor(remaining/3)} photo batch available; maximum ${Math.floor(maxFileBytes/1024/1024)} MB. Consent is required before generating.`;
+ const quotaText=()=>'';
  async function refresh(){
   try{const response=await fetch('/api/upload/status',{cache:'no-store'});if(!response.ok)throw Error();const data=await response.json();token=data.token;remaining=data.remaining;enabled=data.enabled&&remaining>=3;maxFileBytes=data.maxFileBytes||5*1024*1024;status.textContent=enabled?quotaText():(data.message||'Preview allowance unavailable. The sample still works.');}
   catch{enabled=false;status.textContent='Upload service unavailable. The sample still works.';}
@@ -40,9 +40,10 @@ export function setupPhotoUpload({onChange,onResult,onSample,onError}){
   if(chosen&&(!['image/jpeg','image/png'].includes(chosen.type)||chosen.size>maxFileBytes||chosen.size===0)){file.value='';status.textContent=`Choose a JPEG or PNG no larger than ${Math.floor(maxFileBytes/1024/1024)} MB.`;}
   else status.textContent=enabled?quotaText():'Uploads are unavailable or the allowance is exhausted. The sample still works.';
   controls();
+  if(!submit.disabled)submit.click();
  });
  sample.addEventListener('click',async()=>{
-  generation++;controller?.abort();file.value='';consent.checked=false;onSample();
+  generation++;controller?.abort();file.value='';onSample();
   if(!inFlight)await refresh();controls();
  });
  submit.addEventListener('click',async()=>{
@@ -56,7 +57,7 @@ export function setupPhotoUpload({onChange,onResult,onSample,onError}){
    if(!response.ok)throw Error(data.error||'The preview could not be completed.');
    await onResult(data,()=>version===generation);
    if(version!==generation)return;
-   file.value='';consent.checked=false;status.textContent='Your looks are ready. Approve the ones you like. This visitor’s upload allowance may now be exhausted.';
+   file.value='';status.textContent='Your looks are ready. Approve the ones you like. This visitor’s upload allowance may now be exhausted.';
   }catch(error){if(version===generation){onError();status.textContent=error.name==='AbortError'?'Upload cancelled. Reserved quota may remain used.':error.message;}}
   finally{inFlight=false;controller=undefined;controls();if(version!==generation)await refresh();}
  });
