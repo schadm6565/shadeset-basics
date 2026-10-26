@@ -2,7 +2,7 @@
 doc: prd
 status: approved
 ---
-# LookKit — Product Requirements
+# ShadeSet — Product Requirements
 Choose several eye looks and find one complete purchase covering their recipes. Source: scope.md > The Unique Kernel.
 
 ## The Core Journey

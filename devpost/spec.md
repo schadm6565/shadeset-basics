@@ -2,7 +2,7 @@
 doc: spec
 status: approved
 ---
-# LookKit — Technical Spec
+# ShadeSet — Technical Spec
 
 ## How This Works, In Plain Language
 A small browser app reads a fixed catalogue, records which looks were approved and calculates two purchases. It tries valid product combinations instead of guessing from a prompt. There is no account, server database or payment service.

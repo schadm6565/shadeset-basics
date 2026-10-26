@@ -19,4 +19,4 @@ const server=createServer(async(req,res)=>{
   res.end(req.method==='HEAD'?undefined:content);
  }catch{res.writeHead(404);res.end('Not found');}
 });
-server.listen(5173,'127.0.0.1',()=>process.stdout.write('LookKit: http://127.0.0.1:5173\n'));
+server.listen(5173,'127.0.0.1',()=>process.stdout.write('ShadeSet: http://127.0.0.1:5173\n'));

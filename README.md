@@ -1,4 +1,4 @@
-# LookKit — fresh Basics proof of concept
+# ShadeSet — fresh Basics proof of concept
 
 Choose eye-look recipes and compare one jointly optimised basket with the fairest combination of independently cheapest kits.
 
@@ -21,7 +21,7 @@ The interface currently supports recipe selection only. The preview-loading and 
 Prices are a 17 October 2026 VAT-inclusive ZAR research snapshot. Local Pretoria/Johannesburg delivery is estimated at R95 once per basket. Stock is not live; no retailer partnership, payment, upload, account or public API exists. Swatches are editorial approximations, not YouCam outputs. No YouCam units were used. A fresh synthetic source portrait was generated with the built-in image-generation tool; public/sample-provenance.json records its exact prompt and hash. It is not a YouCam makeup result.
 
 ## Prior work and reuse
-The LookKit concept, recipes, pricing facts and colour references were researched before this fresh Basics implementation. Those facts were re-entered as data from the supplied brief and the expressly permitted catalogue-evidence.json. Application code was written afresh here; no previous application source or render assets were copied. The installed challengepost/learn-ai-basics Skill Pack shaped the scope, PRD, specification and build checklist. Routine planning decisions were delegated by the user; no personal document review or learning reflection is claimed.
+ShadeSet was renamed from LookKit on 26 October 2026. The project folder remains `lookkit-basics`. The LookKit concept, recipes, pricing facts and colour references were researched before this fresh Basics implementation. Those facts were re-entered as data from the supplied brief and the expressly permitted catalogue-evidence.json. Application code was written afresh here; no previous application source or render assets were copied. The installed challengepost/learn-ai-basics Skill Pack shaped the scope, PRD, specification and build checklist. Routine planning decisions were delegated by the user; no personal document review or learning reflection is claimed.
 
 ## Verification and remaining work
 See devpost/verification.md and devpost/checklist.md. Planning was committed before implementation. Source research is recorded in devpost/source-follow-up.md. No public repository, deployment, recording or submission has been made by this task.

@@ -3,7 +3,7 @@ doc: scope
 status: approved
 ---
 
-# LookKit
+# ShadeSet
 
 Choose a few eye-makeup looks and find one complete purchase that covers their recipes, within a small catalogue.
 
