@@ -38,6 +38,7 @@ export async function livePriceCheck() {
     total: results.length,
     match: count('match'), changed: count('changed'), unreadable: count('unreadable') + count('unreachable'),
     outOfStock: results.filter(r => r.availability !== 'InStock' && r.availability !== 'unknown').map(r => r.id),
+    stockUnknown: results.filter(r => r.availability === 'unknown').map(r => r.id),
     items: results.map(({id, kind, expected, live, availability, status}) => ({id, kind, expected, live, availability, status}))
   };
   cache = {at: Date.now(), result};

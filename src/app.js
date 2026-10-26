@@ -119,9 +119,10 @@ loadPreviews(recipes,colours).then(decodePreviewSet).then(loaded=>{if(initialVer
  try{
   const res=await fetch('/api/prices',{cache:'no-store'});if(!res.ok)return;
   const r=await res.json();const time=new Date(r.checkedAt).toLocaleTimeString('en-ZA',{hour:'2-digit',minute:'2-digit'});
-  badge.textContent=r.changed||r.unreadable||r.outOfStock.length
-   ?`Live check ${time}: ${r.match}/${r.total} prices match · ${r.changed} changed · ${r.unreadable} unreadable · ${r.outOfStock.length} not in stock — confirm with the retailer`
+  const unknown=(r.stockUnknown||[]).length;
+  badge.textContent=r.changed||r.unreadable||r.outOfStock.length||unknown
+   ?`Live check ${time}: ${r.match}/${r.total} prices match · ${r.changed} changed · ${r.unreadable} unreadable · ${r.outOfStock.length} not in stock · ${unknown} stock unknown — confirm with the retailer`
    :`Live check ${time}: all ${r.total} refill and case prices match the retailer today · all in stock`;
-  badge.dataset.state=r.changed||r.outOfStock.length?'warn':'ok';badge.hidden=false;
+  badge.dataset.state=r.changed||r.outOfStock.length||unknown?'warn':'ok';badge.hidden=false;
  }catch{}
 })();
