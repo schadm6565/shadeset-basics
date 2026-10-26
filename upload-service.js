@@ -40,7 +40,7 @@ export function providerAssetURL(value){
  if(u.protocol!=='https:'||u.username||u.password||(u.port&&u.port!=='443')||!hosts.some(h=>u.hostname===h||u.hostname.endsWith('.'+h)))fail(502,'YouCam returned an unsupported asset address.');
  return u.href;
 }
-export async function renderYouCam(photo,{key,signal,fetcher=fetch}){
+export async function renderYouCam(photo,{key,signal,fetcher=fetch,normaliseOutput=normalisePhoto}){
  const api=async(path,body)=>{
   const r=await fetcher(API+path,{method:body?'POST':'GET',headers:{Authorization:'Bearer '+key,'Content-Type':'application/json'},body:body?JSON.stringify(body):undefined,signal,redirect:'error'});
   return JSON.parse((await boundedResponse(r,1024*1024)).toString());
@@ -72,7 +72,7 @@ export async function renderYouCam(photo,{key,signal,fetcher=fetch}){
   const url=Array.isArray(result)?result[0]?.download_url??result[0]?.url:result.url??result.download_url;
   const bytes=await boundedResponse(await fetcher(providerAssetURL(url),{signal,redirect:'error'}),10*1024*1024);
   const type=bytes[0]===137?'image/png':'image/jpeg';
-  const output=await normalisePhoto(bytes,type);
+  const output=await normaliseOutput(bytes,type);
   const identity=await makeIdentity({photo:new Uint8Array(photo),recipe:params,output:new Uint8Array(output)});
   results.push({recipeId:recipe.id,output:output.toString('base64'),identity});
  }
