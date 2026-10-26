@@ -40,9 +40,10 @@ export function setupPhotoUpload({onChange,onResult,onSample,onError}){
   if(chosen&&(!['image/jpeg','image/png'].includes(chosen.type)||chosen.size>maxFileBytes||chosen.size===0)){file.value='';status.textContent=`Choose a JPEG or PNG no larger than ${Math.floor(maxFileBytes/1024/1024)} MB.`;}
   else status.textContent=enabled?quotaText():'Uploads are unavailable or the allowance is exhausted. The sample still works.';
   controls();
+  if(!submit.disabled)submit.click();
  });
  sample.addEventListener('click',async()=>{
-  generation++;controller?.abort();file.value='';consent.checked=false;onSample();
+  generation++;controller?.abort();file.value='';onSample();
   if(!inFlight)await refresh();controls();
  });
  submit.addEventListener('click',async()=>{
