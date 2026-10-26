@@ -11,13 +11,13 @@ Choose a few eye-makeup looks and find one complete purchase that covers their r
 The app works out what the looks need together. It compares that basket with buying each look’s cheapest kit separately, giving the separate-kit approach the fairest possible combination of choices. Shared shades should not mean unnecessary duplicate purchases.
 
 ## Who It's For
-Proposed audience: a South African makeup shopper who wants an everyday look and a couple of going-out looks, but finds it awkward to work out which shades and palettes overlap. This is a product hypothesis, not a customer-research finding or a claim about Chad’s personal shopping experience.
+A South African makeup shopper who wants an everyday look and a couple of going-out looks, but finds it awkward to work out which shades and palettes overlap. Chad chose this audience; it has not yet been validated with real shoppers.
 
 ## The Core Loop
 Open the app, try the sample, inspect three looks and approve the ones you like. See one basket covering the approved recipes, what each product supplies and which looks use it. Compare its complete estimated cost with the fair separate-kit baseline. Remove an approval and the comparison updates for the remaining looks.
 
 ## Inspiration & Identity
-A calm, polished beauty-shopping tool with warm ivory, dark brown text and restrained olive accents. Clear product prices and genuine preview images take priority over decoration. Serif headings, readable supporting text and a compact mobile layout.
+A calm, polished beauty-shopping tool where clear prices and genuine preview images take priority over decoration. Neutral, high-contrast editorial grid: off-white background, near-black type, Inter Tight with a monospace face for labels and prices, square corners and hairline rules. The genuine eye close-up previews lead; motion is subtle and respects reduced-motion settings. Revised on 26 October 2026 at Chad's request after he reviewed the first build, which used warm ivory, olive and serif headings and read as generic.
 Prior design references: https://www.framer.com/marketplace/templates/ and https://garden-eight.com/archives/. These are visual references; no old app code or template source is reused.
 
 ## Why This Matters to the Learner
@@ -55,5 +55,5 @@ HTML export: the visible basket and comparison prove the idea without another ou
 Accounts, payments, live stock and retailer integrations: no supporting partnership or data feed.
 
 ## Decisions and Review State
-The supplied user brief defines the core loop, fair baseline, cuts and time gates. The intended-audience wording and exact visual treatment above are agent-drafted proposals, following the user’s request to draft answers without further questionnaires.
+Chad defined the idea, audience, core loop, fair baseline, cuts and time gates. The agent wrote them up in this template; Chad reviewed and approved the document. The visual direction was later revised at Chad's request (see checklist revisions).
 Approved by Chad on 26 October 2026. Chad reviewed this document and approved it (his words: "i did look at everything and approved it, i just forgot to update it"); this record was updated at 20:45 SAST to reflect that review. Rendering funding and publication boundaries remain unchanged.

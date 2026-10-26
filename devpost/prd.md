@@ -17,7 +17,7 @@ Choose several eye looks and find one complete purchase covering their recipes. 
 One page with introduction, sample look cards and a basket/comparison section. Three desktop cards collapse into a single mobile column. Basket details stay readable at 390px without horizontal scrolling. Empty basket explains the next action. Buttons have visible focus and explicit text states.
 
 ## Look and Feel
-Warm ivory, brown typography, restrained olive controls, editorial serif headings and generous spacing. References are the Framer marketplace and Garden Eight archives named in scope; reference style only, with fresh code. Avoid dashboard clutter, misleading product photography or decorative fake preview imagery.
+Neutral, high-contrast editorial grid: off-white background, near-black type, Inter Tight with a monospace face for labels and prices, square corners and hairline rules. The genuine eye close-up previews lead; motion is subtle and respects reduced-motion settings. Revised on 26 October 2026 at Chad's request after he reviewed the first build, which used warm ivory, olive and serif headings and read as generic. References are the Framer marketplace and Garden Eight archives named in scope; reference style only, with fresh code. Avoid dashboard clutter, misleading product photography or decorative fake preview imagery.
 
 ## Features and Behaviour
 Source: scope.md > The POC Boundary.
@@ -32,7 +32,7 @@ Source: scope.md > The POC Boundary.
 No approvals: no purchase recommendation or delivery charge. Rejection: remove that look only. No feasible basket: explain catalogue cannot cover the selection, never show partial coverage as complete. Missing image: show unavailable state. Invalidated approval: explain why re-approval is needed. Selections exist in memory and reset on reload; no personal data is stored.
 
 ## Product Decisions
-The supplied brief fixes the recipes, catalogue, fair comparison and cuts. The agent chooses a single-page layout under delegated authority. Genuine image readiness was verified after Chad separately authorised three one-unit renders. This PRD does not authorise additional spending.
+Chad's brief fixes the recipes, catalogue, fair comparison and cuts. The agent proposed a single-page layout and Chad approved it. Genuine image readiness was verified after Chad separately authorised three one-unit renders. This PRD does not authorise additional spending.
 
 ## What We're Building
 The core journey, tested optimiser and baseline, verifiable approval identity, responsive local demonstration and local shipping materials. Source: scope.md > What "Working" Looks Like.
