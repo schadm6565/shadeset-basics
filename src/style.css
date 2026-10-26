@@ -641,3 +641,26 @@ body:not(.has-basket) .basket-area { display: none; }
 .basket-area > #result { order: 2; }
 .basket-area > .live-badge { order: 3; margin: 24px 0 6px; }
 .basket-area > .basket-note { order: 4; margin: 0; }
+
+/* Viewfinder: brackets, camera icon and a slow scanning line */
+.choice-own::before, .choice-own::after { display: none; }
+.viewfinder {
+  position: absolute; left: 72%; top: 50%; transform: translate(-50%, -55%); width: min(36%, 260px); aspect-ratio: 3 / 4;
+  display: grid; place-items: center; color: rgba(244, 244, 241, .85); overflow: hidden;
+  background:
+    linear-gradient(currentColor, currentColor) top left / 22px 2px no-repeat, linear-gradient(currentColor, currentColor) top left / 2px 22px no-repeat,
+    linear-gradient(currentColor, currentColor) top right / 22px 2px no-repeat, linear-gradient(currentColor, currentColor) top right / 2px 22px no-repeat,
+    linear-gradient(currentColor, currentColor) bottom left / 22px 2px no-repeat, linear-gradient(currentColor, currentColor) bottom left / 2px 22px no-repeat,
+    linear-gradient(currentColor, currentColor) bottom right / 22px 2px no-repeat, linear-gradient(currentColor, currentColor) bottom right / 2px 22px no-repeat;
+}
+.viewfinder svg { width: 30%; opacity: .9; transition: transform .5s cubic-bezier(.16, 1, .3, 1); }
+.choice-own:hover .viewfinder svg { transform: scale(1.08); }
+.viewfinder .scan {
+  position: absolute; left: 8%; right: 8%; top: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, #c59648, #704653, transparent);
+  box-shadow: 0 0 18px 4px rgba(197, 150, 72, .35); animation: scan 2.8s cubic-bezier(.45, 0, .55, 1) infinite alternate;
+}
+@keyframes scan { from { top: 6%; } to { top: 94%; } }
+.show-looks .viewfinder { display: none; }
+@media (max-width: 720px) { .viewfinder { display: none; } }
+@media (prefers-reduced-motion: reduce) { .viewfinder .scan { animation: none; top: 50%; } }
