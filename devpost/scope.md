@@ -36,7 +36,7 @@ The demo works at desktop width and 390px and can be shown in a short screen rec
 - One jointly optimised purchase over the researched Creative Glamour offers.
 - A fair baseline choosing among ALL cheapest per-look configurations, then minimising their deduplicated union; deduplicate identical configurations only and add delivery once.
 - Twelve R73 refills, custom four/ten options, three ready-made palettes and the specified empty cases; ZAR prices and source links from the 26 October snapshot.
-- Use your own photo: upload (no consent step, see below), server-side YouCam key, the same three recipes, a 9-render cap, approvals bound to the new photo. Runs locally only (the key stays private); the hosted demo offers the sample and the live price check.
+- Use your own photo: upload (no consent step, see below), server-side YouCam key, the same three recipes, a 9-render cap, approvals bound to the new photo. The key stays server-side. The hosted demo also accepts one photo batch from a shared 3-render allowance (persistent counter); when it is used up, the sample still works.
 - Live price and stock check against the retailer's product pages (server route /api/prices). Verification only, it never changes the basket. Its badge was removed from the UI at Chad's request on 26 October; the route remains.
 - Clear limits: South Africa delivery, stock checked on request rather than reserved, approximate preview colours and no retailer partnership.
 - Tests first for the optimiser and baseline, including a small independent brute-force check and a filler-choice regression.
@@ -77,4 +77,4 @@ The optional local upload takes a validated JPEG/PNG (5 MB maximum, 12 MP maximu
 
 The local server keeps photos in request memory only, without logs or disk storage. YouCam generally retains inputs/results for 30 days. The UI no longer shows this notice (Chad's demo decision); it is stated here and in the README. Results stay in the browser tab until replaced/reloaded. Caps are nine renders per server run and six per session, reserved in batches of three before provider work. Uncertain failures are not refunded and tasks are not automatically retried. Restarting does not grant further spending permission. The keyless sample remains available.
 
-Verification: see evidence/upload-verification-2026-10-26.md. This is a local-only endpoint, not a public deployment.
+Verification: see evidence/upload-verification-2026-10-26.md. This verification covers the local endpoint. The hosted demo also accepts one photo batch from a shared 3-render allowance (persistent counter); when it is used up, the sample still works.

@@ -35,7 +35,7 @@ Application code is MIT licensed; see LICENSE. Third-party names and research re
 ## UI revision
 The Chad-requested redesign uses eye-focused CSS crops of the unchanged genuine images, three dark hero panels, reduced-motion-aware presentation effects and a dark basket comparison. Inter Tight and JetBrains Mono are bundled locally; their SIL Open Font Licences and source notes are in public/fonts/. Approval and basket logic are unchanged.
 
-## Optional personal-photo previews (local only)
+## Optional personal-photo previews (local, plus a small hosted allowance)
 Set `YOUCAM_API_KEY` and `YOUCAM_UPLOADS_ENABLED=1` in an ignored `.env`, then start the server. Keep the key out of Git. The sample works with uploads disabled or without a key.
 
 Open **Try it on you** and choose a still JPEG/PNG (maximum 5 MB, 12 megapixels, minimum 100 × 100 pixels); the previews generate automatically. At Chad's request for the demo (commit bb0a5a2) there is no consent checkbox, notice or Generate button: choosing a photo starts the YouCam previews automatically. Photos are sent to YouCam, which generally retains uploads and results for up to 30 days under its privacy policy. Sharp decodes, strips metadata and resizes it to at most 1024 pixels per side. Three previews use the existing recipes with smoothing zero; each requires separate appearance approval. Changing the photo clears all approvals.

@@ -85,4 +85,4 @@ The optional local upload takes a validated JPEG/PNG (5 MB maximum, 12 MP maximu
 
 The local server keeps photos in request memory only, without logs or disk storage. YouCam generally retains inputs/results for 30 days. The UI no longer shows this notice (Chad's demo decision); it is stated here and in the README. Results stay in the browser tab until replaced/reloaded. Caps are nine renders per server run and six per session, reserved in batches of three before provider work. Uncertain failures are not refunded and tasks are not automatically retried. Restarting does not grant further spending permission. The keyless sample remains available.
 
-Verification: see evidence/upload-verification-2026-10-26.md. This is a local-only endpoint, not a public deployment.
+Verification: see evidence/upload-verification-2026-10-26.md. This verification covers the local endpoint. The hosted demo also accepts one photo batch from a shared 3-render allowance (persistent counter); when it is used up, the sample still works.
