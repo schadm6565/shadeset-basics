@@ -28,7 +28,7 @@ Source: scope.md > The POC Boundary.
 - Appearance approval binds photo bytes, full recipe and output bytes by hash. Replacement of any component invalidates approval.
 - Genuine previews carry provenance and colour approximation notices. Missing previews show a plain unavailable state with recipe swatches; this is not evidence of a finished visual demo.
 
-- **Use your own photo:** before upload the person ticks a consent box explaining the photo is sent to YouCam (Perfect Corp) for rendering. The same three recipes render on their photo, up to the 9-render cap; when the cap is reached the app says so and the sample still works. Changing the photo clears all approvals. The local server does not save or log photos; YouCam’s generally 30-day retention is disclosed before consent.
+- **Use your own photo:** before upload the person ticks a consent box explaining the photo is sent to YouCam (Perfect Corp) for rendering. The same three recipes render on their photo, up to the 9-render cap; when the cap is reached the app says so and the sample still works. Changing the photo clears all approvals. The local server does not save or log photos; YouCam’s generally 30-day retention is disclosed before consent. Runs locally only (the key stays private); the hosted demo offers the sample and the live price check.
 - **Check live prices:** a button re-reads each product page and shows, per item, "price matches" or "price changed to Rx" and "in stock" or "not listed in stock", with the time checked. If the retailer can't be reached the app says so and keeps the dated snapshot. The basket and comparison never change because of this check.
 
 ## States and Boundaries
