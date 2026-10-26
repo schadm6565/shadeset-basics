@@ -36,7 +36,7 @@ The demo works at desktop width and 390px and can be shown in a short screen rec
 - One jointly optimised purchase over the researched Creative Glamour offers.
 - A fair baseline choosing among ALL cheapest per-look configurations, then minimising their deduplicated union; deduplicate identical configurations only and add delivery once.
 - Twelve R73 refills, custom four/ten options, three ready-made palettes and the specified empty cases; ZAR prices and source links from the 26 October snapshot.
-- Use your own photo: consented upload, server-side YouCam key, the same three recipes, a 9-render cap, approvals bound to the new photo.
+- Use your own photo: consented upload, server-side YouCam key, the same three recipes, a 9-render cap, approvals bound to the new photo. Runs locally only (the key stays private); the hosted demo offers the sample and the live price check.
 - Live price and stock check against the retailer's product pages, shown as a badge; verification only, it never changes the basket.
 - Clear limits: South Africa delivery, stock checked on request rather than reserved, approximate preview colours and no retailer partnership.
 - Tests first for the optimiser and baseline, including a small independent brute-force check and a filler-choice regression.
