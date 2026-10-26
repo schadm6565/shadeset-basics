@@ -15,7 +15,7 @@ function items() {
 async function checkOne(item) {
   try {
     const res = await fetch(item.url, {headers: {'User-Agent': 'ShadeSet price check (proof of concept)'}, signal: AbortSignal.timeout(8000)});
-    if (!res.ok) return {...item, status: 'unreachable'};
+    if (!res.ok) return {...item, availability: 'unknown', status: 'unreachable'};
     const html = await res.text();
     const price = html.match(/itemprop="price"\s+content="([\d.]+)"/);
     const stock = html.match(/schema\.org\/(InStock|OutOfStock|PreOrder|BackOrder|SoldOut|Discontinued)/);
@@ -25,7 +25,7 @@ async function checkOne(item) {
       status: live === null ? 'unreadable' : live === item.expected ? 'match' : 'changed'
     };
   } catch {
-    return {...item, status: 'unreachable'};
+    return {...item, availability: 'unknown', status: 'unreachable'};
   }
 }
 
@@ -37,7 +37,7 @@ export async function livePriceCheck() {
     checkedAt: new Date().toISOString(),
     total: results.length,
     match: count('match'), changed: count('changed'), unreadable: count('unreadable') + count('unreachable'),
-    outOfStock: results.filter(r => r.availability !== 'InStock' && r.availability !== 'unknown').map(r => r.id),
+    outOfStock: results.filter(r => ['OutOfStock', 'PreOrder', 'BackOrder', 'SoldOut', 'Discontinued'].includes(r.availability)).map(r => r.id),
     stockUnknown: results.filter(r => r.availability === 'unknown').map(r => r.id),
     items: results.map(({id, kind, expected, live, availability, status}) => ({id, kind, expected, live, availability, status}))
   };

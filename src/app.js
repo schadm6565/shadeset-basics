@@ -119,7 +119,7 @@ loadPreviews(recipes,colours).then(decodePreviewSet).then(loaded=>{if(initialVer
  try{
   const res=await fetch('/api/prices',{cache:'no-store'});if(!res.ok)return;
   const r=await res.json();const time=new Date(r.checkedAt).toLocaleTimeString('en-ZA',{hour:'2-digit',minute:'2-digit'});
-  const unknown=(r.stockUnknown||[]).length;
+  const unknown=Math.max((r.stockUnknown||[]).length,(r.items||[]).filter(item=>!['InStock','OutOfStock','PreOrder','BackOrder','SoldOut','Discontinued'].includes(item.availability)).length);
   const allInStock=Array.isArray(r.items)&&r.items.length===r.total&&r.total>0&&r.items.every(item=>item.availability==='InStock');
   badge.textContent=r.changed||r.unreadable||r.outOfStock.length||unknown||!allInStock
    ?`Live check ${time}: ${r.match}/${r.total} prices match · ${r.changed} changed · ${r.unreadable} unreadable · ${r.outOfStock.length} not in stock · ${unknown} stock unknown — check with the retailer`
