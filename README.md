@@ -1,5 +1,7 @@
 # ShadeSet — fresh Basics proof of concept
 
+**Live demo:** https://shadeset-basics.vercel.app — click *Try the sample*. No account needed.
+
 Choose eye-look recipes and compare one jointly optimised basket with the fairest combination of independently cheapest kits.
 
 ## Run locally
@@ -25,7 +27,7 @@ Prices are a 26 October 2026 VAT-inclusive ZAR snapshot, checked against every r
 Data: catalogue prices are a 26 October 2026 snapshot (see devpost/evidence/price-check-2026-10-26.md); recipes and colour references are entered as data. All application code was written fresh in this repository, starting from an empty folder. The installed challengepost/learn-ai-basics Skill Pack shaped the scope, PRD, specification and build checklist. Chad made the product decisions and reviewed and approved the scope, PRD and specification before implementation; the approval lines were brought up to date at 20:45 SAST.
 
 ## Verification and remaining work
-See devpost/verification.md and devpost/checklist.md. Planning was committed before implementation. Source research is recorded in devpost/source-follow-up.md. The public repository is https://github.com/schadm6565/shadeset-basics. No live deployment, video recording or Devpost submission has been made by this task.
+See devpost/verification.md and devpost/checklist.md. Planning was committed before implementation. Source research is recorded in devpost/source-follow-up.md. The public repository is https://github.com/schadm6565/shadeset-basics. Live demo: https://shadeset-basics.vercel.app (sample flow and live price check; personal-photo previews run locally only).
 
 ## Licence
 Application code is MIT licensed; see LICENSE. Third-party names and research remain attributed facts. The Skill Pack is separately sourced by skills-lock.json.

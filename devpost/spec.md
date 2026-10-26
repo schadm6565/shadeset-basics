@@ -74,7 +74,7 @@ Approved by Chad on 26 October 2026. Chad reviewed this document and approved it
 Prices and contents were checked on every exact retailer product page on 26 October 2026 (devpost/evidence/price-check-2026-10-26.md): all 21 prices, both delivery fees and all three ready-made palette shade lists match the catalogue, and every item was listed as in stock. Prices remain a dated snapshot, not live quotes.
 
 ## Public sharing checkpoint
-https://github.com/schadm6565/shadeset-basics is public and anonymously verified at commit 344d7c3. Chad explicitly authorised that snapshot and its history. The ongoing UI redesign remains local until completed and checked; no video URL or completed Devpost submission has been recorded.
+Repository: https://github.com/schadm6565/shadeset-basics (public, MIT). Live demo: https://shadeset-basics.vercel.app, deployed from main on Vercel and checked on 26 October 2026: the sample flow reaches three approved looks and the R550 / R743 comparison, the live price check reads 16 of 16 refill and case pages matching, and /.env returns 404. Personal-photo previews are not available on the hosted demo because no API key is deployed; they run locally only. No video URL or Devpost submission is recorded here.
 
 Chad separately authorised up to nine additional existing bonus units for the personal-photo feature and its live test. This supersedes the earlier exhausted three-unit allowance only for that capped work. Live-test spend is recorded in the verification evidence.
 
