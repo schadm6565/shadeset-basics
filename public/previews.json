@@ -1,6 +1,236 @@
 {
   "version": 1,
-  "status": "unavailable",
-  "reason": "Fresh genuine renders and their funding are not yet available for this separate entry.",
-  "records": []
+  "provider": "YouCam",
+  "photo": "/public/sample.png",
+  "records": [
+    {
+      "id": "soft-taupe",
+      "output": "/public/soft-taupe.png",
+      "photoHash": "d46abe5f914dc9f66ce327984e407263c6bcd1d45ab0ae38e503d0f16f03ac77",
+      "recipeHash": "091978effd551070d53244121e3a149905b9fea974407fdad3bb31c0447ea18e",
+      "outputHash": "48e6765237f9012e9d5bccdb71ce80d1e3cf96fec666d9c1b1f5780485ede930",
+      "createdAt": "2026-10-26T18:41:42Z",
+      "endpoint": "https://yce-api-01.makeupar.com/s2s/v2.0/task/makeup-vto",
+      "skinSmoothing": 0,
+      "funding": "Chad authorised three existing YouCam bonus units for this separate Basics prototype on 26 October 2026.",
+      "parameters": {
+        "id": "soft-taupe",
+        "name": "Soft taupe",
+        "occasion": "Everyday",
+        "shades": [
+          "vanilla",
+          "taupe",
+          "chocolate"
+        ],
+        "pattern": "3colors1",
+        "intensity": 40,
+        "placements": [
+          "Inner corner",
+          "Centre lid",
+          "Outer corner"
+        ],
+        "colours": [
+          {
+            "shade": "vanilla",
+            "colour": "#e5cba5"
+          },
+          {
+            "shade": "taupe",
+            "colour": "#897064"
+          },
+          {
+            "shade": "chocolate",
+            "colour": "#604333"
+          }
+        ],
+        "skinSmoothing": 0,
+        "effects": [
+          {
+            "category": "skin_smooth",
+            "skinSmoothStrength": 0,
+            "skinSmoothColorIntensity": 0
+          },
+          {
+            "category": "eye_shadow",
+            "pattern": {
+              "name": "3colors1"
+            },
+            "palettes": [
+              {
+                "color": "#e5cba5",
+                "texture": "matte",
+                "colorIntensity": 40
+              },
+              {
+                "color": "#897064",
+                "texture": "shimmer",
+                "colorIntensity": 40,
+                "shimmerColor": "#897064",
+                "shimmerIntensity": 35
+              },
+              {
+                "color": "#604333",
+                "texture": "matte",
+                "colorIntensity": 40
+              }
+            ]
+          }
+        ],
+        "version": "1.0"
+      },
+      "providerTaskId": "ZAI1o9GN8RU-7NA8IBAov7ed4w5I8HFTELyJ8A-u_vWJnE8VAxHVcLvCs5IFQbb-d-BTT-LvvMAmKHuvXEbI5Q"
+    },
+    {
+      "id": "golden-hour",
+      "output": "/public/golden-hour.png",
+      "photoHash": "d46abe5f914dc9f66ce327984e407263c6bcd1d45ab0ae38e503d0f16f03ac77",
+      "recipeHash": "b8b9f3b3537b4a555521ed2b3396f572f93956c3196fac7d6b5945ef7f1b39ba",
+      "outputHash": "6c467aa0caed9f2ebd90236f5854d95656329b83099693fc7fbb67de901b009c",
+      "createdAt": "2026-10-26T18:41:56Z",
+      "endpoint": "https://yce-api-01.makeupar.com/s2s/v2.0/task/makeup-vto",
+      "skinSmoothing": 0,
+      "funding": "Chad authorised three existing YouCam bonus units for this separate Basics prototype on 26 October 2026.",
+      "parameters": {
+        "id": "golden-hour",
+        "name": "Golden hour",
+        "occasion": "Dinner",
+        "shades": [
+          "vanilla",
+          "gold",
+          "chocolate"
+        ],
+        "pattern": "3colors1",
+        "intensity": 60,
+        "placements": [
+          "Inner corner",
+          "Centre lid",
+          "Outer corner"
+        ],
+        "colours": [
+          {
+            "shade": "vanilla",
+            "colour": "#e5cba5"
+          },
+          {
+            "shade": "gold",
+            "colour": "#c59648"
+          },
+          {
+            "shade": "chocolate",
+            "colour": "#604333"
+          }
+        ],
+        "skinSmoothing": 0,
+        "effects": [
+          {
+            "category": "skin_smooth",
+            "skinSmoothStrength": 0,
+            "skinSmoothColorIntensity": 0
+          },
+          {
+            "category": "eye_shadow",
+            "pattern": {
+              "name": "3colors1"
+            },
+            "palettes": [
+              {
+                "color": "#e5cba5",
+                "texture": "matte",
+                "colorIntensity": 60
+              },
+              {
+                "color": "#c59648",
+                "texture": "shimmer",
+                "colorIntensity": 60,
+                "shimmerColor": "#c59648",
+                "shimmerIntensity": 35
+              },
+              {
+                "color": "#604333",
+                "texture": "matte",
+                "colorIntensity": 60
+              }
+            ]
+          }
+        ],
+        "version": "1.0"
+      },
+      "providerTaskId": "ZAI1o9GN8RU-7NA8IBAov7ed4w5I8HFTELyJ8A-u_vW3S7r9LhXuooGBt6-sYJCjd-BTT-LvvMAmKHuvXEbI5Q"
+    },
+    {
+      "id": "plum-after-dark",
+      "output": "/public/plum-after-dark.png",
+      "photoHash": "d46abe5f914dc9f66ce327984e407263c6bcd1d45ab0ae38e503d0f16f03ac77",
+      "recipeHash": "d70ce6497a55e320b5bb4a73e9e541c25c36c57054619b9b665ed059dbc5c897",
+      "outputHash": "1517065d2734c06b20da32190b6cd58903152bedd6675df5b7c9454be64b893b",
+      "createdAt": "2026-10-26T18:42:11Z",
+      "endpoint": "https://yce-api-01.makeupar.com/s2s/v2.0/task/makeup-vto",
+      "skinSmoothing": 0,
+      "funding": "Chad authorised three existing YouCam bonus units for this separate Basics prototype on 26 October 2026.",
+      "parameters": {
+        "id": "plum-after-dark",
+        "name": "Plum after dark",
+        "occasion": "Evening",
+        "shades": [
+          "vanilla",
+          "cocoa-plum",
+          "chocolate"
+        ],
+        "pattern": "3colors8",
+        "intensity": 100,
+        "placements": [
+          "Inner corner",
+          "Upper lid",
+          "Outer lower lashes"
+        ],
+        "colours": [
+          {
+            "shade": "vanilla",
+            "colour": "#e5cba5"
+          },
+          {
+            "shade": "cocoa-plum",
+            "colour": "#704653"
+          },
+          {
+            "shade": "chocolate",
+            "colour": "#604333"
+          }
+        ],
+        "skinSmoothing": 0,
+        "effects": [
+          {
+            "category": "skin_smooth",
+            "skinSmoothStrength": 0,
+            "skinSmoothColorIntensity": 0
+          },
+          {
+            "category": "eye_shadow",
+            "pattern": {
+              "name": "3colors8"
+            },
+            "palettes": [
+              {
+                "color": "#e5cba5",
+                "texture": "matte",
+                "colorIntensity": 100
+              },
+              {
+                "color": "#704653",
+                "texture": "matte",
+                "colorIntensity": 100
+              },
+              {
+                "color": "#604333",
+                "texture": "matte",
+                "colorIntensity": 100
+              }
+            ]
+          }
+        ],
+        "version": "1.0"
+      },
+      "providerTaskId": "ZAI1o9GN8RU-7NA8IBAov7ed4w5I8HFTELyJ8A-u_vW72OMsaltgp4POXkmJ3JSId-BTT-LvvMAmKHuvXEbI5Q"
+    }
+  ]
 }

@@ -16,7 +16,7 @@ Build mode: fast, from the supplied brief. Routine review and approval decisions
   Learner check: Open the sample and inspect how removing one recipe changes both purchases. This remains a reference check, not a claim of user testing.
   Commit: `build sample recipes and fair basket comparison`
 
-- [ ] **2. Verify appearance approval and polish the complete demonstration**
+- [x] **2. Verify appearance approval and polish the complete demonstration**
   Becomes usable: Genuine rendered sample looks can be approved with identity-bound tokens; responsive basket includes exact sources and all limitations.
   Why now: Builds on proven maths, checks real image provenance and avoids fake appearance approval.
   PRD ref: `prd.md > States and Boundaries`, `prd.md > Screens and Layout`
@@ -26,7 +26,7 @@ Build mode: fast, from the supplied brief. Routine review and approval decisions
   Learner check: Approve/reject each available look, inspect exact basket contents and return to zero approvals.
   Commit: `complete verified approval journey and responsive presentation`
 
-- [ ] **3. Prepare reproducible local shipping material**
+- [x] **3. Prepare reproducible local shipping material**
   Becomes usable: Another person can run the app and follow a short recording shot list with honest reuse and limitations.
   Why now: Documentation describes verified final behaviour.
   PRD ref: `prd.md > What We're Building`
@@ -39,15 +39,15 @@ Build mode: fast, from the supplied brief. Routine review and approval decisions
 ## Hands-on Checkpoints
 User requested no routine approval prompts. Agent verification replaces blocking review checkpoints under delegated authority; no hands-on user activity is claimed.
 - [x] Early usable behaviour inspected by agent — My Hero desktop and 390px recipe flow
-- [ ] Final desktop/mobile exploration completed by agent
+- [x] Final desktop/mobile exploration completed by agent
 
 ## Final Review
-- [ ] Complete task diff self-reviewed and relevant checks pass
-- [ ] All required release gates verified; unresolved items explicitly reported
+- [x] Complete task diff self-reviewed and relevant checks pass
+- [x] All required local release gates verified; external publication/recording/submission excluded
 
 ## Code Tour and App Map
 - [x] Brief evidence-based recap prepared and shared — fair filler choices, their regression tests and observed basket totals
 - [x] Optional exercise/reflection omitted per user's no-question preference; no learning claim made
-- [ ] devpost/app-map.html generated, checked and shown
+- [x] devpost/app-map.html generated and checked; linked in handoff (Codex panel opening queued)
 
 ## Revisions

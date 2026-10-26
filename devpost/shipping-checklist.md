@@ -8,15 +8,15 @@
 - Joint basket calculation and fair baseline; sample totals R550 and R743 including one delivery each.
 - All tied cheapest per-look configurations retained; deduplicate identical configurations only.
 - Exact product/component links integrated. Prices remain the supplied 17 October snapshot, not live quotes.
-- Unit checks prove approval identity invalidation and guarded asset loading. The approval path is connected in code, but genuine assets and browser verification are missing.
-- No paid API units, old render assets, deployment, public repository or submission from this task.
+- Unit checks prove approval identity invalidation and guarded asset loading. Three genuine outputs and the desktop/mobile approval journey are verified.
+- Three expressly authorised bonus units used; no purchased credits, old render assets, deployment, public repository or submission from this task.
 
 ## Required before release
-- [ ] Genuine permitted sample-face renders with actual provenance and account/unit funding disclosure, or an explicitly authorised change to the rendering requirement
-- [ ] Appearance approval/rejection connected to displayed photo, recipe and output identities
-- [ ] Desktop and 390px browser journey verified using an authorised profile
-- [ ] Final source/content/history audit and any applicable review complete
-- [ ] Final app-map and recording plan refreshed to match the verified release
+- [x] Genuine permitted sample-face renders with actual provenance and account/unit funding disclosure, or an explicitly authorised change to the rendering requirement
+- [x] Appearance approval/rejection connected to displayed photo, recipe and output identities
+- [x] Desktop and 390px browser journey verified using an authorised profile
+- [x] Final source/content/history audit and any applicable review complete
+- [x] Final app-map and recording plan refreshed to match the verified release
 
 ## User-owned external steps
 No external action is authorised by this checklist.

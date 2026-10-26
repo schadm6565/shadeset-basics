@@ -10,15 +10,15 @@ npm test
 npm run dev
 ```
 
-Open http://127.0.0.1:5173 and choose **Try the sample**. Select recipes to calculate both baskets; clear selections to start again. No selections survive reload.
+Open http://127.0.0.1:5173 and choose **Try the sample**. Inspect the before/after previews and explicitly approve looks to calculate both baskets; clear approvals to start again. No selections survive reload.
 
 ## Current status
 The catalogue calculation is implemented and independently reviewed. The sample trio calculates R550 delivered versus R743 for separate kits, retaining all cheapest filler choices. This is calculated from the supplied catalogue, not hardcoded output.
 
-The interface currently supports recipe selection only. The preview-loading and appearance-approval code is implemented and independently reviewed, but **genuine sample assets are absent and the full journey is not yet browser-verified**. The unavailable manifest keeps the visible app in recipe-selection mode. Exact palette, refill and case links are integrated, with itemised component prices. Desktop and 390px recipe-selection checks pass. Genuine-image appearance approval still needs its end-to-end check. This is not yet a complete release.
+Three genuine YouCam previews now share one synthetic sample face. Each approval binds the photo, complete rendering parameters and output image hashes. Missing or changed assets fail closed into a clearly labelled recipe-only fallback. Desktop and 390px checks cover approval, rejection, reset, image loading and the R550/R743 comparison. Exact palette, refill and case links include itemised prices.
 
 ## Limits
-Prices are a 17 October 2026 VAT-inclusive ZAR research snapshot. Local Pretoria/Johannesburg delivery is estimated at R95 once per basket. Stock is not live; no retailer partnership, payment, upload, account or public API exists. Swatches are editorial approximations, not YouCam outputs. No YouCam units were used. A fresh synthetic source portrait was generated with the built-in image-generation tool; public/sample-provenance.json records its exact prompt and hash. It is not a YouCam makeup result.
+Prices are a 17 October 2026 VAT-inclusive ZAR research snapshot. Local Pretoria/Johannesburg delivery is estimated at R95 once per basket. Stock is not live; no retailer partnership, payment, upload, account or public API exists. Swatches are editorial approximations, not YouCam outputs. Three authorised bonus units were used for three successful Makeup VTO calls on 26 October 2026; the provider usage records confirm three one-unit charges. Both skin-smoothing settings were explicitly zero. Output PNGs are unmodified; public/previews.json records exact parameters and hashes. The API key is stored only in the ignored local .env and is not needed to run this static demo. A fresh synthetic source portrait was generated with the built-in image-generation tool; public/sample-provenance.json records its exact prompt and hash. It is not a YouCam makeup result.
 
 ## Prior work and reuse
 ShadeSet was renamed from LookKit on 26 October 2026. The project folder remains `lookkit-basics`. The LookKit concept, recipes, pricing facts and colour references were researched before this fresh Basics implementation. Those facts were re-entered as data from the supplied brief and the expressly permitted catalogue-evidence.json. Application code was written afresh here; no previous application source or render assets were copied. The installed challengepost/learn-ai-basics Skill Pack shaped the scope, PRD, specification and build checklist. Routine planning decisions were delegated by the user; no personal document review or learning reflection is claimed.

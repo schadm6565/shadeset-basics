@@ -43,3 +43,12 @@
 - The public preview manifest remains unavailable with no output records; the source photo alone does not enable appearance approval.
 - Official unit-consumption documentation confirms 1 unit per Makeup VTO render: https://docs.perfectcorp.com/reference/makeup_vto/section/overview/unit-consumption . Three required renders would consume 3 units. No YouCam calls made.
 - A project-specific funding/key question is pending. Never paste credentials into chat or transfer the original project's allowance.
+
+## Genuine preview release — 26 October 2026, approximately 20:45 SAST
+- Three authorised Makeup VTO calls succeeded; provider usage records show -1 at 18:41:44, 18:41:58 and 18:42:13 UTC. Key creation supplied another 40 free units; balance after this run 1,037. No purchase or subscription.
+- Dedicated key is permanent, labelled ShadeSet Basics — local demo, stored in ignored .env mode 0600. No credential in tracked content or history. It is never used by the browser app.
+- Original output PNGs are 1254×1254. Exact effects include explicit skinSmoothStrength=0 and skinSmoothColorIntensity=0. Shimmer colour/intensity and pattern are included in approval recipe hashes.
+- `npm test`: 15/15 pass. Live `loadPreviews` accepts all three actual assets. Private HTTP paths return 404 and POST returns 405.
+- Chad browser: desktop 0→1→2→3 explicit approvals; R550/R743/R193. Mobile at 390×844: width390, six images loaded, approval controls48px, rejection→2 and R419, reapproval→3, clear→0, no warning/error logs. Temporary viewport restored.
+- Deliberately corrupted one outputHash, attempted approval: verification failed, no appearance approval issued, fallback clearly labelled and count0. Original manifest restored immediately.
+- Evidence: desktop-genuine-previews.png and mobile-genuine-previews.png. No further paid calls, deployment, push or submission.

@@ -1,6 +1,12 @@
 import {makeIdentity} from './approval.js';
 export function renderRecipe(recipe,colours){
- return {...recipe,colours:recipe.shades.map(shade=>({shade,colour:colours[shade]})),skinSmoothing:0};
+ const palettes=recipe.shades.map(shade=>{
+  const color=colours[shade],texture=['taupe','gold'].includes(shade)?'shimmer':'matte';
+  return {color,texture,colorIntensity:recipe.intensity,...(texture==='shimmer'?{shimmerColor:color,shimmerIntensity:35}:{})};
+ });
+ return {...recipe,colours:recipe.shades.map(shade=>({shade,colour:colours[shade]})),skinSmoothing:0,
+  effects:[{category:'skin_smooth',skinSmoothStrength:0,skinSmoothColorIntensity:0},
+   {category:'eye_shadow',pattern:{name:recipe.pattern},palettes}],version:'1.0'};
 }
 const imagePaths=new Set(['/public/sample.png','/public/soft-taupe.png','/public/golden-hour.png','/public/plum-after-dark.png']);
 async function imageBytes(path,fetcher){
