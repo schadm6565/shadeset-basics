@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ShadeSet · Three eye looks, one kit</title>
+<title>ShadeSet</title>
+<link rel="icon" type="image/svg+xml" href="/public/favicon.svg">
 <link rel="stylesheet" href="/src/style.css">
 </head>
 <body>
@@ -45,7 +46,7 @@
         <span class="choice-title">Your photo</span>
         <span class="choice-sub">Take a selfie or upload one. Your three looks are rendered on your face.</span>
         <span class="choice-cta">Take or upload a photo <span aria-hidden="true">→</span></span>
-        <span class="choice-note">Sent to YouCam for the previews · kept up to 30 days</span>
+        <span class="choice-note">Sent to YouCam (Perfect Corp) after consent · retention under its policy</span>
       </label>
       <button id="sample-photo" class="choice-card choice-sample" type="button">
         <img src="/public/sample.png" alt="">
@@ -54,8 +55,8 @@
         <span class="choice-sub">No upload. See the three looks on a synthetic face.</span>
         <span class="choice-cta">Use the sample face <span aria-hidden="true">→</span></span>
       </button>
-      <input id="photo-consent" type="checkbox" checked hidden>
-      <button id="generate-photo" type="button" hidden disabled>Generate</button>
+      <label class="consent"><input id="photo-consent" type="checkbox"> I have permission to use this photo and consent to sending it to YouCam (Perfect Corp) to generate previews. Photos may be retained under its <a href="https://www.perfectcorp.com/perfectbeauty/youcam/privacy-policy-api" target="_blank" rel="noopener noreferrer">privacy policy</a>.</label>
+      <button id="generate-photo" type="button" disabled>Generate my three looks</button>
       <p id="photo-status" role="status" aria-live="polite"></p>
     </div>
     <div id="looks" class="looks"></div>

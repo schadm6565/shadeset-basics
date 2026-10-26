@@ -8,6 +8,7 @@ const allowed = new Map([
  ['/LICENSE',['LICENSE','text/plain']],
  ...["inter-tight-400.ttf", "inter-tight-500.ttf", "inter-tight-600.ttf", "jetbrains-mono-400.ttf", "jetbrains-mono-500.ttf"].map(name=>[`/public/fonts/${name}`, [`public/fonts/${name}`, 'font/ttf']]),
  ['/public/previews.json',['public/previews.json','application/json']],
+ ['/public/favicon.svg',['public/favicon.svg','image/svg+xml']],
  ...['sample','soft-taupe','golden-hour','plum-after-dark'].map(name=>[`/public/${name}.png`,[`public/${name}.png`,'image/png']]),
  ...['app','catalogue','optimiser','sources','approval','previews','upload-ui'].map(name=>[`/src/${name}.js`,[`src/${name}.js`,'text/javascript']]),
  ['/src/style.css',['src/style.css','text/css']]
