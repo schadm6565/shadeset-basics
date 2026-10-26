@@ -57,3 +57,12 @@ Accounts, payments, live stock and retailer integrations: no supporting partners
 ## Decisions and Review State
 Chad defined the idea, audience, core loop, fair baseline, cuts and time gates. The agent wrote them up in this template; Chad reviewed and approved the document. The visual direction was later revised at Chad's request (see checklist revisions).
 Approved by Chad on 26 October 2026. Chad reviewed this document and approved it (his words: "i did look at everything and approved it, i just forgot to update it"); this record was updated at 20:45 SAST to reflect that review. Rendering funding and publication boundaries remain unchanged.
+
+### Authorised personal-photo feature — 26 October 2026
+This later revision supersedes the fixed-sample-only scope and the earlier exhausted three-unit allowance. Chad directly authorised up to nine additional existing YouCam bonus units, including live testing. Three one-unit renders succeeded in the live upload test; six additional units remain authorised.
+
+The optional local upload takes a consented, validated JPEG/PNG (5 MB maximum, 12 MP maximum, 100 × 100 minimum), strips metadata and normalises it to at most 1024 pixels per side using Sharp. The API key stays in ignored .env and uploads require YOUCAM_UPLOADS_ENABLED=1. All three existing recipes use smoothing zero. Approvals bind the displayed photo, full recipe and result bytes; changing the photo clears them.
+
+The local server keeps photos in request memory only, without logs or disk storage. YouCam generally retains inputs/results for 30 days, disclosed before consent. Results stay in the browser tab until replaced/reloaded. Caps are nine renders per server run and six per session, reserved in batches of three before provider work. Uncertain failures are not refunded and tasks are not automatically retried. Restarting does not grant further spending permission. The keyless sample remains available.
+
+Verification: see evidence/upload-verification-2026-10-26.md. This is a local-only endpoint, not a public deployment.

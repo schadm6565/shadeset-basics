@@ -2,8 +2,9 @@ import {recipes,offers,colours} from './catalogue.js';
 import {compareLooks} from './optimiser.js';
 import {ApprovalSession} from './approval.js';
 import {loadPreviews} from './previews.js';
+import {setupPhotoUpload,personalPreviewSet,verifyPersonalPreviews} from './upload-ui.js';
 const approvals=new ApprovalSession();
-let previews=new Map(),actionVersion=0,busy=false;
+let previews=new Map(),actionVersion=0,busy=false,photoMode='sample';
 const objectURLs=[];
 function clearPreviewURLs(){for(const url of objectURLs)URL.revokeObjectURL(url);objectURLs.length=0;}
 function imageFrom(bytes,alt){const image=element('img','face-preview');const url=URL.createObjectURL(new Blob([bytes],{type:'image/png'}));objectURLs.push(url);image.src=url;image.alt=alt;return image;}
@@ -15,16 +16,16 @@ function installPreviews(loaded){
  clearPreviewURLs();previews=new Map(loaded.map(p=>[p.recipeId,p]));
  for(const recipe of recipes){const preview=previews.get(recipe.id);if(preview)approvals.update(recipe.id,preview.identity);else approvals.remove(recipe.id);}
  selected.clear();for(const id of approvals.approvedIds())selected.add(id);
- document.querySelector('#sample-notice').textContent=previews.size?'Inspect the sample-face previews, then approve the looks you like. Colours are approximate; they do not guarantee a physical result.':'Recipe-selection demo: genuine sample-face previews are unavailable. Selecting a recipe does not approve its appearance on a face.';
+ document.querySelector('#sample-notice').textContent=previews.size?(photoMode==='own'?'YouCam preview of your photo. Approve each look explicitly. Colours are approximate; physical results may differ.':'Inspect the sample-face previews, then approve the looks you like. Colours are approximate; they do not guarantee a physical result.'):'Recipe-selection demo: genuine sample-face previews are unavailable. Selecting a recipe does not approve its appearance on a face.';
  renderLooks();renderResult();
 }
 async function toggleLook(recipe){
- if(busy)return;
+ if(busy||photoMode==='pending')return;
  if(!previews.size){if(selected.has(recipe.id))selected.delete(recipe.id);else selected.add(recipe.id);renderResult();return;}
  if(selected.has(recipe.id)){approvals.reject(recipe.id);selected.delete(recipe.id);renderResult();return;}
  const displayed=previews.get(recipe.id).identity,version=++actionVersion;busy=true;renderResult();
- try{const loaded=await decodePreviewSet(await loadPreviews(recipes,colours));if(version!==actionVersion)return;installPreviews(loaded);approvals.approve(recipe.id,displayed);selected.add(recipe.id);}
- catch(error){if(version!==actionVersion)return;if(error.message.includes('changed')){document.querySelector('#sample-notice').textContent='A preview changed. Inspect it again before approving; affected approvals were cleared.';}else{installPreviews([]);document.querySelector('#sample-notice').textContent='Preview verification failed. Appearance approvals were cleared; only recipe selection is available.';}}
+ try{const loaded=await decodePreviewSet(photoMode==='own'?await verifyPersonalPreviews([...previews.values()],recipes,colours):await loadPreviews(recipes,colours));if(version!==actionVersion)return;installPreviews(loaded);approvals.approve(recipe.id,displayed);selected.add(recipe.id);}
+ catch(error){if(version!==actionVersion)return;if(photoMode==='own'){photoMode='pending';approvals.clear();installPreviews([]);document.querySelector('#sample-notice').textContent='Personal preview verification failed. All approvals cleared; choose your photo again or use the sample.';}else if(error.message.includes('changed')){document.querySelector('#sample-notice').textContent='A preview changed. Inspect it again before approving; affected approvals were cleared.';}else{installPreviews([]);document.querySelector('#sample-notice').textContent='Preview verification failed. Appearance approvals were cleared; only recipe selection is available.';}}
  finally{if(version===actionVersion){busy=false;renderResult();}}
 }
 const selected=new Set();
@@ -42,7 +43,7 @@ function renderLooks() {
   const strip=element('div','colour-strip');
   for(const shade of recipe.shades) {const swatch=element('span');swatch.style.backgroundColor=colours[shade];strip.append(swatch);}
   const genuine=previews.get(recipe.id);
-  if(genuine){preview.className='preview-pair';const before=element('figure');before.append(imageFrom(genuine.photo,'Unmodified synthetic sample face'),element('figcaption','','Before'));const after=element('figure');after.append(imageFrom(genuine.output,`${recipe.name} on the same synthetic sample face`),element('figcaption','','YouCam preview'));preview.append(before,after);}else preview.append(strip,element('span','','Recipe colour reference'),element('small','','Genuine face preview pending'));card.append(preview);
+  if(genuine){preview.className='preview-pair';const before=element('figure');before.append(imageFrom(genuine.photo,photoMode==='own'?'Your photo, resized with metadata removed':'Unmodified synthetic sample face'),element('figcaption','','Before'));const after=element('figure');after.append(imageFrom(genuine.output,photoMode==='own'?`${recipe.name}: YouCam preview of your photo`:`${recipe.name} on the same synthetic sample face`),element('figcaption','',photoMode==='own'?'YouCam preview of your photo':'YouCam preview'));preview.append(before,after);}else preview.append(strip,element('span','','Recipe colour reference'),element('small','','Genuine face preview pending'));card.append(preview);
   const list=element('ol','recipe-list');
   recipe.shades.forEach((shade,i)=>{const row=element('li');const dot=element('span','dot');dot.style.backgroundColor=colours[shade];dot.setAttribute('aria-hidden','true');row.append(dot,element('strong','',label(shade)),element('span','',recipe.placements[i]));list.append(row);});card.append(list);
   const button=element('button','select-button','Select recipe');button.type='button';button.dataset.recipe=recipe.id;button.setAttribute('aria-pressed','false');
@@ -65,7 +66,7 @@ function basketList(basket,looks) {
 }
 function renderResult() {
  for(const button of document.querySelectorAll('[data-recipe]')) {
-  const active=selected.has(button.dataset.recipe);button.setAttribute('aria-pressed',String(active));button.disabled=busy;button.textContent=previews.size?(active?'Approved · Reject':'Approve this look'):(active?'Selected · Remove':'Select recipe');
+  const active=selected.has(button.dataset.recipe);button.setAttribute('aria-pressed',String(active));button.disabled=busy||photoMode==='pending';button.textContent=previews.size?(active?'Approved · Reject':'Approve this look'):(active?'Selected · Remove':'Select recipe');
  }
  const root=document.querySelector('#result');root.replaceChildren();
  const looks=recipes.filter(r=>selected.has(r.id));
@@ -83,6 +84,13 @@ function renderResult() {
 document.querySelector('#start').addEventListener('click',()=>{document.querySelector('#sample').hidden=false;document.querySelector('#sample-heading').focus();document.querySelector('#sample').scrollIntoView({block:'start'});});
 document.querySelector('#reset').addEventListener('click',()=>{actionVersion++;busy=false;approvals.clear();selected.clear();renderResult();});
 renderLooks();renderResult();
+
+setupPhotoUpload({
+ onChange(){actionVersion++;busy=false;photoMode='pending';approvals.clear();installPreviews([]);document.querySelector('#sample-notice').textContent='New photo selected. All approvals cleared. Generate its previews or return to the sample.';},
+ async onResult(data,isCurrent){const version=actionVersion;const loaded=await decodePreviewSet(await personalPreviewSet(data,recipes,colours));if(!isCurrent()||version!==actionVersion)return;photoMode='own';installPreviews(loaded);},
+ async onSample(){const version=++actionVersion;busy=false;photoMode='sample';approvals.clear();installPreviews([]);try{const loaded=await decodePreviewSet(await loadPreviews(recipes,colours));if(version===actionVersion)installPreviews(loaded);}catch{}},
+ onError(){photoMode='pending';approvals.clear();installPreviews([]);document.querySelector('#sample-notice').textContent='No personal-photo previews are approved. Retry within the remaining quota, or use the sample.';}
+});
 
 const initialVersion=actionVersion;
 loadPreviews(recipes,colours).then(decodePreviewSet).then(loaded=>{if(initialVersion===actionVersion)installPreviews(loaded);}).catch(()=>{});

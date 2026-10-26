@@ -1,0 +1,14 @@
+# Personal-photo upload verification — 26 October 2026
+
+Completed before the 22:05 SAST cut-off.
+
+- `npm test`: 23/23 passed on Node 20.20.1 with installed Sharp 0.35.5. Coverage includes genuine image decoding, size limits, consent/origin/session checks, concurrency, per-session/global caps, conservative failure reservations, fixed recipe payloads, secret isolation and actual-byte approval identities. Tests use mocked provider responses and spend no units.
+- Fresh clean-context read-only security review by gpt-5.6-sol, high reasoning: no actionable upload-path findings. The reviewer flagged a separate mismatch in concurrent live-price documentation versus its aggregate badge; that separate feature is excluded from this upload commit. The review snapshot did not contain node_modules, so its test attempt ran the original 15 tests but could not load Sharp; the primary ran all 23 successfully in the installed project.
+- Live browser upload: existing synthetic sample.png, not a personal photograph. Consent gate disabled generation until checked. Three genuine YouCam previews returned, each 1024 pixels wide, with the own-photo label and no console errors. Three successful V1 tasks used three authorised units. No automatic retries and no further paid calls.
+- Approving all three new previews produced R550 delivered versus R743 fair baseline (R193 difference). Rejection reduced the approved count. Selecting a photo again cleared all approvals and disabled approval until new previews. Returning to the fixed sample restored its genuine images with zero approvals.
+- Desktop 1470px and mobile 390×844 inspected: consent and upload controls readable, images loaded, no horizontal overflow. The live personal-result layout and approval flow were checked at 390px; desktop checked upload controls and return-to-sample. Temporary viewport reset.
+- Sample verified with upload feature disabled, and tests cover missing key. The server remains bound to 127.0.0.1:5173; CSP connect-src remains self.
+- User allowance: nine additional units authorised; three used; six remain authorised. The current test browser session has three renders remaining because its session cap is six. The server run has six remaining. Restarting resets in-memory counters but does not increase the approved allowance.
+- Privacy: uploads/results are not persisted by our endpoint. Provider retention is generally 30 days, disclosed before consent. Only the existing synthetic fixture was transmitted during testing; no generated upload output was added to the repository.
+
+Limitations: no live test with a real person's photo, no camera capture, no public deployment. Poor lighting, pose and face detection can still cause provider failures. The preview is approximate makeup, not a guarantee of physical product colour.

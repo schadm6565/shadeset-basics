@@ -69,3 +69,12 @@ Prices and contents were checked on every exact retailer product page on 26 Octo
 
 ## Public sharing checkpoint
 https://github.com/schadm6565/shadeset-basics is public and anonymously verified at commit 344d7c3. Chad explicitly authorised that snapshot and its history. The ongoing UI redesign remains local until completed and checked; no video URL or completed Devpost submission has been recorded.
+
+### Authorised personal-photo feature — 26 October 2026
+This later revision supersedes the fixed-sample-only scope and the earlier exhausted three-unit allowance. Chad directly authorised up to nine additional existing YouCam bonus units, including live testing. Three one-unit renders succeeded in the live upload test; six additional units remain authorised.
+
+The optional local upload takes a consented, validated JPEG/PNG (5 MB maximum, 12 MP maximum, 100 × 100 minimum), strips metadata and normalises it to at most 1024 pixels per side using Sharp. The API key stays in ignored .env and uploads require YOUCAM_UPLOADS_ENABLED=1. All three existing recipes use smoothing zero. Approvals bind the displayed photo, full recipe and result bytes; changing the photo clears them.
+
+The local server keeps photos in request memory only, without logs or disk storage. YouCam generally retains inputs/results for 30 days, disclosed before consent. Results stay in the browser tab until replaced/reloaded. Caps are nine renders per server run and six per session, reserved in batches of three before provider work. Uncertain failures are not refunded and tasks are not automatically retried. Restarting does not grant further spending permission. The keyless sample remains available.
+
+Verification: see evidence/upload-verification-2026-10-26.md. This is a local-only endpoint, not a public deployment.

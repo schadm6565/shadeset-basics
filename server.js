@@ -1,15 +1,18 @@
 import {createServer} from 'node:http';
 import {readFile} from 'node:fs/promises';
+import {createUploadHandler,uploadConfig} from './upload-service.js';
+const handleUpload=createUploadHandler(await uploadConfig());
 const allowed = new Map([
  ['/', ['index.html','text/html']], ['/index.html',['index.html','text/html']],
  ['/LICENSE',['LICENSE','text/plain']],
  ...["inter-tight-400.ttf", "inter-tight-500.ttf", "inter-tight-600.ttf", "jetbrains-mono-400.ttf", "jetbrains-mono-500.ttf"].map(name=>[`/public/fonts/${name}`, [`public/fonts/${name}`, 'font/ttf']]),
  ['/public/previews.json',['public/previews.json','application/json']],
  ...['sample','soft-taupe','golden-hour','plum-after-dark'].map(name=>[`/public/${name}.png`,[`public/${name}.png`,'image/png']]),
- ...['app','catalogue','optimiser','sources','approval','previews'].map(name=>[`/src/${name}.js`,[`src/${name}.js`,'text/javascript']]),
+ ...['app','catalogue','optimiser','sources','approval','previews','upload-ui'].map(name=>[`/src/${name}.js`,[`src/${name}.js`,'text/javascript']]),
  ['/src/style.css',['src/style.css','text/css']]
 ]);
 const server=createServer(async(req,res)=>{
+ if(await handleUpload(req,res))return;
  if(!['GET','HEAD'].includes(req.method)){res.writeHead(405);res.end();return;}
  let path;try{path=new URL(req.url,'http://127.0.0.1').pathname;}catch{res.writeHead(400);res.end();return;}
  const entry=allowed.get(path);

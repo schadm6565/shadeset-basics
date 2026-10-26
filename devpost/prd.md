@@ -44,3 +44,12 @@ No camera/upload, live public API, accounts, payments, live stock, currency conv
 Render funding and provenance are resolved: Chad authorised three existing bonus units, three one-unit renders succeeded, and their exact parameters and original output hashes are recorded. Features are frozen; remaining work is publication, the demo video and Chad’s own submission answers.
 
 Approved by Chad on 26 October 2026. Chad reviewed this document and approved it (his words: "i did look at everything and approved it, i just forgot to update it"); this record was updated at 20:45 SAST to reflect that review.
+
+### Authorised personal-photo feature — 26 October 2026
+This later revision supersedes the fixed-sample-only scope and the earlier exhausted three-unit allowance. Chad directly authorised up to nine additional existing YouCam bonus units, including live testing. Three one-unit renders succeeded in the live upload test; six additional units remain authorised.
+
+The optional local upload takes a consented, validated JPEG/PNG (5 MB maximum, 12 MP maximum, 100 × 100 minimum), strips metadata and normalises it to at most 1024 pixels per side using Sharp. The API key stays in ignored .env and uploads require YOUCAM_UPLOADS_ENABLED=1. All three existing recipes use smoothing zero. Approvals bind the displayed photo, full recipe and result bytes; changing the photo clears them.
+
+The local server keeps photos in request memory only, without logs or disk storage. YouCam generally retains inputs/results for 30 days, disclosed before consent. Results stay in the browser tab until replaced/reloaded. Caps are nine renders per server run and six per session, reserved in batches of three before provider work. Uncertain failures are not refunded and tasks are not automatically retried. Restarting does not grant further spending permission. The keyless sample remains available.
+
+Verification: see evidence/upload-verification-2026-10-26.md. This is a local-only endpoint, not a public deployment.

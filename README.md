@@ -3,9 +3,10 @@
 Choose eye-look recipes and compare one jointly optimised basket with the fairest combination of independently cheapest kits.
 
 ## Run locally
-Requires Node 20 or later. No installation or API key is needed.
+Requires Node 20.9 or later. Install the locked dependencies; no API key is needed for the sample.
 
 ```sh
+npm ci
 npm test
 npm run dev
 ```
@@ -31,3 +32,12 @@ Application code is MIT licensed; see LICENSE. Third-party names and research re
 
 ## UI revision
 The Chad-requested redesign uses eye-focused CSS crops of the unchanged genuine images, three dark hero panels, reduced-motion-aware presentation effects and a dark basket comparison. Inter Tight and JetBrains Mono are bundled locally; their SIL Open Font Licences and source notes are in public/fonts/. Approval and basket logic are unchanged.
+
+## Optional personal-photo previews (local only)
+Set `YOUCAM_API_KEY` and `YOUCAM_UPLOADS_ENABLED=1` in an ignored `.env`, then start the server. Keep the key out of Git. The sample works with uploads disabled or without a key.
+
+Open **Use your own photo**, give consent, choose a still JPEG/PNG (maximum 5 MB, 12 megapixels, minimum 100 × 100 pixels), then generate. Sharp decodes, strips metadata and resizes it to at most 1024 pixels per side. Three previews use the existing recipes with smoothing zero; each requires separate appearance approval. Changing the photo clears all approvals.
+
+The local server keeps images only in memory for the request and does not log them. YouCam generally retains uploads/results for 30 days under its privacy policy; the consent text makes that distinction explicit. Results remain in the browser tab until replaced or reloaded.
+
+Each batch reserves three renders before contacting YouCam: maximum nine per server run and six per session. Failed or cancelled work is not refunded locally because the provider may have charged it. There are no automatic task retries. Restarting the server resets its in-memory cap; it does not grant any additional spending permission. The endpoint is restricted to localhost with same-origin, session-token and consent checks. It is not a public upload service.

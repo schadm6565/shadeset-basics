@@ -460,3 +460,13 @@ button:focus-visible, a:focus-visible, summary:focus-visible, [tabindex]:focus-v
 .recipe-list li > span:last-child { display: none; }
 .basket-item > p.small:last-child,
 .comparison > p:not(.saving):not(.eyebrow) { display: none; }
+
+/* Optional consented-photo flow; the fixed sample remains independent. */
+.photo-upload { border: 1px solid var(--line); padding: 20px; margin-bottom: 28px; }
+.photo-upload summary { cursor: pointer; font-size: 18px; padding: 4px 0; }
+.photo-upload p, .photo-upload label { display: block; margin: 14px 0; line-height: 1.5; max-width: 72ch; }
+.photo-upload .small, #photo-status { font-size: 13px; color: var(--muted); }
+.photo-upload input[type="file"] { display: block; width: 100%; max-width: 100%; padding: 12px 0; }
+.photo-upload input[type="checkbox"] { width: 18px; height: 18px; vertical-align: middle; margin-right: 8px; }
+.photo-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 12px; }
+@media(max-width:720px){ .photo-actions button { width: 100%; } }
