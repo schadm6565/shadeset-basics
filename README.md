@@ -15,7 +15,7 @@ Open http://127.0.0.1:5173 and choose **Try the sample**. Select recipes to calc
 ## Current status
 The catalogue calculation is implemented and independently reviewed. The sample trio calculates R550 delivered versus R743 for separate kits, retaining all cheapest filler choices. This is calculated from the supplied catalogue, not hardcoded output.
 
-The interface currently supports recipe selection only. Genuine sample-face previews and appearance approvals are **not yet implemented**. Palette/case links have been researched but are not yet integrated. Browser/mobile visual checks remain outstanding. This is not yet a complete release.
+The interface currently supports recipe selection only. Genuine sample-face previews and the visible appearance-approval journey are **not yet implemented**. The approval identity component is tested independently. Exact palette, refill and case links are integrated, with itemised component prices. Browser/mobile visual checks remain outstanding. This is not yet a complete release.
 
 ## Limits
 Prices are a 17 October 2026 VAT-inclusive ZAR research snapshot. Local Pretoria/Johannesburg delivery is estimated at R95 once per basket. Stock is not live; no retailer partnership, payment, upload, account or public API exists. Swatches are editorial approximations, not YouCam outputs. No paid units were used for this implementation.

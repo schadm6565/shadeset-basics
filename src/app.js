@@ -28,7 +28,10 @@ function basketList(basket,looks) {
   const heading=element('div','item-heading');heading.append(element('h4','',item.type),element('strong','',money(item.price)));row.append(heading);
   row.append(element('p','',`${item.shades.map(label).join(' · ')}`),element('p','small',`${item.case} · Quantity ${item.quantity}`));
   const uses=looks.filter(r=>r.shades.some(s=>item.shades.includes(s))).map(r=>r.name);
-  row.append(element('p','small',`Contributes to: ${uses.join(', ')}`),element('p','source-pending',item.sourceStatus));list.append(row);
+  row.append(element('p','small',`Contributes to: ${uses.join(', ')}`));
+  const parts=element('ul','product-links');
+  for(const component of item.components){const part=element('li');const link=element('a','',`${label(component.name)} × ${component.quantity}`);link.href=component.url;link.target='_blank';link.rel='noopener noreferrer';part.append(link,element('span','',money(component.price)));parts.append(part);}
+  row.append(parts,element('p','small',item.sourceStatus));list.append(row);
  }
  return list;
 }

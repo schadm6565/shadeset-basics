@@ -3,7 +3,7 @@ import {readFile} from 'node:fs/promises';
 const allowed = new Map([
  ['/', ['index.html','text/html']], ['/index.html',['index.html','text/html']],
  ['/LICENSE',['LICENSE','text/plain']],
- ...['app','catalogue','optimiser'].map(name=>[`/src/${name}.js`,[`src/${name}.js`,'text/javascript']]),
+ ...['app','catalogue','optimiser','sources'].map(name=>[`/src/${name}.js`,[`src/${name}.js`,'text/javascript']]),
  ['/src/style.css',['src/style.css','text/css']]
 ]);
 const server=createServer(async(req,res)=>{

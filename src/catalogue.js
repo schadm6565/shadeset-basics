@@ -1,3 +1,4 @@
+import {refillSources, paletteSources, caseSources} from './sources.js';
 // Facts re-entered from the supplied 17 October 2026 research brief.
 export const snapshot = '2026-10-17';
 export const shadeNames = ['vanilla','taupe','chocolate','gold','cocoa-plum','stone','nude','d-choc','woody','bronze','caramel','dusty'];
@@ -18,7 +19,10 @@ export function combinations(values, size) {
 const generated=[];
 function add(type, shades, price, caseName, capacity, selected=shades) {
  const chosen=[...selected].sort();
- generated.push({id:`${type}:${chosen.join(',')}`,type,shades:[...new Set(shades)].sort(),chosen,price,case:caseName,capacity,quantity:1,source:null,sourceStatus:'Exact product URL pending verification'});
+ const components = type.startsWith('Refills +')
+  ? [...chosen.map(shade=>({name:`${shade} refill`,quantity:1,...refillSources[shade]})), {name:caseName,quantity:1,...caseSources[capacity]}]
+  : [{name:type,quantity:1,price,url:paletteSources[type]}];
+ generated.push({id:`${type}:${chosen.join(',')}`,type,shades:[...new Set(shades)].sort(),chosen,price,case:caseName,capacity,quantity:1,components,sourceStatus:'17 October price snapshot; check stock and final price with the retailer'});
 }
 for (const [size,price] of [[4,32400],[10,56100]]) {
  for (const shades of combinations(shadeNames,size)) add(`Custom ${size}`,shades,price,`${size}-pan case included`,size);

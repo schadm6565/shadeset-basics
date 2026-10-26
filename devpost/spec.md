@@ -35,6 +35,7 @@ Catalogue constants are checked into Git with snapshot date and source links. Mo
 ## File Structure
 ```text
 src/catalogue.js     # facts and recipe data
+src/sources.js       # exact product links and component prices
 src/optimiser.js     # complete offers and fair comparison
 src/approval.js      # image/recipe identity
 src/app.js           # user journey
