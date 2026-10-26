@@ -1,6 +1,6 @@
 # Product-source follow-up
 
-Research consulted on 26 October 2026 using public retailer pages. Keep the supplied 17 October price snapshot distinct from these later page observations. No checkout interaction or stock reservation was performed.
+Research consulted on 26 October 2026 using public retailer pages. No checkout interaction or stock reservation was performed.
 
 Exact URLs found; integration is next:
 
@@ -18,7 +18,6 @@ The ten-case, fifteen-case, Cool and Warm product pages returned verification in
 https://www.creativeglamour.co.za/150-empty-palettes
 https://www.creativeglamour.co.za/51-eyeshadow-palettes
 
-The only old-repository file read was the expressly permitted app/catalogue-evidence.json. Its refill URLs and 17 October stock observations remain data evidence; no old source or assets were read or copied.
 
 
 ## 26 October 2026 price check
