@@ -17,7 +17,7 @@
 - `npm test`: ten tests pass, including photo/recipe/output invalidation, stale approval rejection, missing bytes and caller mutation. Test bytes are fixtures, not image provenance.
 - All 9,579 generated offers have component totals equal to their offer prices and retailer-hosted URLs. Actual basket quantities and component costs are displayed.
 - Public product sources were researched without checkout interaction; see source-follow-up.md.
-- CUA runtime recovery succeeded using an empty temporary directory at its stale working-directory path. The authoritative project remains lookkit-basics; no files were copied. Browser discovery shows chad and Andrea only, not the required My Hero profile. No profile substitution or UI verification occurred.
+- CUA runtime recovery succeeded using an empty temporary directory at its stale working-directory path. The authoritative project remains this repository; no files were copied. Browser discovery shows chad and Andrea only, not the required My Hero profile. No profile substitution or UI verification occurred.
 - Development server restarted in session 65198 to serve the added sources module.
 - Local app map, recording shot list and shipping fact checklist prepared. They explicitly distinguish current recipe selection from the unfinished genuine-preview approval journey.
 
