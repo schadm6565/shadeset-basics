@@ -13,7 +13,7 @@ npm test
 npm run dev
 ```
 
-Open http://127.0.0.1:5173 and choose **Try the sample**. Inspect the before/after previews and explicitly approve looks to calculate both baskets; clear approvals to start again. No selections survive reload.
+Open http://127.0.0.1:5173 and choose **Try the sample**, then **Try it on our model** (or **Try it on you**). Add looks to your kit, then choose **See your kit →** for the basket and the fair comparison. Each product has a **Shop ↗** link to the retailer.
 
 ## Current status
 The catalogue calculation is implemented and independently reviewed. The sample trio calculates R550 delivered versus R743 for separate kits, retaining all cheapest filler choices. This is calculated from the supplied catalogue, not hardcoded output.
@@ -21,7 +21,7 @@ The catalogue calculation is implemented and independently reviewed. The sample 
 Three genuine YouCam previews now share one synthetic sample face. Each approval binds the photo, complete rendering parameters and output image hashes. Missing or changed assets fail closed into a clearly labelled recipe-only fallback. Desktop and 390px checks cover approval, rejection, reset, image loading and the R550/R743 comparison. Exact palette, refill and case links include itemised prices.
 
 ## Limits
-Prices are a 26 October 2026 VAT-inclusive ZAR snapshot, checked against every retailer product page that day; a "check live prices" button re-reads the product pages on request without changing the basket. Local Pretoria/Johannesburg delivery is estimated at R95 once per basket. You can also try your own photo (with consent; capped at 9 renders). No checkout, accounts or payments.
+Prices are a 26 October 2026 VAT-inclusive ZAR snapshot, checked against every retailer product page that day. The /api/prices route can re-check them on request; it is not shown in the current UI and never changes the basket. Local Pretoria/Johannesburg delivery is estimated at R95 once per basket. No checkout, accounts or payments; buy through the Shop links.
 
 ## Prior work and reuse
 Data: catalogue prices are a 26 October 2026 snapshot (see devpost/evidence/price-check-2026-10-26.md); recipes and colour references are entered as data. All application code was written fresh in this repository, starting from an empty folder. The installed challengepost/learn-ai-basics Skill Pack shaped the scope, PRD, specification and build checklist. Chad made the product decisions and reviewed and approved the scope, PRD and specification before implementation; the approval lines were brought up to date at 20:45 SAST.
