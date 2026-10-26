@@ -1,7 +1,7 @@
 # Shipping preparation — not a completed submission
 
 ## Facts currently supported
-- Fresh application code in lookkit-basics, separate from the original YouCam project.
+- Fresh application code written in this repository from an empty folder.
 - Scope, PRD and spec committed before application code.
 - Skill Pack installed from challengepost/learn-ai-basics; lock file records source hashes.
 - Three fixed recipe cards and one-click local sample entry.
