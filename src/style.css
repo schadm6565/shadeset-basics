@@ -454,3 +454,9 @@ button:focus-visible, a:focus-visible, summary:focus-visible, [tabindex]:focus-v
   .look-card:hover .preview-pair figure:last-child img { transform: scale(2.1); }
   .primary:hover span { transform: none; }
 }
+
+/* Chad's final compact presentation: retain recipe data and product links. */
+.recipe-list li { grid-template-columns: 14px 1fr; }
+.recipe-list li > span:last-child { display: none; }
+.basket-item > p.small:last-child,
+.comparison > p:not(.saving):not(.eyebrow) { display: none; }

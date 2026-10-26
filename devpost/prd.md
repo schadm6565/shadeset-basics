@@ -7,7 +7,7 @@ Choose several eye looks and find one complete purchase covering their recipes. 
 
 ## The Core Journey
 1. Arrive at a concise introduction with one prominent Try the sample button.
-2. Inspect Everyday soft taupe, Dinner golden hour and Evening plum after dark. Each card contains its three named shades, placement notes and sample-face preview when genuine output is available.
+2. Inspect Everyday soft taupe, Dinner golden hour and Evening plum after dark. Each card contains its three named shades and sample-face preview when genuine output is available.
 3. Explicitly approve or reject individual looks. There is no default approval. A recipe reference without a genuine preview must never be described as an appearance approval.
 4. See a complete joint basket for the approved recipes: configuration, shade list, included case, quantity, price, retailer source and the looks served.
 5. Compare it with independently cheapest per-look kits, using the least expensive deduplicated union across every tied cheapest configuration. Delivery appears once in both totals.
@@ -17,7 +17,7 @@ Choose several eye looks and find one complete purchase covering their recipes. 
 One page with introduction, sample look cards and a basket/comparison section. Three desktop cards collapse into a single mobile column. Basket details stay readable at 390px without horizontal scrolling. Empty basket explains the next action. Buttons have visible focus and explicit text states.
 
 ## Look and Feel
-Neutral, high-contrast editorial grid: off-white background, near-black type, Inter Tight with a monospace face for labels and prices, square corners and hairline rules. The genuine eye close-up previews lead; motion is subtle and respects reduced-motion settings. Revised on 26 October 2026 at Chad's request after he reviewed the first build, which used warm ivory, olive and serif headings and read as generic. References are the Framer marketplace and Garden Eight archives named in scope; reference style only, with fresh code. Avoid dashboard clutter, misleading product photography or decorative fake preview imagery.
+Image-led layout with a dark, full-height hero and three expanding panels showing genuine YouCam eye-look crops. Short headings introduce the light recipe-card grid and dark basket comparison. Inter Tight and JetBrains Mono are bundled locally; square corners, fine rules and reduced-motion-aware presentation effects remain. Placement labels, repeated per-item price-source caveats and the comparison explanation paragraph are visually hidden at Chad’s request; recipe data, exact product links, prices and the compact pricing/fair-test notes remain.
 
 ## Features and Behaviour
 Source: scope.md > The POC Boundary.

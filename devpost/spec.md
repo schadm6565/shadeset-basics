@@ -17,7 +17,7 @@ Fresh JavaScript ES modules, semantic HTML and CSS. Node's built-in test runner 
 Node 20+; npm test runs unit checks, npm run dev serves http://127.0.0.1:5173. No key needed for the local catalogue journey. The development server must not expose .env, .git, learner profile or arbitrary files. Local video recording is the delivery path. Public repository and video submission remain user-owned and unperformed.
 
 ## Look and Feel
-Chad-requested neutral editorial grid with Inter Tight and JetBrains Mono bundled locally under their SIL Open Font Licences, eye-focused CSS crops of genuine preview images, a three-look hero strip and dark comparison panel. Cards use three columns above 960px, two up to 960px and one up to 720px. Buttons are at least 44px high; keyboard focus is visible and reduced-motion preferences suppress animations/transitions. No external font or image requests.
+Image-led layout with a dark, full-height hero and three expanding panels showing genuine YouCam eye-look crops. Short headings introduce the light recipe-card grid and dark basket comparison. Inter Tight and JetBrains Mono are bundled locally; square corners, fine rules and reduced-motion-aware presentation effects remain. Placement labels, repeated per-item price-source caveats and the comparison explanation paragraph are visually hidden at Chad’s request; recipe data, exact product links, prices and the compact pricing/fair-test notes remain. Cards use three columns above 960px, two up to 960px and one up to 720px. Buttons remain at least 44px high; no external font or image requests.
 
 ## Components
 ### Catalogue and offers

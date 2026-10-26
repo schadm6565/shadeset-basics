@@ -17,7 +17,7 @@ A South African makeup shopper who wants an everyday look and a couple of going-
 Open the app, try the sample, inspect three looks and approve the ones you like. See one basket covering the approved recipes, what each product supplies and which looks use it. Compare its complete estimated cost with the fair separate-kit baseline. Remove an approval and the comparison updates for the remaining looks.
 
 ## Inspiration & Identity
-A calm, polished beauty-shopping tool where clear prices and genuine preview images take priority over decoration. Neutral, high-contrast editorial grid: off-white background, near-black type, Inter Tight with a monospace face for labels and prices, square corners and hairline rules. The genuine eye close-up previews lead; motion is subtle and respects reduced-motion settings. Revised on 26 October 2026 at Chad's request after he reviewed the first build, which used warm ivory, olive and serif headings and read as generic.
+Image-led layout with a dark, full-height hero and three expanding panels showing genuine YouCam eye-look crops. Short headings introduce the light recipe-card grid and dark basket comparison. Inter Tight and JetBrains Mono are bundled locally; square corners, fine rules and reduced-motion-aware presentation effects remain. Placement labels, repeated per-item price-source caveats and the comparison explanation paragraph are visually hidden at Chad’s request; recipe data, exact product links, prices and the compact pricing/fair-test notes remain.
 Prior design references: https://www.framer.com/marketplace/templates/ and https://garden-eight.com/archives/. These are visual references; no old app code or template source is reused.
 
 ## Why This Matters to the Learner
@@ -25,7 +25,7 @@ Prior design references: https://www.framer.com/marketplace/templates/ and https
 The project gives us a concrete way to practise that: define the fair comparison first, then test the maths and the interaction against it.
 
 ## What "Working" Looks Like
-A person opens the local app and reaches the sample with one click. They inspect and approve Everyday soft taupe, Dinner golden hour and Evening plum after dark. The app shows the required shades, placements, complete products, cases, quantities, source links and one R95 local delivery estimate.
+A person opens the local app and reaches the sample with one click. They inspect and approve Everyday soft taupe, Dinner golden hour and Evening plum after dark. The app shows the required shades and complete products, cases, quantities, source links and one R95 local delivery estimate.
 For the supplied sample, investigate the expected joint total of R550 versus a fair baseline of R743: R193 difference, about 26.0% of the baseline. These are acceptance expectations from the brief, never hardcoded results. The comparison explains its assumptions and does not imply the preview exactly reproduces physical makeup.
 The demo works at desktop width and 390px and can be shown in a short screen recording. No deployment is required to prove the core flow.
 
