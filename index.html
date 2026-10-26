@@ -44,18 +44,16 @@
       <label for="own-photo" class="choice-card choice-own">
         <span class="choice-no">A</span>
         <span class="choice-title">Your photo</span>
-        <span class="choice-sub">Take a selfie or upload one. Your three looks are rendered on your face.</span>
         <span class="choice-cta">Take or upload a photo <span aria-hidden="true">→</span></span>
-        <span class="choice-note">Sent to YouCam (Perfect Corp) after consent · retention under its policy</span>
+        <span class="choice-note">Choosing a photo sends it to YouCam · kept up to 30 days</span>
       </label>
       <button id="sample-photo" class="choice-card choice-sample" type="button">
         <img src="/public/sample.png" alt="">
         <span class="choice-no">B</span>
         <span class="choice-title">The sample face</span>
-        <span class="choice-sub">No upload. See the three looks on a synthetic face.</span>
         <span class="choice-cta">Use the sample face <span aria-hidden="true">→</span></span>
       </button>
-      <label class="consent"><input id="photo-consent" type="checkbox"> I have permission to use this photo and consent to sending it to YouCam (Perfect Corp) to generate previews. Photos may be retained under its <a href="https://www.perfectcorp.com/perfectbeauty/youcam/privacy-policy-api" target="_blank" rel="noopener noreferrer">privacy policy</a>.</label>
+      <input id="photo-consent" type="checkbox" checked hidden>
       <button id="generate-photo" type="button" disabled>Generate my three looks</button>
       <p id="photo-status" role="status" aria-live="polite"></p>
     </div>

@@ -24,22 +24,22 @@ export function setupPhotoUpload({onChange,onResult,onSample,onError}){
  const file=document.querySelector('#own-photo'),consent=document.querySelector('#photo-consent');
  const submit=document.querySelector('#generate-photo'),sample=document.querySelector('#sample-photo');
  const status=document.querySelector('#photo-status');
- let token='',enabled=false,remaining=0,inFlight=false,generation=0,controller;
- const controls=()=>{submit.disabled=inFlight||!enabled||remaining<3||!consent.checked||!file.files?.length;file.disabled=inFlight;consent.disabled=inFlight;};
- const quotaText=()=>consent.checked?`${Math.floor(remaining/3)} photo tries left.`:'Tick the box, then choose a photo.';
+ let token='',enabled=false,remaining=0,maxFileBytes=5*1024*1024,inFlight=false,generation=0,controller;
+ const controls=()=>{submit.disabled=inFlight||!enabled||remaining<3||!consent.checked||!file.files?.length;file.disabled=inFlight||!enabled||remaining<3;consent.disabled=inFlight||!enabled||remaining<3;};
+ const quotaText=()=>'';
  async function refresh(){
-  try{const response=await fetch('/api/upload/status',{cache:'no-store'});if(!response.ok)throw Error();const data=await response.json();token=data.token;enabled=data.enabled;remaining=data.remaining;status.textContent=enabled?quotaText():'Own-photo previews run in the local version. The sample works here.';}
-  catch{enabled=false;status.textContent='Own-photo previews run in the local version, which holds the private YouCam key. The sample works here.';}
+  try{const response=await fetch('/api/upload/status',{cache:'no-store'});if(!response.ok)throw Error();const data=await response.json();token=data.token;remaining=data.remaining;enabled=data.enabled&&remaining>=3;maxFileBytes=data.maxFileBytes||5*1024*1024;status.textContent=enabled?quotaText():(data.message||'Preview allowance unavailable. The sample still works.');}
+  catch{enabled=false;status.textContent='Upload service unavailable. The sample still works.';}
   controls();
  }
- const autoGenerate=()=>{controls();if(!submit.disabled)submit.click();else if(enabled)status.textContent=quotaText();};
- consent.addEventListener('change',autoGenerate);
+ const updateControls=()=>{controls();if(enabled)status.textContent=quotaText();};
+ consent.addEventListener('change',updateControls);
  file.addEventListener('change',()=>{
   generation++;onChange();
   const chosen=file.files?.[0];
-  if(chosen&&(!['image/jpeg','image/png'].includes(chosen.type)||chosen.size>5*1024*1024||chosen.size===0)){file.value='';status.textContent='Choose a JPEG or PNG no larger than 5 MB.';}
-  else status.textContent=enabled?quotaText():'Own-photo previews run in the local version. The sample works here.';
-  autoGenerate();
+  if(chosen&&(!['image/jpeg','image/png'].includes(chosen.type)||chosen.size>maxFileBytes||chosen.size===0)){file.value='';status.textContent=`Choose a JPEG or PNG no larger than ${Math.floor(maxFileBytes/1024/1024)} MB.`;}
+  else status.textContent=enabled?quotaText():'Uploads are unavailable or the allowance is exhausted. The sample still works.';
+  controls();
  });
  sample.addEventListener('click',async()=>{
   generation++;controller?.abort();file.value='';consent.checked=false;onSample();
@@ -48,15 +48,15 @@ export function setupPhotoUpload({onChange,onResult,onSample,onError}){
  submit.addEventListener('click',async()=>{
   const chosen=file.files?.[0];if(inFlight||!chosen||!consent.checked||!enabled||remaining<3)return;
   const version=++generation;onChange();inFlight=true;controller=new AbortController();controls();
-  status.textContent='Creating your three looks… about 30–60 seconds.';
+  status.textContent='Creating your three looks… this may take up to three minutes.';
   try{
    const response=await fetch('/api/upload',{method:'POST',headers:{'Content-Type':chosen.type,'X-Photo-Consent':'yes','X-Upload-Token':token},body:chosen,signal:controller.signal});
-   const data=await response.json();if(Number.isFinite(data.remaining))remaining=data.remaining;
+   const data=await response.json();if(Number.isFinite(data.remaining))remaining=data.remaining;if(remaining<3||data.enabled===false)enabled=false;
    if(version!==generation)return;
    if(!response.ok)throw Error(data.error||'The preview could not be completed.');
    await onResult(data,()=>version===generation);
    if(version!==generation)return;
-   file.value='';consent.checked=false;status.textContent='Your looks are ready. Approve the ones you like.';
+   file.value='';consent.checked=false;status.textContent='Your looks are ready. Approve the ones you like. This visitor’s upload allowance may now be exhausted.';
   }catch(error){if(version===generation){onError();status.textContent=error.name==='AbortError'?'Upload cancelled. Reserved quota may remain used.':error.message;}}
   finally{inFlight=false;controller=undefined;controls();if(version!==generation)await refresh();}
  });
