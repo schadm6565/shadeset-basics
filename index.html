@@ -34,15 +34,17 @@
 
   <section id="sample" hidden aria-labelledby="sample-heading">
     <div class="section-head" data-reveal>
+      <button id="change-face" class="back-link step-back" type="button"><span aria-hidden="true">←</span> Change face</button>
       <p class="eyebrow">Step 01 — Choose a face</p>
       <h2 id="sample-heading" tabindex="-1">Pick your looks.</h2>
       <p id="sample-notice" class="notice" role="status">Loading previews…</p>
+      <div class="kit-bar"><button id="see-kit" class="primary" type="button">See your kit <span aria-hidden="true">→</span></button></div>
     </div>
     <div class="photo-upload">
       <input id="own-photo" class="visually-hidden" type="file" accept="image/jpeg,image/png">
       <label for="own-photo" class="choice-card choice-own">
         <span class="choice-no">A</span>
-        <span class="viewfinder" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16a4 4 0 0 1 4-4h5l3-4h12l3 4h5a4 4 0 0 1 4 4v20a4 4 0 0 1-4 4H10a4 4 0 0 1-4-4z"/><circle cx="24" cy="25" r="8"/></svg><i class="scan"></i></span>
+        <span class="viewfinder" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><ellipse cx="24" cy="19" rx="8.5" ry="10.5"/><path d="M7 46c1.6-8.6 8.4-13.5 17-13.5S39.4 37.4 41 46"/></svg><i class="scan"></i></span>
         <span class="choice-title">Try it on you</span>
         <span class="choice-cta">Take or upload a photo <span aria-hidden="true">→</span></span>
       </label>
@@ -52,8 +54,8 @@
         <span class="choice-title">Try it on our model</span>
         <span class="choice-cta">See the three looks <span aria-hidden="true">→</span></span>
       </button>
-      <input id="photo-consent" type="checkbox" checked hidden>
-      <button id="generate-photo" type="button" hidden disabled>Generate my three looks</button>
+      <label class="consent"><input id="photo-consent" type="checkbox"> I have permission to use this photo and consent to sending it to YouCam (Perfect Corp) for previews. Photos are generally retained for 30 days and may be retained longer under its <a href="https://www.perfectcorp.com/perfectbeauty/youcam/privacy-policy-api" target="_blank" rel="noopener noreferrer">privacy policy</a>.</label>
+      <button id="generate-photo" type="button" disabled>Generate my three looks</button>
       <p id="photo-status" role="status" aria-live="polite"></p>
     </div>
     <div id="looks" class="looks"></div>
@@ -61,6 +63,7 @@
     <section class="basket-area" aria-labelledby="basket-heading">
       <div class="section-head row" data-reveal>
         <div>
+          <button id="back-looks" class="back-link step-back" type="button"><span aria-hidden="true">←</span> Back to looks</button>
           <p class="eyebrow">Step 02 — Your basket</p>
           <h2 id="basket-heading">Your one kit.</h2>
         </div>

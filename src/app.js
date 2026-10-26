@@ -16,7 +16,7 @@ function installPreviews(loaded){
  clearPreviewURLs();previews=new Map(loaded.map(p=>[p.recipeId,p]));
  for(const recipe of recipes){const preview=previews.get(recipe.id);if(preview)approvals.update(recipe.id,preview.identity);else approvals.remove(recipe.id);}
  selected.clear();for(const id of approvals.approvedIds())selected.add(id);
- document.querySelector('#sample-notice').textContent=previews.size?(photoMode==='own'?'YouCam preview of your photo. Approve each look explicitly. Colours are approximate; physical results may differ.':'Approve the looks you like. Colour is approximate.'):'Recipe-selection demo: genuine sample-face previews are unavailable. Selecting a recipe does not approve its appearance on a face.';
+ document.querySelector('#sample-notice').textContent=previews.size?(photoMode==='own'?'YouCam preview of your photo. Approve each look explicitly. Colours are approximate; physical results may differ.':'Add every look you like. One kit makes them all.'):'Recipe-selection demo: genuine sample-face previews are unavailable. Selecting a recipe does not approve its appearance on a face.';
  renderLooks();renderResult();
 }
 async function toggleLook(recipe){
@@ -66,7 +66,7 @@ function basketList(basket,looks) {
 }
 function renderResult() {
  for(const button of document.querySelectorAll('[data-recipe]')) {
-  const active=selected.has(button.dataset.recipe);button.setAttribute('aria-pressed',String(active));button.disabled=busy||photoMode==='pending';button.textContent=previews.size?(active?'Approved · Reject':'Approve this look'):(active?'Selected · Remove':'Select recipe');
+  const active=selected.has(button.dataset.recipe);button.setAttribute('aria-pressed',String(active));button.disabled=busy||photoMode==='pending';button.textContent=previews.size?(active?'In your kit':'Add to kit'):(active?'Selected · Remove':'Select recipe');
  }
  const root=document.querySelector('#result');root.replaceChildren();
  const looks=recipes.filter(r=>selected.has(r.id));
@@ -76,9 +76,9 @@ function renderResult() {
  let result;try{result=compareLooks(looks,offers);}catch{root.append(element('div','notice','This catalogue cannot cover the selected shades. No incomplete basket is shown.'));return;}
  const layout=element('div','results-grid'),items=element('div');items.append(basketList(result.joint,looks));
  const total=element('div','cost-lines');for(const [name,value] of [['Products',result.joint.subtotal],['Local delivery estimate',result.joint.delivery],['Delivered total',result.joint.total]]) {const row=element('div');row.append(element('span','',name),element('strong','',money(value)));total.append(row);}items.append(total);
- const comparison=element('aside','comparison');comparison.append(element('p','eyebrow','THE FAIR COMPARISON'),element('h3','',`One basket. ${money(result.saving)} less.`));
+ const comparison=element('aside','comparison');comparison.append(element('p','eyebrow','THE FAIR COMPARISON'),element('h3','',result.saving>0?`One basket. ${money(result.saving)} less.`:'One basket. Already the cheapest.'));
  for(const [name,value] of [['Cheapest separate kits',result.baseline.total],['Your joint basket',result.joint.total]]){const row=element('div','comparison-row');row.append(element('span','',name),element('strong','',money(value)));comparison.append(row);}
- comparison.append(element('p','saving',`${result.percentage.toFixed(1)}% lower estimated total`),element('p','','Both totals include one R95 delivery. We find every cheapest kit for each recipe, then choose the combination with the cheapest shared purchase. Identical configurations count once.'));
+ comparison.append(...(result.saving>0?[element('p','saving',`${result.percentage.toFixed(1)}% lower estimated total`)]:[]),element('p','','Both totals include one R95 delivery. We find every cheapest kit for each recipe, then choose the combination with the cheapest shared purchase. Identical configurations count once.'));
  const details=element('details');details.append(element('summary','','Inspect the separate-kit basket'),basketList(result.baseline,looks));comparison.append(details);
  layout.append(items,comparison);root.append(layout);
 }
@@ -112,6 +112,15 @@ loadPreviews(recipes,colours).then(decodePreviewSet).then(loaded=>{if(initialVer
  watch();new MutationObserver(watch).observe(document.querySelector('main'),{childList:true,subtree:true});
  if(!reduce){const images=[...document.querySelectorAll('.hero-panels .panel img')];let queued=false;
   addEventListener('scroll',()=>{if(queued)return;queued=true;requestAnimationFrame(()=>{const y=Math.min(scrollY,900);images.forEach((image,i)=>image.style.setProperty('--py',`${y*(0.03+i*0.015)}px`));queued=false;});},{passive:true});}
+})();
+
+// Step navigation (presentation only): choose a face → approve looks → your kit.
+(()=>{
+ const body=document.body,top=()=>window.scrollTo({top:0,behavior:'instant'}),on=(sel,fn)=>document.querySelector(sel)?.addEventListener('click',fn);
+ on('#change-face',()=>{body.classList.remove('show-looks','show-kit');top();});
+ on('#see-kit',()=>{body.classList.add('show-kit');top();document.querySelector('#basket-heading')?.focus?.({preventScroll:true});});
+ on('#back-looks',()=>{body.classList.remove('show-kit');top();});
+ on('#sample-photo',top);
 })();
 
 // Live retailer check (server route /api/prices). Verifies the snapshot; it never changes the basket.

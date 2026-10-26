@@ -664,3 +664,75 @@ body:not(.has-basket) .basket-area { display: none; }
 .show-looks .viewfinder { display: none; }
 @media (max-width: 720px) { .viewfinder { display: none; } }
 @media (prefers-reduced-motion: reduce) { .viewfinder .scan { animation: none; top: 50%; } }
+
+/* Steps: face → looks → kit. One screen at a time. */
+.step-back { display: none; margin-bottom: 18px; }
+.show-looks .photo-upload { display: none; }
+.show-looks #sample > .section-head .step-back { display: inline-flex; gap: 8px; align-items: center; }
+.show-looks #sample > .section-head .eyebrow { display: none; }
+.kit-bar { display: none; }
+body.show-looks.has-basket:not(.show-kit) .kit-bar {
+  display: flex; justify-content: center; position: sticky; bottom: 20px; margin-top: 24px; z-index: 5;
+}
+.kit-bar .primary { box-shadow: 0 10px 30px rgba(13, 13, 12, .25); padding: 16px 28px; font-size: 16px; }
+body:not(.show-kit) .basket-area { display: none !important; }
+.show-kit #sample > .section-head, .show-kit #looks, .show-kit .photo-upload, .show-kit .kit-bar { display: none !important; }
+.show-kit .basket-area { margin-top: 0; padding-top: 0; border-top: 0; animation: rise .5s cubic-bezier(.2, .7, .2, 1) both; }
+.show-kit .basket-area .step-back { display: inline-flex; gap: 8px; align-items: center; }
+.show-kit .basket-area .eyebrow { display: none; }
+
+/* Looks step fits one screen; kit button floats. */
+.show-looks #sample { padding-top: 20px; padding-bottom: 20px; }
+.show-looks:not(.show-kit) #sample > .section-head { grid-template-columns: auto 1fr; align-items: end; column-gap: 28px; row-gap: 4px; margin-bottom: 16px; }
+.show-looks:not(.show-kit) #sample > .section-head .step-back { grid-column: 1 / -1; margin-bottom: 4px; }
+.show-looks #sample > .section-head h2 { font-size: clamp(30px, 3.4vw, 48px); }
+.show-looks #sample-notice { margin: 0 0 6px; }
+.show-looks .look-card > .eyebrow { padding: 12px 16px 0; }
+.show-looks .look-card > h3 { padding: 2px 16px 10px; font-size: 21px; }
+.show-looks .preview-pair figure:last-child img { aspect-ratio: auto; height: clamp(130px, calc(100svh - 470px), 340px); }
+.show-looks .preview-pair figure:first-child { width: 19%; }
+.show-looks .recipe-list { padding: 2px 16px; }
+.show-looks .recipe-list li { padding: 5px 0; font-size: 13px; }
+.show-looks .select-button { margin: 8px 16px 14px; padding: 11px; }
+body.show-looks.has-basket:not(.show-kit) .kit-bar { position: fixed; left: 0; right: 0; bottom: 22px; margin: 0; pointer-events: none; animation: rise .4s cubic-bezier(.2, .7, .2, 1) both; }
+.kit-bar .primary { pointer-events: auto; }
+.show-kit #sample { padding-top: 20px; }
+
+/* Viewfinder v2: face outline in clean brackets */
+.choice-no { display: none; }
+.viewfinder {
+  height: 70%; width: auto; top: 50%; transform: translate(-50%, -50%); color: rgba(244, 244, 241, .9);
+  background:
+    linear-gradient(currentColor, currentColor) top left / 26px 1.5px no-repeat, linear-gradient(currentColor, currentColor) top left / 1.5px 26px no-repeat,
+    linear-gradient(currentColor, currentColor) top right / 26px 1.5px no-repeat, linear-gradient(currentColor, currentColor) top right / 1.5px 26px no-repeat,
+    linear-gradient(currentColor, currentColor) bottom left / 26px 1.5px no-repeat, linear-gradient(currentColor, currentColor) bottom left / 1.5px 26px no-repeat,
+    linear-gradient(currentColor, currentColor) bottom right / 26px 1.5px no-repeat, linear-gradient(currentColor, currentColor) bottom right / 1.5px 26px no-repeat;
+}
+.viewfinder svg { width: 62%; margin-top: 18%; opacity: .55; }
+.viewfinder .scan { left: 0; right: 0; height: 1.5px; box-shadow: 0 0 22px 6px rgba(197, 150, 72, .28); }
+.viewfinder .scan::after { content: ""; position: absolute; left: 0; right: 0; bottom: 1px; height: 46px; background: linear-gradient(to top, rgba(197, 150, 72, .14), transparent); }
+@keyframes scan { from { top: 4%; } to { top: 96%; } }
+
+/* Kit button sits in the looks header, never over the cards */
+.show-looks:not(.show-kit) #sample > .section-head { grid-template-columns: auto 1fr auto; }
+body.show-looks.has-basket:not(.show-kit) .kit-bar { position: static; display: flex; grid-column: 3; grid-row: 2; align-self: end; pointer-events: auto; }
+.kit-bar .primary { padding: 14px 24px; font-size: 15px; box-shadow: none; }
+.viewfinder .scan::after { display: none; }
+
+/* Kit page: compact so the totals sit on screen */
+.show-kit .basket-area .section-head h2 { font-size: clamp(30px, 3.4vw, 48px); }
+.show-kit .basket-area .section-head { margin-bottom: 14px; }
+.show-kit .basket-item { padding: 12px 0; gap: 2px; }
+.show-kit .basket-item > p.small + p.small { display: none; }
+.show-kit .product-links { padding-top: 6px; margin-top: 2px; }
+.show-kit .product-links li { padding: 2px 0; }
+.basket-area .live-badge, .basket-area .basket-note, #reset { display: none !important; }
+.select-button[aria-pressed="true"]:hover::after { content: " · Remove"; opacity: .6; }
+/* Product links read as shop buttons */
+.basket-area > #result .basket-list .product-links li { align-items: center; }
+.product-links a { text-decoration: none; border: 1px solid var(--ink); padding: 6px 12px; font-size: 13px; transition: background .2s, color .2s; }
+.product-links a::after { content: "  Shop ↗"; font-family: var(--mono); font-size: 10.5px; letter-spacing: .04em; text-transform: uppercase; }
+.product-links a:hover { background: var(--ink); color: #fff; }
+.comparison .product-links a { border-color: rgba(255, 255, 255, .4); }
+.comparison .product-links a:hover { background: #fff; color: var(--ink); }
+.show-kit .product-links li { padding: 4px 0; }
