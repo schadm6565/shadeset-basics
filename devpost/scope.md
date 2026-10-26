@@ -41,7 +41,7 @@ The demo works at desktop width and 390px and can be shown in a short screen rec
 - A local app on port 5173, planning documents and a demo recording shot list. The user writes and submits the entry.
 
 ## Rendering Decision
-The brief proposes fresh synthetic-sample YouCam renders, at most four units, with skin smoothing zero and provenance recorded. This proposal is not treated as confirmed API spending. No render runs until that allowance and the funding source are explicitly settled. Swatches may be used while planning/building and must be labelled as recipe references, never YouCam previews. Genuine renders remain a release criterion unless the user explicitly chooses the disclosed swatch fallback.
+Chad explicitly authorised a dedicated YouCam key and three existing bonus units for this separate Basics entry on 26 October 2026. Three one-unit Makeup VTO renders succeeded, with both skin-smoothing parameters set to zero. The provider usage log confirms a total of three units spent. Original output PNGs, exact parameters and hashes are recorded in public/previews.json. No additional render allowance remains. Swatch fallback remains explicitly labelled as recipe reference, never appearance approval.
 No old source or old render files are read from the YouCam repository. Only app/catalogue-evidence.json may be read there as permitted research data. Any later authorised asset reuse must be disclosed, not represented as newly generated.
 
 ## Later
@@ -56,4 +56,4 @@ Accounts, payments, live stock and retailer integrations: no supporting partners
 
 ## Decisions and Review State
 The supplied user brief defines the core loop, fair baseline, cuts and time gates. The intended-audience wording and exact visual treatment above are agent-drafted proposals, following the user’s request to draft answers without further questionnaires.
-Approved through delegated decision-making on 26 October 2026. Chad instructed: “stop asking me to approve i told you approve all these stuff for me”. The agent owns routine choices under that instruction; this does not claim personal review of this document. Rendering funding and publication boundaries remain unchanged.
+Approved by Chad on 26 October 2026. Chad reviewed this document and approved it (his words: "i did look at everything and approved it, i just forgot to update it"); this record was updated at 20:45 SAST to reflect that review. Rendering funding and publication boundaries remain unchanged.

@@ -39,7 +39,7 @@ src/sources.js       # exact product links and component prices
 src/optimiser.js     # complete offers and fair comparison
 src/approval.js      # image/recipe identity
 src/previews.js      # local asset and provenance integrity gate
-public/previews.json # explicitly unavailable until genuine assets exist
+public/previews.json # genuine outputs, exact parameters and hashes
 src/app.js           # user journey
 src/style.css        # responsive presentation
 public/              # only authorised demo assets
@@ -51,18 +51,18 @@ README.md            # startup, limitations and reuse
 ```
 
 ## External Services and Dependencies
-No external service in the running public app. Fresh YouCam render generation remains unconfigured and unfunded; maximum proposed allowance four units, not spent. Before any authorised call, verify current official endpoint, exact payload, cost and source of units; do not invent an integration contract. No old renders may be copied. Research catalogue URLs are ordinary links, not live inventory feeds.
+No external service in the running public app. Three genuine YouCam renders were generated on 26 October 2026 using three expressly authorised bonus units: three one-unit renders, three units spent in total. The runtime needs no API key. Exact payloads disable both skin-smoothing settings; source and unmodified PNG output hashes are recorded in public/previews.json. The dedicated permanent key stays in ignored .env. No old renders may be copied. Research catalogue URLs are ordinary links, not live inventory feeds.
 
 ## Important Failure Modes
-Missing genuine renders: clearly labelled unavailable panel, no fake appearance approval; release gate remains incomplete. Uncoverable shade: explicit failure and no misleading total. Changed recipe/photo/output: invalidate previous approval. Empty selections: show guidance with zero cost. Server file request outside allowlist: 404.
+Missing genuine renders: clearly labelled unavailable panel, no fake appearance approval. The current release includes all three verified renders. Uncoverable shade: explicit failure and no misleading total. Changed recipe/photo/output: invalidate previous approval. Empty selections: show guidance with zero cost. Server file request outside allowlist: 404.
 
 ## What Was Simplified and Why
 Fixed recipes and in-memory choices keep the proof centred on fair joint purchasing. No account, backend AI or public paid endpoint is needed. This does not replace the required genuine image evidence with generated decorative art.
 
 ## Decisions and Open Issues
-Agent selected dependency-free modules under Chad's delegated authority. The supplied brief's real uncertainty is whether all filler ties produce R743 rather than the unfair R1067 delivered baseline; tests must investigate this, not force the expected output. No additional learner uncertainty is invented. Genuine render authorisation remains unresolved. No implementation code exists at approval time.
+Agent selected dependency-free modules under Chad's delegated authority. The supplied brief's real uncertainty is whether all filler ties produce R743 rather than the unfair R1067 delivered baseline; tests must investigate this, not force the expected output. No additional learner uncertainty is invented. Genuine render authorisation and verification are complete: three one-unit renders authorised and three units spent. The initial planning approval preceded implementation.
 
-Approved through delegated decision-making on 26 October 2026; not a claim of personal document review.
+Approved by Chad on 26 October 2026. Chad reviewed this document and approved it (his words: "i did look at everything and approved it, i just forgot to update it"); this record was updated at 20:45 SAST to reflect that review.
 
 ## Catalogue Evidence Gate
 Supplied 17 October prices are valid research inputs for algorithm development, but a retailer homepage is not an exact product link. Before claiming a complete purchasable recommendation, verify exact palette/case URLs and configuration terms. Preserve the supplied snapshot separately from any later price changes. Missing sources must be disclosed and keep this release gate incomplete; do not silently remove required catalogue offers to make checks pass.

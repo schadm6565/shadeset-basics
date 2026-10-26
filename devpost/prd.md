@@ -32,7 +32,7 @@ Source: scope.md > The POC Boundary.
 No approvals: no purchase recommendation or delivery charge. Rejection: remove that look only. No feasible basket: explain catalogue cannot cover the selection, never show partial coverage as complete. Missing image: show unavailable state. Invalidated approval: explain why re-approval is needed. Selections exist in memory and reset on reload; no personal data is stored.
 
 ## Product Decisions
-The supplied brief fixes the recipes, catalogue, fair comparison and cuts. The agent chooses a single-page layout under delegated authority. Planning approval is delegated, not a claim of Chad reviewing this document. Genuine image readiness remains an explicit release dependency; no paid calls are authorised by this PRD.
+The supplied brief fixes the recipes, catalogue, fair comparison and cuts. The agent chooses a single-page layout under delegated authority. Genuine image readiness was verified after Chad separately authorised three one-unit renders. This PRD does not authorise additional spending.
 
 ## What We're Building
 The core journey, tested optimiser and baseline, verifiable approval identity, responsive local demonstration and local shipping materials. Source: scope.md > What "Working" Looks Like.
@@ -41,6 +41,6 @@ The core journey, tested optimiser and baseline, verifiable approval identity, r
 No camera/upload, live public API, accounts, payments, live stock, currency conversion, export, retailer partnership or deployment. Cocoa alternative is deferred until all core requirements pass.
 
 ## Open Questions
-Fresh render funding/provenance is unresolved. It does not block implementing the catalogue and comparison; it blocks claiming genuine preview completion. Consult the authorised implementation chat without accessing old source or render files.
+Render funding and provenance are resolved: Chad authorised three existing bonus units, three one-unit renders succeeded, and their exact parameters and original output hashes are recorded. Features are frozen; remaining work is publication, the demo video and Chad’s own submission answers.
 
-Approved through delegated decision-making on 26 October 2026; not a claim of personal document review.
+Approved by Chad on 26 October 2026. Chad reviewed this document and approved it (his words: "i did look at everything and approved it, i just forgot to update it"); this record was updated at 20:45 SAST to reflect that review.

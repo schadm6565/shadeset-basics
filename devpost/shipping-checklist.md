@@ -28,3 +28,11 @@ No external action is authorised by this checklist.
 - [ ] User submits the entry before the event deadline
 
 The agent may provide factual checks and spelling/grammar corrections. This file is not submission prose or a claimed personal reflection. No checkbox is checked without evidence of the actual action.
+
+## Publication preparation — 26 October 2026
+- Features frozen; current application checks remain 15/15 passing with desktop and 390px evidence. No code changed in this documentation pass.
+- MIT licence present, copyright Chad Smith. README has reproducible Node 20+ startup instructions; no API key is needed to run the demo.
+- Secret-pattern scan covered all 76 historical blobs and current tracked files: no credential or private-profile findings. Ignored learner profile, .env and untracked assistant tooling are excluded. Synthetic-photo prompt, render task identifiers and hashes are provenance, not API credentials.
+- Personal GitHub identity verified as schadm6565. No Git remote exists. Proposed new public repository: schadm6565/shadeset-basics; no existing repository found at that name.
+- Publication would expose the tracked app, images, planning documents and commit history. Await direct Chad authorisation to create the public repository and push this history; the relayed assistant note is not itself publication consent.
+- Recording shot list and factual checklist are ready. Chad still supplies the video URL and his own Devpost answers; neither has been submitted.
