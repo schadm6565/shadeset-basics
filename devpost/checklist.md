@@ -53,7 +53,7 @@ Chad asked not to be prompted for every routine check, so the agent ran automate
 ## Revisions
 
 ### Feature freeze and shipping handoff — 26 October 2026
-Features frozen after commit 622020c. Existing final-review evidence remains valid; this pass only reconciles planning approval and actual rendering spend. Chad's reported personal planning approval is preserved verbatim in scope, PRD and spec.
+Features frozen after commit a40edf0. Existing final-review evidence remains valid; this pass only reconciles planning approval and actual rendering spend. Chad's reported personal planning approval is preserved verbatim in scope, PRD and spec.
 
 Learning wrap-up shared: the vague requirement “compare fairly” became a testable rule—retain all tied cheapest per-look configurations before minimising their deduplicated union. The source route is src/app.js → src/optimiser.js → test/optimiser.test.js, with R550/R743 observed in the browser. This is an explanation of verified behaviour, not an invented personal learning reflection. The existing app map and recording shot list remain the handoff.
 

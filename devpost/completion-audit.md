@@ -4,7 +4,7 @@ The local proof of concept is complete. Public release, video recording and subm
 
 | Requirement | Evidence |
 | --- | --- |
-| Fresh source; planning before code | Planning commit 360e484; no old application code or renders copied |
+| Fresh source; planning before code | Planning commit a7094df; no old application code or renders copied |
 | One-click, no-login fixed sample | Desktop and 390px browser checks |
 | Three genuine previews on the same face | Three successful YouCam Makeup VTO tasks; original PNGs; public/previews.json |
 | Honest source and funding | Synthetic source provenance; express three-unit authorisation; provider usage log shows three -1 records |

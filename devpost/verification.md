@@ -8,7 +8,7 @@
 - `node --check src/app.js` and `node --check server.js`: pass.
 - `npm run dev`: serving on 127.0.0.1:5173, session 27784 at time of verification.
 - HTTP probes: /, /src/app.js and /LICENSE return 200. /.env, /.git/config, /devpost/learner-profile.md and traversal to .env return 404.
-- Clean-context read-only gpt-5.6-sol/high review of the implementation against planning commit 360e484: no actionable defects. Reviewer independently checked 500 deterministic random catalogues against exhaustive subset results and tested encoded traversal, HEAD, POST and response headers.
+- Clean-context read-only gpt-5.6-sol/high review of the implementation against planning commit a7094df: no actionable defects. Reviewer independently checked 500 deterministic random catalogues against exhaustive subset results and tested encoded traversal, HEAD, POST and response headers.
 - Browser verification NOT performed. The CUA runtime fails because its configured working directory still points to the renamed Build With AI folder. A temporary compatibility symlink was rejected as an unsupported writable root and removed. No security setting was changed.
 - Genuine previews, appearance approval identity, exact purchase-link integration, desktop/mobile browser evidence and shipping materials are still incomplete. Checklist slice 1 stays unchecked until UI interaction is verified.
 - Zero YouCam/API units spent. No public deployment, push, repository creation or submission.
@@ -23,7 +23,7 @@
 
 ## Guarded preview integration checkpoint
 - Tests-first preview checks initially failed because src/previews.js did not exist; after implementation, `npm test` passes all 15 tests.
-- Incremental read-only gpt-5.6-sol/high review against ec646d6 found no actionable defects. Browser image-paint and layout checks were not performed.
+- Incremental read-only gpt-5.6-sol/high review against 12b0b62 found no actionable defects. Browser image-paint and layout checks were not performed.
 - A complete matching local asset set and provenance are required; images must decode before appearance approval becomes available. Approval rechecks bytes, recipe and output hashes. Reset cancels older pending state changes.
 - Current public/previews.json explicitly says unavailable and contains no real or test images. This is not completion of the genuine-render requirement.
 - Restarted server in session 48169. New approval/preview modules and manifest return 200; missing sample image, private files, arbitrary PNG and traversal requests return 404; POST returns 405.

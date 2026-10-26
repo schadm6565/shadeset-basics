@@ -20,7 +20,7 @@
 
 ## User-owned external steps
 No external action is authorised by this checklist.
-- [x] Public repository creation/push explicitly authorised, then URL checked without authentication — https://github.com/schadm6565/shadeset-basics (main: 8f58a06)
+- [x] Public repository creation/push explicitly authorised, then URL checked without authentication — https://github.com/schadm6565/shadeset-basics (main: 344d7c3)
 - [ ] User records and uploads the short video; access checked
 - [ ] User writes the project name, description and submission answers
 - [ ] User answers personal learning/age questions accurately
@@ -38,4 +38,6 @@ The agent may provide factual checks and spelling/grammar corrections. This file
 - Recording shot list and factual checklist are ready. Chad still supplies the video URL and his own Devpost answers; neither has been submitted.
 
 ## Public repository verified — 26 October 2026
-Chad explicitly approved creating the public repository and pushing commit 8f58a06 with its history. Published to https://github.com/schadm6565/shadeset-basics. Anonymous GitHub API checks confirmed public visibility, exact main SHA 8f58a063ecafb79e9cd9933bcde0c672fa454f9d, MIT licence, README, preview provenance and shot list. No .env or private learner profile is present. Concurrent UI edits were not staged, committed or pushed. Video, final redesigned-UI verification and Chad’s own submission remain outstanding. This local record is newer than the approved public snapshot.
+Chad explicitly approved creating the public repository and pushing commit 344d7c3 with its history. Published to https://github.com/schadm6565/shadeset-basics. Anonymous GitHub API checks confirmed public visibility, exact main SHA 344d7c356aa88fa8e2ecaf60b62b7a50e6c241bc, MIT licence, README, preview provenance and shot list. No .env or private learner profile is present. Concurrent UI edits were not staged, committed or pushed. Video, final redesigned-UI verification and Chad’s own submission remain outstanding. This local record is newer than the approved public snapshot.
+
+Commit IDs were updated on 26 October 2026 after the history was rewritten to correct one commit message; the commit contents and dates are unchanged.
