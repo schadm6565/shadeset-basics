@@ -47,7 +47,7 @@ export function createHostedHandler({config=hostedConfig,storeFactory=createQuot
    const csrf=mac(cfg.secret,'csrf:'+id),visitor=mac(cfg.secret,'budget:'+id);
    let quotaStore,budget;
    try{quotaStore=storeFactory(cfg);budget=await quotaStore(visitor);}catch{return unavailable('Upload budget storage is unavailable or not initialised. The sample still works.');}
-   if(status)return reply(200,{...budget,enabled:budget.remaining>=3,token:csrf,maxFileBytes:MAX_FILE,message:budget.remaining>=3?'One photo batch per visitor; six renders in total.':'Preview allowance reached. The sample still works.'});
+   if(status)return reply(200,{...budget,enabled:budget.remaining>=3,token:csrf,maxFileBytes:MAX_FILE,message:budget.remaining>=3?'One photo batch per visitor; three renders in total.':'Preview allowance reached. The sample still works.'});
    if(!equal(request.headers.get('x-upload-token'),csrf))return reply(403,{error:'Reload this page before uploading.'});
    if(request.headers.get('x-photo-consent')!=='yes')return reply(400,{error:'Consent is required before sending your photo to YouCam.'});
    if(budget.remaining<3)return reply(429,{...budget,error:'Preview allowance reached. The sample still works.'});

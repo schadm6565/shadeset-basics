@@ -19,12 +19,12 @@ function database(){
   assert.deepEqual(command.slice(0,4),['EVAL',RESERVE_SCRIPT,'1',LEDGER_KEY]);calls++;
   const field=command[4],reserve=command[5]==='reserve';
   let used=hash.get('used'),visitor=hash.get(field)||0;
-  if(used===undefined)return Response.json({result:[-2,0,0]});
+  if(used===undefined||used<0||used>3)return Response.json({result:[-2,0,0]});
   if(reserve){
-   if(used+3>6||visitor+3>3)return Response.json({result:[0,6-used,3-visitor]});
+   if(used+3>3||visitor+3>3)return Response.json({result:[0,3-used,3-visitor]});
    used+=3;visitor+=3;hash.set('used',used);hash.set(field,visitor);
   }
-  return Response.json({result:[1,6-used,3-visitor]});
+  return Response.json({result:[1,3-used,3-visitor]});
  };
  return {hash,fetcher,calls:()=>calls};
 }
@@ -53,10 +53,10 @@ test('missing ledger or broken storage disables uploads without any provider cal
  const g=fixture({storeFactory:()=>async()=>{throw Error('secret storage error');}}),s=await g.session();
  assert.equal(s.data.enabled,false);assert.equal(JSON.stringify(s.data).includes('secret storage error'),false);
 });
-test('concurrent separate serverless instances reserve at most six global units and three per visitor',async()=>{
+test('concurrent separate serverless instances reserve at most three global units and three per visitor',async()=>{
  const f=fixture(),sessions=await Promise.all(Array.from({length:8},()=>f.session())),photo=await image();
  const responses=await Promise.all(sessions.map(s=>f.handler()(f.upload(s,photo))));
- assert.equal(responses.filter(r=>r.status===200).length,2);assert.equal(f.renders(),2);assert.equal(f.db.hash.get('used'),6);
+ assert.equal(responses.filter(r=>r.status===200).length,1);assert.equal(f.renders(),1);assert.equal(f.db.hash.get('used'),3);
  const later=await f.session();assert.equal(later.data.enabled,false);assert.equal(later.data.remaining,0);
  const g=fixture(),s=await g.session();
  const same=await Promise.all([g.handler()(g.upload(s,photo)),g.handler()(g.upload(s,photo))]);
@@ -87,4 +87,13 @@ test('hosted image roundtrip preserves byte-bound approvals, strips metadata and
  const f=fixture({render:async bytes=>Promise.all(recipes.map(async recipe=>({recipeId:recipe.id,output:photo.toString('base64'),identity:await makeIdentity({photo:new Uint8Array(bytes),recipe:renderRecipe(recipe,colours),output:new Uint8Array(photo)})})))}),s=await f.session();
  const response=await f.handler()(f.upload(s,input)),body=await response.json();assert.equal(response.status,200);
  assert.equal((await personalPreviewSet(body,recipes,colours)).length,3);assert.ok(JSON.stringify(body).length<4*1024*1024);
+});
+
+test('existing ledger usage is never reset when the global allowance is reduced',async()=>{
+ for(const used of [3,6]){
+  const f=fixture();f.db.hash.set('used',used);
+  const s=await f.session();assert.equal(s.data.enabled,false);
+  assert.ok((await f.handler()(f.upload(s,await image()))).status>=400);
+  assert.equal(f.renders(),0);assert.equal(f.db.hash.get('used'),used);
+ }
 });
