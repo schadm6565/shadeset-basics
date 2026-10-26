@@ -20,3 +20,12 @@
 - CUA runtime recovery succeeded using an empty temporary directory at its stale working-directory path. The authoritative project remains lookkit-basics; no files were copied. Browser discovery shows chad and Andrea only, not the required My Hero profile. No profile substitution or UI verification occurred.
 - Development server restarted in session 65198 to serve the added sources module.
 - Local app map, recording shot list and shipping fact checklist prepared. They explicitly distinguish current recipe selection from the unfinished genuine-preview approval journey.
+
+## Guarded preview integration checkpoint
+- Tests-first preview checks initially failed because src/previews.js did not exist; after implementation, `npm test` passes all 15 tests.
+- Incremental read-only gpt-5.6-sol/high review against ec646d6 found no actionable defects. Browser image-paint and layout checks were not performed.
+- A complete matching local asset set and provenance are required; images must decode before appearance approval becomes available. Approval rechecks bytes, recipe and output hashes. Reset cancels older pending state changes.
+- Current public/previews.json explicitly says unavailable and contains no real or test images. This is not completion of the genuine-render requirement.
+- Restarted server in session 48169. New approval/preview modules and manifest return 200; missing sample image, private files, arbitrary PNG and traversal requests return 404; POST returns 405.
+- Browser-profile question remains pending: My Hero was not in discovery, and no alternative profile has been authorised for this separate task.
+- Official Makeup VTO documentation consulted read-only: https://docs.perfectcorp.com/reference/makeup_vto/section/overview . It confirms POST /s2s/v2.0/task/makeup-vto and task-status polling. No actual request or paid unit was used.

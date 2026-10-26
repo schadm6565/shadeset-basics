@@ -3,7 +3,9 @@ import {readFile} from 'node:fs/promises';
 const allowed = new Map([
  ['/', ['index.html','text/html']], ['/index.html',['index.html','text/html']],
  ['/LICENSE',['LICENSE','text/plain']],
- ...['app','catalogue','optimiser','sources'].map(name=>[`/src/${name}.js`,[`src/${name}.js`,'text/javascript']]),
+ ['/public/previews.json',['public/previews.json','application/json']],
+ ...['sample','soft-taupe','golden-hour','plum-after-dark'].map(name=>[`/public/${name}.png`,[`public/${name}.png`,'image/png']]),
+ ...['app','catalogue','optimiser','sources','approval','previews'].map(name=>[`/src/${name}.js`,[`src/${name}.js`,'text/javascript']]),
  ['/src/style.css',['src/style.css','text/css']]
 ]);
 const server=createServer(async(req,res)=>{
@@ -13,7 +15,7 @@ const server=createServer(async(req,res)=>{
  if(!entry){res.writeHead(404);res.end('Not found');return;}
  try{
   const content=await readFile(new URL(entry[0],import.meta.url));
-  res.writeHead(200,{'Content-Type':`${entry[1]}; charset=utf-8`,'X-Content-Type-Options':'nosniff','Cache-Control':'no-store','Content-Security-Policy':"default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'; connect-src 'self'; frame-ancestors 'none'"});
+  res.writeHead(200,{'Content-Type':`${entry[1]}; charset=utf-8`,'X-Content-Type-Options':'nosniff','Cache-Control':'no-store','Content-Security-Policy':"default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' blob:; connect-src 'self'; frame-ancestors 'none'"});
   res.end(req.method==='HEAD'?undefined:content);
  }catch{res.writeHead(404);res.end('Not found');}
 });

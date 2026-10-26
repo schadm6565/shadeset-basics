@@ -1,5 +1,32 @@
 import {recipes,offers,colours} from './catalogue.js';
 import {compareLooks} from './optimiser.js';
+import {ApprovalSession} from './approval.js';
+import {loadPreviews} from './previews.js';
+const approvals=new ApprovalSession();
+let previews=new Map(),actionVersion=0,busy=false;
+const objectURLs=[];
+function clearPreviewURLs(){for(const url of objectURLs)URL.revokeObjectURL(url);objectURLs.length=0;}
+function imageFrom(bytes,alt){const image=element('img','face-preview');const url=URL.createObjectURL(new Blob([bytes],{type:'image/png'}));objectURLs.push(url);image.src=url;image.alt=alt;return image;}
+async function decodePreviewSet(loaded){
+ for(const preview of loaded){for(const bytes of [preview.photo,preview.output]){const bitmap=await createImageBitmap(new Blob([bytes],{type:'image/png'}));bitmap.close();}}
+ return loaded;
+}
+function installPreviews(loaded){
+ clearPreviewURLs();previews=new Map(loaded.map(p=>[p.recipeId,p]));
+ for(const recipe of recipes){const preview=previews.get(recipe.id);if(preview)approvals.update(recipe.id,preview.identity);else approvals.remove(recipe.id);}
+ selected.clear();for(const id of approvals.approvedIds())selected.add(id);
+ document.querySelector('#sample-notice').textContent=previews.size?'Inspect the sample-face previews, then approve the looks you like. Colours are approximate; they do not guarantee a physical result.':'Recipe-selection demo: genuine sample-face previews are unavailable. Selecting a recipe does not approve its appearance on a face.';
+ renderLooks();renderResult();
+}
+async function toggleLook(recipe){
+ if(busy)return;
+ if(!previews.size){if(selected.has(recipe.id))selected.delete(recipe.id);else selected.add(recipe.id);renderResult();return;}
+ if(selected.has(recipe.id)){approvals.reject(recipe.id);selected.delete(recipe.id);renderResult();return;}
+ const displayed=previews.get(recipe.id).identity,version=++actionVersion;busy=true;renderResult();
+ try{const loaded=await decodePreviewSet(await loadPreviews(recipes,colours));if(version!==actionVersion)return;installPreviews(loaded);approvals.approve(recipe.id,displayed);selected.add(recipe.id);}
+ catch(error){if(version!==actionVersion)return;if(error.message.includes('changed')){document.querySelector('#sample-notice').textContent='A preview changed. Inspect it again before approving; affected approvals were cleared.';}else{installPreviews([]);document.querySelector('#sample-notice').textContent='Preview verification failed. Appearance approvals were cleared; only recipe selection is available.';}}
+ finally{if(version===actionVersion){busy=false;renderResult();}}
+}
 const selected=new Set();
 const money=value=>new Intl.NumberFormat('en-ZA',{style:'currency',currency:'ZAR',maximumFractionDigits:0}).format(value/100);
 const label=value=>value.replaceAll('-',' ').replace(/\b\w/g,c=>c.toUpperCase());
@@ -7,18 +34,19 @@ function element(tag,className,text) {
  const node=document.createElement(tag); if(className) node.className=className; if(text!==undefined) node.textContent=text; return node;
 }
 function renderLooks() {
- const container=document.querySelector('#looks');
+ const container=document.querySelector('#looks');container.replaceChildren();
  for(const [index,recipe] of recipes.entries()) {
   const card=element('article','look-card');
   card.append(element('p','eyebrow',`0${index+1} / ${recipe.occasion.toUpperCase()}`),element('h3','',recipe.name));
   const preview=element('div','preview-missing');
   const strip=element('div','colour-strip');
   for(const shade of recipe.shades) {const swatch=element('span');swatch.style.backgroundColor=colours[shade];strip.append(swatch);}
-  preview.append(strip,element('span','','Recipe colour reference'),element('small','','Genuine face preview pending'));card.append(preview);
+  const genuine=previews.get(recipe.id);
+  if(genuine){preview.className='preview-pair';const before=element('figure');before.append(imageFrom(genuine.photo,'Unmodified synthetic sample face'),element('figcaption','','Before'));const after=element('figure');after.append(imageFrom(genuine.output,`${recipe.name} on the same synthetic sample face`),element('figcaption','','YouCam preview'));preview.append(before,after);}else preview.append(strip,element('span','','Recipe colour reference'),element('small','','Genuine face preview pending'));card.append(preview);
   const list=element('ol','recipe-list');
   recipe.shades.forEach((shade,i)=>{const row=element('li');row.append(element('strong','',label(shade)),element('span','',recipe.placements[i]));list.append(row);});card.append(list);
   const button=element('button','select-button','Select recipe');button.type='button';button.dataset.recipe=recipe.id;button.setAttribute('aria-pressed','false');
-  button.addEventListener('click',()=>{if(selected.has(recipe.id))selected.delete(recipe.id);else selected.add(recipe.id);renderResult();});card.append(button);container.append(card);
+  button.addEventListener('click',()=>toggleLook(recipe));card.append(button);container.append(card);
  }
 }
 function basketList(basket,looks) {
@@ -37,12 +65,12 @@ function basketList(basket,looks) {
 }
 function renderResult() {
  for(const button of document.querySelectorAll('[data-recipe]')) {
-  const active=selected.has(button.dataset.recipe);button.setAttribute('aria-pressed',String(active));button.textContent=active?'Selected · Remove':'Select recipe';
+  const active=selected.has(button.dataset.recipe);button.setAttribute('aria-pressed',String(active));button.disabled=busy;button.textContent=previews.size?(active?'Approved · Reject':'Approve this look'):(active?'Selected · Remove':'Select recipe');
  }
  const root=document.querySelector('#result');root.replaceChildren();
  const looks=recipes.filter(r=>selected.has(r.id));
- document.querySelector('#announcement').textContent=`${looks.length} of 3 recipes selected.`;
- if(!looks.length){root.append(element('div','empty','Select a recipe above to see a complete costed basket. Nothing is selected for you.'));return;}
+ document.querySelector('#announcement').textContent=previews.size?`${looks.length} of 3 looks approved.`:`${looks.length} of 3 recipes selected.`;
+ if(!looks.length){root.append(element('div','empty',previews.size?'Approve a look above to see a complete costed basket. Nothing is approved for you.':'Select a recipe above to see a complete costed basket. Nothing is selected for you.'));return;}
  let result;try{result=compareLooks(looks,offers);}catch{root.append(element('div','notice','This catalogue cannot cover the selected shades. No incomplete basket is shown.'));return;}
  const layout=element('div','results-grid'),items=element('div');items.append(basketList(result.joint,looks));
  const total=element('div','cost-lines');for(const [name,value] of [['Products',result.joint.subtotal],['Local delivery estimate',result.joint.delivery],['Delivered total',result.joint.total]]) {const row=element('div');row.append(element('span','',name),element('strong','',money(value)));total.append(row);}items.append(total);
@@ -53,5 +81,8 @@ function renderResult() {
  layout.append(items,comparison);root.append(layout);
 }
 document.querySelector('#start').addEventListener('click',()=>{document.querySelector('#sample').hidden=false;document.querySelector('#sample-heading').focus();document.querySelector('#sample').scrollIntoView({block:'start'});});
-document.querySelector('#reset').addEventListener('click',()=>{selected.clear();renderResult();});
+document.querySelector('#reset').addEventListener('click',()=>{actionVersion++;busy=false;approvals.clear();selected.clear();renderResult();});
 renderLooks();renderResult();
+
+const initialVersion=actionVersion;
+loadPreviews(recipes,colours).then(decodePreviewSet).then(loaded=>{if(initialVersion===actionVersion)installPreviews(loaded);}).catch(()=>{});

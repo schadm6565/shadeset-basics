@@ -38,6 +38,8 @@ src/catalogue.js     # facts and recipe data
 src/sources.js       # exact product links and component prices
 src/optimiser.js     # complete offers and fair comparison
 src/approval.js      # image/recipe identity
+src/previews.js      # local asset and provenance integrity gate
+public/previews.json # explicitly unavailable until genuine assets exist
 src/app.js           # user journey
 src/style.css        # responsive presentation
 public/              # only authorised demo assets
