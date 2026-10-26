@@ -1,16 +1,17 @@
-# Local demo recording plan
+# Demo video shot list (current flow)
 
-Preparation only. No recording, upload or submission has been performed. The local genuine-preview approval flow has been verified on desktop and at 390px.
+Target: about 2:30, never over 3:00. App on screen within the first 3 seconds. Record at 1440×900 or larger, browser in full screen, notifications off. Third-party names as text only: no logos, product photos or copyrighted music.
 
-Target: under three minutes. Keep the app visible in the first seconds. Use your own narration. Third-party names may appear as text; avoid logos, product photos, music and unrelated windows.
+| Time | On screen | Say (in your own words) | Edit/animation |
+| --- | --- | --- | --- |
+| 0:00–0:08 | Hero: three eye panels, marquee | "Three looks. One kit." Who it's for, in one sentence | Slow push-in on the three panels; title text fades up |
+| 0:08–0:20 | Still on hero | The problem: buying a kit per look means paying for the same shades twice | Highlight one shade repeating across two looks (simple ring callout) |
+| 0:20–0:40 | Try the sample → Pick your looks → Try it on our model | Genuine YouCam previews on a model face | Cursor zoom on each click; match-cut between screens |
+| 0:40–1:05 | Looks screen → Add to kit (Soft taupe) → kit page opens | Adding a look is your approval; the kit appears straight away | Quick zoom into "Add to kit"; short whip transition to the kit |
+| 1:05–1:35 | "+ Golden hour", then "+ Plum after dark" | Watch the saving update: from "Already the cheapest" to "One basket. R 193 less." | Counter-style emphasis on R550 vs R743; brief freeze on the headline |
+| 1:35–1:50 | Kit products, Shop ↗ links | Real Creative Glamour prices recorded 26 Oct 2026; Shop links go to the retailer; not a checkout | Pan down the product list; underline sweep under "Shop" |
+| 1:50–2:05 | ← Back to looks → ← Change face → Try it on you (pre-recorded local run) | Your own photo works too; previews generate automatically | Show the dot-mesh viewfinder and cycling status line; speed-ramp the wait |
+| 2:05–2:30 | devpost/scope.md, prd.md, spec.md, git log | Skill Pack: planned first, approved the plan before any code, then built and redesigned after reviewing | Split screen: doc on left, matching app screen on right |
+| 2:30–2:45 | Back to the hero | One line on what's next; live link on screen | End card: shadeset-basics.vercel.app and the GitHub URL |
 
-| Time | On-screen action | Evidence to show |
-| --- | --- | --- |
-| 0:00–0:15 | Open the local homepage | What the tool does and the Try the sample entry |
-| 0:15–0:45 | Open the three sample looks | Genuine preview and three named shades |
-| 0:45–1:05 | Approve the looks individually | No approval by default; clear distinction between inspecting and approving |
-| 1:05–1:35 | Show joint basket and source links | Chosen shades, included case, quantity, prices and one R95 delivery |
-| 1:35–2:00 | Expand separate-kit comparison | R550 versus R743 for the sample, all equally cheap filler choices considered; difference R193 |
-| 2:00–2:15 | Reject one look, then clear | Basket updates for remaining approvals; empty state has no delivery |
-| 2:15–2:40 | Briefly show scope, PRD, spec and relevant test | Planning-before-code history and the test that prevents arbitrary filler inflation |
-| 2:40–2:55 | Return to app limitations | 26 October 2026 ZAR price snapshot, local delivery, approximate colours, no live stock feed or partnership |
+Notes: the R193 claim is for all three sample looks, within this catalogue and the 26 Oct 2026 price snapshot. The own-photo clip should be recorded locally. On the hosted site it needs the consent tick and uses the 3-unit budget.
