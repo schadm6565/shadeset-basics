@@ -24,7 +24,10 @@ Prices are a 17 October 2026 VAT-inclusive ZAR research snapshot. Local Pretoria
 ShadeSet was renamed from LookKit on 26 October 2026. The project folder remains `lookkit-basics`. The LookKit concept, recipes, pricing facts and colour references were researched before this fresh Basics implementation. Those facts were re-entered as data from the supplied brief and the expressly permitted catalogue-evidence.json. Application code was written afresh here; no previous application source or render assets were copied. The installed challengepost/learn-ai-basics Skill Pack shaped the scope, PRD, specification and build checklist. Routine planning decisions were initially delegated. The planning documents now preserve Chad’s reported personal review and approval at 20:45 SAST. No personal learning reflection is written on his behalf.
 
 ## Verification and remaining work
-See devpost/verification.md and devpost/checklist.md. Planning was committed before implementation. Source research is recorded in devpost/source-follow-up.md. No public repository, deployment, recording or submission has been made by this task.
+See devpost/verification.md and devpost/checklist.md. Planning was committed before implementation. Source research is recorded in devpost/source-follow-up.md. The public repository is https://github.com/schadm6565/shadeset-basics. No live deployment, video recording or Devpost submission has been made by this task.
 
 ## Licence
 Application code is MIT licensed; see LICENSE. Third-party names and research remain attributed facts. The Skill Pack is separately sourced by skills-lock.json.
+
+## UI revision
+The Chad-requested redesign uses eye-focused CSS crops of the unchanged genuine images, a three-look hero strip and a dark basket comparison. Inter Tight and JetBrains Mono are bundled locally; their SIL Open Font Licences and source notes are in public/fonts/. Approval and basket logic are unchanged.

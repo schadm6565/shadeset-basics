@@ -44,7 +44,7 @@ function renderLooks() {
   const genuine=previews.get(recipe.id);
   if(genuine){preview.className='preview-pair';const before=element('figure');before.append(imageFrom(genuine.photo,'Unmodified synthetic sample face'),element('figcaption','','Before'));const after=element('figure');after.append(imageFrom(genuine.output,`${recipe.name} on the same synthetic sample face`),element('figcaption','','YouCam preview'));preview.append(before,after);}else preview.append(strip,element('span','','Recipe colour reference'),element('small','','Genuine face preview pending'));card.append(preview);
   const list=element('ol','recipe-list');
-  recipe.shades.forEach((shade,i)=>{const row=element('li');row.append(element('strong','',label(shade)),element('span','',recipe.placements[i]));list.append(row);});card.append(list);
+  recipe.shades.forEach((shade,i)=>{const row=element('li');const dot=element('span','dot');dot.style.backgroundColor=colours[shade];dot.setAttribute('aria-hidden','true');row.append(dot,element('strong','',label(shade)),element('span','',recipe.placements[i]));list.append(row);});card.append(list);
   const button=element('button','select-button','Select recipe');button.type='button';button.dataset.recipe=recipe.id;button.setAttribute('aria-pressed','false');
   button.addEventListener('click',()=>toggleLook(recipe));card.append(button);container.append(card);
  }
@@ -86,3 +86,18 @@ renderLooks();renderResult();
 
 const initialVersion=actionVersion;
 loadPreviews(recipes,colours).then(decodePreviewSet).then(loaded=>{if(initialVersion===actionVersion)installPreviews(loaded);}).catch(()=>{});
+
+// Presentation-only motion layer: preloader, scroll reveals and hero parallax. No app state is read or changed.
+(()=>{
+ const root=document.documentElement,reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ root.classList.add('js');
+ const loader=document.querySelector('.loader'),count=loader?.querySelector('.loader-count');
+ const finish=()=>{root.classList.add('is-loaded');setTimeout(()=>loader?.remove(),1200);};
+ if(!loader||reduce)finish();
+ else{const start=performance.now(),duration=900;const tick=now=>{const p=Math.min(1,(now-start)/duration);count.textContent=String(Math.round((1-Math.pow(1-p,3))*100)).padStart(3,'0');if(p<1)requestAnimationFrame(tick);else setTimeout(finish,120);};requestAnimationFrame(tick);}
+ const observer=new IntersectionObserver(entries=>{for(const entry of entries)if(entry.isIntersecting){entry.target.classList.add('in');observer.unobserve(entry.target);}},{rootMargin:'0px 0px -8% 0px'});
+ const watch=()=>document.querySelectorAll('[data-reveal]:not(.in),.look-card:not(.in),.basket-item:not(.in)').forEach(node=>observer.observe(node));
+ watch();new MutationObserver(watch).observe(document.querySelector('main'),{childList:true,subtree:true});
+ if(!reduce){const images=[...document.querySelectorAll('.hero-strip img')];let queued=false;
+  addEventListener('scroll',()=>{if(queued)return;queued=true;requestAnimationFrame(()=>{const y=Math.min(scrollY,900);images.forEach((image,i)=>image.style.setProperty('--py',`${y*(0.03+i*0.015)}px`));queued=false;});},{passive:true});}
+})();

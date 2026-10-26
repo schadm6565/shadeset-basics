@@ -52,3 +52,6 @@
 - Chad browser: desktop 0→1→2→3 explicit approvals; R550/R743/R193. Mobile at 390×844: width390, six images loaded, approval controls48px, rejection→2 and R419, reapproval→3, clear→0, no warning/error logs. Temporary viewport restored.
 - Deliberately corrupted one outputHash, attempted approval: verification failed, no appearance approval issued, fallback clearly labelled and count0. Original manifest restored immediately.
 - Evidence: desktop-genuine-previews.png and mobile-genuine-previews.png. No further paid calls, deployment, push or submission.
+
+## Redesigned UI acceptance — 26 October 2026
+`npm test` passed 15/15 after integration. Desktop at 1470px and mobile at 390×844: three approvals give R550/R743/R193, expanded separate-kit basket readable, rejecting Plum gives R419, reset gives zero. All nine images loaded; document width equals viewport. Mobile approval buttons48px/reset44px. No browser error/warning logs. Five fonts are bundled behind exact allowlisted paths; external Google font requests removed and CSP unchanged. Source inspection confirms reduced-motion animation/transition overrides. Evidence: redesign-hero.png, redesign-desktop.png, redesign-mobile.png. No further API calls.

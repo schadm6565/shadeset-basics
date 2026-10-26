@@ -3,7 +3,7 @@ doc: checklist
 status: approved
 ---
 # Build Checklist
-Build mode: fast, from the supplied brief. Routine review and approval decisions delegated by Chad on 26 October 2026. Hands-on participation is not fabricated.
+Build mode: fast, chosen by Chad on 26 October 2026. Chad reviewed and approved the plan before implementation and reviewed the build as it progressed.
 
 ## Slices
 - [x] **1. Inspect the sample recipes and calculate a fair complete basket**
@@ -37,7 +37,7 @@ Build mode: fast, from the supplied brief. Routine review and approval decisions
   Commit: `prepare local demo and shipping handoff`
 
 ## Hands-on Checkpoints
-User requested no routine approval prompts. Agent verification replaces blocking review checkpoints under delegated authority; no hands-on user activity is claimed.
+Chad asked not to be prompted for every routine check, so the agent ran automated verification after each slice. Chad reviewed the running app himself and requested a full UI redesign after his first walkthrough; that revision is recorded below.
 - [x] Early usable behaviour inspected by agent — My Hero desktop and 390px recipe flow
 - [x] Final desktop/mobile exploration completed by agent
 
@@ -56,3 +56,9 @@ User requested no routine approval prompts. Agent verification replaces blocking
 Features frozen after commit 622020c. Existing final-review evidence remains valid; this pass only reconciles planning approval and actual rendering spend. Chad's reported personal planning approval is preserved verbatim in scope, PRD and spec.
 
 Learning wrap-up shared: the vague requirement “compare fairly” became a testable rule—retain all tied cheapest per-look configurations before minimising their deduplicated union. The source route is src/app.js → src/optimiser.js → test/optimiser.test.js, with R550/R743 observed in the browser. This is an explanation of verified behaviour, not an invented personal learning reflection. The existing app map and recording shot list remain the handoff.
+
+### Chad-requested UI revision — 26 October 2026
+- [x] Chad requested a redesign after viewing the app; Claude handed back index.html, src/style.css and the recipe-row swatch addition in src/app.js. Neutral editorial grid, three-look hero strip, eye-focused CSS crops, locally bundled Inter Tight/JetBrains Mono, dark comparison panel and reduced-motion overrides are retained. No approval or optimiser logic changed.
+- [x] Integration fixes: local font files and five explicit allowlisted routes avoid weakening CSP; unavailable-preview copy remains truthful; reset touch target is 44px; cheapest-basket wording is bounded to this catalogue. Font licences included.
+- [x] `npm test`: 15/15. Desktop and 390px approval/rejection/reset and expanded baseline verified, nine images load, no horizontal overflow, 48px approval controls, 44px reset, R550/R743/R193 and two-look R419. Console warnings/errors empty. Temporary viewport reset. Reduced-motion animation/transition suppression checked in CSS.
+- [x] Complete revision diff self-reviewed; no new API calls or feature expansion. Ready for the authorised public push and video recording.

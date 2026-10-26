@@ -11,13 +11,13 @@ A small browser app reads a fixed catalogue, records which looks were approved a
 Try the sample reveals recipe cards. Approval identity is checked against the photo, recipe and render hashes. Valid selected recipes become a required-shade set. The optimiser calculates the joint basket and every cheapest separate kit; the baseline reducer chooses the cheapest union of those kits. The view displays their products and one delivery charge. Implements prd.md > The Core Journey.
 
 ## Stack
-Fresh JavaScript ES modules, semantic HTML and CSS. Node's built-in test runner for algorithm tests, a small local static development server with an explicit public-file allowlist. No third-party runtime dependencies. Delegated implementation choice: a fixed sample needs no framework or database. Docs: https://nodejs.org/api/test.html and https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules . Node v20.20.1 was verified locally before build.
+Fresh JavaScript ES modules, semantic HTML and CSS. Node's built-in test runner for algorithm tests, a small local static development server with an explicit public-file allowlist. No third-party runtime dependencies. Proposed by the agent and approved by Chad: a fixed sample needs no framework or database. Docs: https://nodejs.org/api/test.html and https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules . Node v20.20.1 was verified locally before build.
 
 ## Where It Runs and How Someone Tries It
 Node 20+; npm test runs unit checks, npm run dev serves http://127.0.0.1:5173. No key needed for the local catalogue journey. The development server must not expose .env, .git, learner profile or arbitrary files. Local video recording is the delivery path. Public repository and video submission remain user-owned and unperformed.
 
 ## Look and Feel
-CSS warm ivory canvas, chocolate text, muted olive primary button and fine borders. System serif heading stack, system sans body. Three-column cards above 900px, stacked at narrow widths. Buttons at least 44px high, keyboard focus visible, reduced-motion respected. Avoid external font and image requests.
+Chad-requested neutral editorial grid with Inter Tight and JetBrains Mono bundled locally under their SIL Open Font Licences, eye-focused CSS crops of genuine preview images, a three-look hero strip and dark comparison panel. Cards use three columns above 960px, two up to 960px and one up to 720px. Buttons are at least 44px high; keyboard focus is visible and reduced-motion preferences suppress animations/transitions. No external font or image requests.
 
 ## Components
 ### Catalogue and offers
@@ -60,7 +60,7 @@ Missing genuine renders: clearly labelled unavailable panel, no fake appearance 
 Fixed recipes and in-memory choices keep the proof centred on fair joint purchasing. No account, backend AI or public paid endpoint is needed. This does not replace the required genuine image evidence with generated decorative art.
 
 ## Decisions and Open Issues
-Agent selected dependency-free modules under Chad's delegated authority. The supplied brief's real uncertainty is whether all filler ties produce R743 rather than the unfair R1067 delivered baseline; tests must investigate this, not force the expected output. No additional learner uncertainty is invented. Genuine render authorisation and verification are complete: three one-unit renders authorised and three units spent. The initial planning approval preceded implementation.
+The agent proposed dependency-free modules and Chad approved them. The supplied brief's real uncertainty is whether all filler ties produce R743 rather than the unfair R1067 delivered baseline; tests must investigate this, not force the expected output. No additional learner uncertainty is invented. Genuine render authorisation and verification are complete: three one-unit renders authorised and three units spent. The initial planning approval preceded implementation.
 
 Approved by Chad on 26 October 2026. Chad reviewed this document and approved it (his words: "i did look at everything and approved it, i just forgot to update it"); this record was updated at 20:45 SAST to reflect that review.
 
