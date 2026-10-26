@@ -49,7 +49,9 @@ export function setupPhotoUpload({onChange,onResult,onSample,onError}){
  submit.addEventListener('click',async()=>{
   const chosen=file.files?.[0];if(inFlight||!chosen||!consent.checked||!enabled||remaining<3)return;
   const version=++generation;onChange();inFlight=true;controller=new AbortController();controls();
-  status.textContent='Sending your photo to YouCam and creating your three looks… this can take a minute.';
+  const steps=['Getting your looks ready','Finding your eyes','Blending the shades','Almost there'];let step=0;
+  status.classList.add('loading');status.textContent=steps[0];
+  const ticker=setInterval(()=>{step=Math.min(step+1,steps.length-1);status.textContent=steps[step];},6000);
   try{
    const response=await fetch('/api/upload',{method:'POST',headers:{'Content-Type':chosen.type,'X-Photo-Consent':'yes','X-Upload-Token':token},body:chosen,signal:controller.signal});
    const data=await response.json();if(Number.isFinite(data.remaining))remaining=data.remaining;if(remaining<3||data.enabled===false)enabled=false;
@@ -59,7 +61,7 @@ export function setupPhotoUpload({onChange,onResult,onSample,onError}){
    if(version!==generation)return;
    file.value='';status.textContent='Your looks are ready. Approve the ones you like. This visitor’s upload allowance may now be exhausted.';
   }catch(error){if(version===generation){onError();status.textContent=error.name==='AbortError'?'Upload cancelled. Reserved quota may remain used.':error.message;}}
-  finally{inFlight=false;controller=undefined;controls();if(version!==generation)await refresh();}
+  finally{clearInterval(ticker);status.classList.remove('loading');inFlight=false;controller=undefined;controls();if(version!==generation)await refresh();}
  });
  refresh();
 }

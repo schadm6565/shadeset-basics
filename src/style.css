@@ -750,3 +750,27 @@ body.show-looks.has-basket:not(.show-kit) .kit-bar { position: static; display: 
 .viewfinder svg { width: 92%; }
 .viewfinder svg circle { r: 1.25; }
 .viewfinder svg circle.e { r: 1.6; }
+
+/* Friendly progress line while looks are generated */
+#photo-status.loading {
+  font-family: inherit; text-transform: none; letter-spacing: -0.01em; font-size: clamp(20px, 2vw, 26px); color: var(--ink);
+  display: flex; align-items: center; gap: 14px; padding-top: 8px;
+}
+#photo-status.loading::before {
+  content: ""; width: 10px; height: 10px; border-radius: 50%; flex: none;
+  background: #c59648; box-shadow: 0 0 0 0 rgba(197, 150, 72, .5); animation: ping 1.4s ease-out infinite;
+}
+#photo-status.loading::after { content: "…"; animation: blink 1.4s steps(1) infinite; }
+@keyframes ping { to { box-shadow: 0 0 0 12px rgba(197, 150, 72, 0); } }
+@keyframes blink { 50% { opacity: .2; } }
+@media (prefers-reduced-motion: reduce) { #photo-status.loading::before, #photo-status.loading::after { animation: none; } }
+#sample-notice:empty { display: none !important; }
+
+/* Add more looks from the kit page */
+.more-looks { order: 1; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 0 0 16px; }
+.more-looks:empty { display: none; }
+.more-looks > span { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin-right: 4px; }
+.more-chip { border: 1px solid var(--ink); background: transparent; color: var(--ink); padding: 9px 16px; font-size: 14px; border-radius: 999px; cursor: pointer; transition: background .2s, color .2s; }
+.more-chip:hover:not(:disabled) { background: var(--ink); color: #fff; }
+.more-chip:disabled { opacity: .4; cursor: progress; }
+.comparison details { display: none; }

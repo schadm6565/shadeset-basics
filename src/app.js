@@ -16,7 +16,7 @@ function installPreviews(loaded){
  clearPreviewURLs();previews=new Map(loaded.map(p=>[p.recipeId,p]));
  for(const recipe of recipes){const preview=previews.get(recipe.id);if(preview)approvals.update(recipe.id,preview.identity);else approvals.remove(recipe.id);}
  selected.clear();for(const id of approvals.approvedIds())selected.add(id);
- document.querySelector('#sample-notice').textContent=previews.size?(photoMode==='own'?'YouCam preview of your photo. Approve each look explicitly. Colours are approximate; physical results may differ.':'Add every look you like. One kit makes them all.'):'Recipe-selection demo: genuine sample-face previews are unavailable. Selecting a recipe does not approve its appearance on a face.';
+ document.querySelector('#sample-notice').textContent=previews.size?(photoMode==='own'?'YouCam preview of your photo. Approve each look explicitly. Colours are approximate; physical results may differ.':''):'Recipe-selection demo: genuine sample-face previews are unavailable. Selecting a recipe does not approve its appearance on a face.';
  renderLooks();renderResult();
 }
 async function toggleLook(recipe){
@@ -121,6 +121,22 @@ loadPreviews(recipes,colours).then(decodePreviewSet).then(loaded=>{if(initialVer
  on('#see-kit',()=>{body.classList.add('show-kit');top();document.querySelector('#basket-heading')?.focus?.({preventScroll:true});});
  on('#back-looks',()=>{body.classList.remove('show-kit');top();});
  on('#sample-photo',top);
+ // Adding a look goes straight to the kit; other looks can be added from there.
+ const looks=document.querySelector('#looks'),more=document.querySelector('#more-looks');let pending='';
+ const openKit=()=>{body.classList.add('show-kit');renderMore();top();};
+ function renderMore(){
+  if(!more)return;more.replaceChildren();
+  const rest=[...document.querySelectorAll('#looks .select-button[aria-pressed="false"]')];
+  if(!rest.length)return;
+  const label=document.createElement('span');label.textContent='Add another look';more.append(label);
+  for(const button of rest){const chip=document.createElement('button');chip.type='button';chip.className='more-chip';chip.textContent='+ '+button.closest('.look-card').querySelector('h3').textContent;chip.disabled=button.disabled;chip.addEventListener('click',()=>{chip.disabled=true;button.click();});more.append(chip);}
+ }
+ looks?.addEventListener?.('click',event=>{const button=event.target.closest?.('.select-button');if(button&&button.getAttribute('aria-pressed')==='false')pending=button.dataset.recipe;});
+ if(looks&&typeof MutationObserver!=='undefined')new MutationObserver(()=>{
+  if(pending&&document.querySelector(`#looks [data-recipe="${pending}"][aria-pressed="true"]`)){pending='';openKit();}
+  else if(body.classList.contains('show-kit'))renderMore();
+ }).observe(looks,{subtree:true,attributes:true,attributeFilter:['aria-pressed','disabled']});
+ on('#see-kit',renderMore);
 })();
 
 // Live retailer check (server route /api/prices). Verifies the snapshot; it never changes the basket.
