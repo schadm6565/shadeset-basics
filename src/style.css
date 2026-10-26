@@ -774,3 +774,6 @@ body.show-looks.has-basket:not(.show-kit) .kit-bar { position: static; display: 
 .more-chip:hover:not(:disabled) { background: var(--ink); color: #fff; }
 .more-chip:disabled { opacity: .4; cursor: progress; }
 .comparison details { display: none; }
+/* Own photos: show the whole face so the eye makeup is in frame */
+.preview-pair.own figure:last-child img { object-fit: cover; object-position: 50% 42%; transform: none !important; }
+.preview-pair.own figure:first-child { display: none; }
