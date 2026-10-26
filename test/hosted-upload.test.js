@@ -5,7 +5,7 @@ import {createHostedHandler,hostedPhoto,hostedConfig} from '../hosted-upload.js'
 import {createQuotaStore,LEDGER_KEY,RESERVE_SCRIPT} from '../hosted-quota.js';
 import {makeIdentity} from '../src/approval.js';
 import {renderRecipe} from '../src/previews.js';
-import {recipes,colours} from '../src/catalogue.js';
+import {coreRecipes as recipes,colours} from '../src/catalogue.js';
 import {personalPreviewSet} from '../src/upload-ui.js';
 
 const cfg={enabled:true,key:'test-key',secret:'test-secret-'.repeat(4),origin:'https://shadeset.example',url:'https://test.upstash.io',token:'test-token'};

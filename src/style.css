@@ -777,3 +777,10 @@ body.show-looks.has-basket:not(.show-kit) .kit-bar { position: static; display: 
 /* Own photos: show the whole face so the eye makeup is in frame */
 .preview-pair.own figure:last-child img { object-fit: cover; object-position: 50% 42%; transform: none !important; }
 .preview-pair.own figure:first-child { display: none; }
+
+/* Seven looks: a snap-scrolling row, three in view with the next one peeking */
+.show-looks .looks { display: grid; grid-auto-flow: column; grid-template-columns: none; grid-auto-columns: calc((100% - 32px) / 3.25); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin; padding-bottom: 8px; }
+.show-looks .looks > .look-card { scroll-snap-align: start; }
+@media (max-width: 900px) { .show-looks .looks { grid-auto-columns: 78%; } }
+.more-chip { padding: 6px 13px; font-size: 13px; }
+.more-looks { gap: 8px; margin-bottom: 10px; }

@@ -1,14 +1,14 @@
 import {makeIdentity} from './approval.js';
 export function renderRecipe(recipe,colours){
  const palettes=recipe.shades.map(shade=>{
-  const color=colours[shade],texture=['taupe','gold'].includes(shade)?'shimmer':'matte';
+  const color=colours[shade],texture=['taupe','gold','bronze'].includes(shade)?'shimmer':'matte';
   return {color,texture,colorIntensity:recipe.intensity,...(texture==='shimmer'?{shimmerColor:color,shimmerIntensity:35}:{})};
  });
  return {...recipe,colours:recipe.shades.map(shade=>({shade,colour:colours[shade]})),skinSmoothing:0,
   effects:[{category:'skin_smooth',skinSmoothStrength:0,skinSmoothColorIntensity:0},
    {category:'eye_shadow',pattern:{name:recipe.pattern},palettes}],version:'1.0'};
 }
-const imagePaths=new Set(['/public/sample.png','/public/soft-taupe.png','/public/golden-hour.png','/public/plum-after-dark.png']);
+const imagePaths=new Set(['/public/sample.png',...['soft-taupe','golden-hour','plum-after-dark','caramel-glow','bronze-night','dusty-rose','smoky-stone'].map(id=>`/public/${id}.png`)]);
 async function imageBytes(path,fetcher){
  if(!imagePaths.has(path))throw new Error('Unsupported preview path');
  const response=await fetcher(path,{cache:'no-store'});
@@ -21,10 +21,12 @@ export async function loadPreviews(recipes,colours,fetcher=fetch){
  const response=await fetcher('/public/previews.json',{cache:'no-store'});
  if(!response.ok)throw new Error('Preview manifest unavailable');
  const manifest=await response.json();
- if(manifest.version!==1||manifest.provider!=='YouCam'||!Array.isArray(manifest.records)||manifest.records.length!==recipes.length)throw new Error('Genuine previews unavailable');
+ if(manifest.version!==1||manifest.provider!=='YouCam'||!Array.isArray(manifest.records)||!manifest.records.length)throw new Error('Genuine previews unavailable');
  if(manifest.photo!=='/public/sample.png')throw new Error('Unsupported sample photo path');
  const ids=new Set(manifest.records.map(record=>record.id));
- if(ids.size!==recipes.length||!recipes.every(recipe=>ids.has(recipe.id)))throw new Error('Preview set unavailable');
+ if(ids.size!==manifest.records.length)throw new Error('Preview set unavailable');
+ // Looks without a rendered preview show their colour recipe instead.
+ recipes=recipes.filter(recipe=>ids.has(recipe.id));
  for(const recipe of recipes){
   const record=manifest.records.find(r=>r.id===recipe.id);
   if(record.output!==`/public/${recipe.id}.png`||!imagePaths.has(record.output))throw new Error('Unsupported output path');

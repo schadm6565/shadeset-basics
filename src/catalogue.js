@@ -2,11 +2,19 @@ import {refillSources, paletteSources, caseSources} from './sources.js';
 // Prices and contents checked on the retailer's product pages on 26 October 2026.
 export const snapshot = '2026-10-26';
 export const shadeNames = ['vanilla','taupe','chocolate','gold','cocoa-plum','stone','nude','d-choc','woody','bronze','caramel','dusty'];
-export const colours = {vanilla:'#e5cba5',taupe:'#897064',chocolate:'#604333',gold:'#c59648','cocoa-plum':'#704653'};
-export const recipes = [
+// New-shade colours are approximations of the retailer swatches.
+export const colours = {vanilla:'#e5cba5',taupe:'#897064',chocolate:'#604333',gold:'#c59648','cocoa-plum':'#704653',stone:'#a39486',nude:'#c9a48a','d-choc':'#3e2a22',woody:'#7b5a43',bronze:'#9c6b3f',caramel:'#b5814f',dusty:'#a7837f'};
+// Own-photo uploads render the three core looks; the sample face has all seven.
+export const coreRecipes = [
  {id:'soft-taupe',name:'Soft taupe',occasion:'Everyday',shades:['vanilla','taupe','chocolate'],pattern:'3colors1',intensity:90,placements:['Inner corner','Centre lid','Outer corner']},
  {id:'golden-hour',name:'Golden hour',occasion:'Dinner',shades:['vanilla','gold','chocolate'],pattern:'3colors1',intensity:90,placements:['Inner corner','Centre lid','Outer corner']},
  {id:'plum-after-dark',name:'Plum after dark',occasion:'Evening',shades:['vanilla','cocoa-plum','chocolate'],pattern:'3colors8',intensity:100,placements:['Inner corner','Upper lid','Outer lower lashes']}
+];
+export const recipes = [...coreRecipes,
+ {id:'caramel-glow',name:'Caramel glow',occasion:'Brunch',shades:['vanilla','caramel','woody'],pattern:'3colors1',intensity:90,placements:['Inner corner','Centre lid','Outer corner']},
+ {id:'bronze-night',name:'Bronze night',occasion:'Party',shades:['nude','bronze','d-choc'],pattern:'3colors1',intensity:90,placements:['Inner corner','Centre lid','Outer corner']},
+ {id:'dusty-rose',name:'Dusty rose',occasion:'Date night',shades:['nude','dusty','d-choc'],pattern:'3colors1',intensity:90,placements:['Inner corner','Centre lid','Outer corner']},
+ {id:'smoky-stone',name:'Smoky stone',occasion:'Night out',shades:['stone','woody','d-choc'],pattern:'3colors8',intensity:100,placements:['Inner corner','Upper lid','Outer lower lashes']}
 ];
 export function combinations(values, size) {
  const out=[];
