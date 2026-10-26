@@ -66,3 +66,6 @@ Approved by Chad on 26 October 2026. Chad reviewed this document and approved it
 
 ## Catalogue Evidence Gate
 Supplied 17 October prices are valid research inputs for algorithm development, but a retailer homepage is not an exact product link. Before claiming a complete purchasable recommendation, verify exact palette/case URLs and configuration terms. Preserve the supplied snapshot separately from any later price changes. Missing sources must be disclosed and keep this release gate incomplete; do not silently remove required catalogue offers to make checks pass.
+
+## Public sharing checkpoint
+https://github.com/schadm6565/shadeset-basics is public and anonymously verified at commit 8f58a06. Chad explicitly authorised that snapshot and its history. The ongoing UI redesign remains local until completed and checked; no video URL or completed Devpost submission has been recorded.
