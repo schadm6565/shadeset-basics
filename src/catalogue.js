@@ -1,6 +1,6 @@
 import {refillSources, paletteSources, caseSources} from './sources.js';
-// Facts re-entered from the supplied 17 October 2026 research brief.
-export const snapshot = '2026-10-17';
+// Prices and contents checked on the retailer's product pages on 26 October 2026.
+export const snapshot = '2026-10-26';
 export const shadeNames = ['vanilla','taupe','chocolate','gold','cocoa-plum','stone','nude','d-choc','woody','bronze','caramel','dusty'];
 export const colours = {vanilla:'#e5cba5',taupe:'#897064',chocolate:'#604333',gold:'#c59648','cocoa-plum':'#704653'};
 export const recipes = [
@@ -22,7 +22,7 @@ function add(type, shades, price, caseName, capacity, selected=shades) {
  const components = type.startsWith('Refills +')
   ? [...chosen.map(shade=>({name:`${shade} refill`,quantity:1,...refillSources[shade]})), {name:caseName,quantity:1,...caseSources[capacity]}]
   : [{name:type,quantity:1,price,url:paletteSources[type]}];
- generated.push({id:`${type}:${chosen.join(',')}`,type,shades:[...new Set(shades)].sort(),chosen,price,case:caseName,capacity,quantity:1,components,sourceStatus:'17 October price snapshot; check stock and final price with the retailer'});
+ generated.push({id:`${type}:${chosen.join(',')}`,type,shades:[...new Set(shades)].sort(),chosen,price,case:caseName,capacity,quantity:1,components,sourceStatus:'26 October price snapshot; check stock and final price with the retailer'});
 }
 for (const [size,price] of [[4,32400],[10,56100]]) {
  for (const shades of combinations(shadeNames,size)) add(`Custom ${size}`,shades,price,`${size}-pan case included`,size);

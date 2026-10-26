@@ -3,62 +3,62 @@ export const refillSources = {
   "dusty": {
     "url": "https://www.creativeglamour.co.za/vegan-refills/417-dusty-eyeshadow-refill.html",
     "price": 7300,
-    "checked": "2026-10-17"
+    "checked": "2026-10-26"
   },
   "cocoa-plum": {
     "url": "https://www.creativeglamour.co.za/vegan-refills/412-cocoaplum-eyeshadow-refill.html",
     "price": 7300,
-    "checked": "2026-10-17"
+    "checked": "2026-10-26"
   },
   "woody": {
     "url": "https://www.creativeglamour.co.za/vegan-refills/487-woody-eyeshadow-refill.html",
     "price": 7300,
-    "checked": "2026-10-17"
+    "checked": "2026-10-26"
   },
   "vanilla": {
     "url": "https://www.creativeglamour.co.za/vegan-refills/485-vanilla-eyeshadow-refill.html",
     "price": 7300,
-    "checked": "2026-10-17"
+    "checked": "2026-10-26"
   },
   "bronze": {
     "url": "https://www.creativeglamour.co.za/vegan-refills/1226-bronze-eyeshadow-refill.html",
     "price": 7300,
-    "checked": "2026-10-17"
+    "checked": "2026-10-26"
   },
   "gold": {
     "url": "https://www.creativeglamour.co.za/vegan-refills/1223-gold-eyeshadow-refill.html",
     "price": 7300,
-    "checked": "2026-10-17"
+    "checked": "2026-10-26"
   },
   "taupe": {
     "url": "https://www.creativeglamour.co.za/vegan-refills/1221-taupe-eyeshadow-refill.html",
     "price": 7300,
-    "checked": "2026-10-17"
+    "checked": "2026-10-26"
   },
   "nude": {
     "url": "https://www.creativeglamour.co.za/vegan-refills/1194-nude-eyeshadow-refill.html",
     "price": 7300,
-    "checked": "2026-10-17"
+    "checked": "2026-10-26"
   },
   "d-choc": {
     "url": "https://www.creativeglamour.co.za/vegan-refills/1191-dchoc-eyeshadow-refill.html",
     "price": 7300,
-    "checked": "2026-10-17"
+    "checked": "2026-10-26"
   },
   "stone": {
     "url": "https://www.creativeglamour.co.za/vegan-refills/1189-stone-eyeshadow-brow-refill.html",
     "price": 7300,
-    "checked": "2026-10-17"
+    "checked": "2026-10-26"
   },
   "caramel": {
     "url": "https://www.creativeglamour.co.za/vegan-refills/1187-caramel-eyeshadow-refill.html",
     "price": 7300,
-    "checked": "2026-10-17"
+    "checked": "2026-10-26"
   },
   "chocolate": {
     "url": "https://www.creativeglamour.co.za/vegan-refills/1015-chocolate-eyeshadow-refill.html",
     "price": 7300,
-    "checked": "2026-10-17"
+    "checked": "2026-10-26"
   }
 };
 export const paletteSources = {

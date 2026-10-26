@@ -19,3 +19,7 @@ https://www.creativeglamour.co.za/150-empty-palettes
 https://www.creativeglamour.co.za/51-eyeshadow-palettes
 
 The only old-repository file read was the expressly permitted app/catalogue-evidence.json. Its refill URLs and 17 October stock observations remain data evidence; no old source or assets were read or copied.
+
+
+## 26 October 2026 price check
+All catalogue prices, delivery fees and ready-made palette contents were re-checked on the retailer's product pages on 26 October 2026 and found unchanged. The app's snapshot date is now 26 October 2026. See devpost/evidence/price-check-2026-10-26.md.

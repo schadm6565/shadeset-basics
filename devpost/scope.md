@@ -35,7 +35,7 @@ The demo works at desktop width and 390px and can be shown in a short screen rec
 - Approval bound to the photo, recipe and output hashes. Any identity change invalidates it.
 - One jointly optimised purchase over the researched Creative Glamour offers.
 - A fair baseline choosing among ALL cheapest per-look configurations, then minimising their deduplicated union; deduplicate identical configurations only and add delivery once.
-- Twelve R73 refills, custom four/ten options, three ready-made palettes and the specified empty cases; ZAR prices and source links from the 17 October snapshot.
+- Twelve R73 refills, custom four/ten options, three ready-made palettes and the specified empty cases; ZAR prices and source links from the 26 October snapshot.
 - Clear limits: South Africa delivery, not live stock, approximate preview colours and no retailer partnership.
 - Tests first for the optimiser and baseline, including a small independent brute-force check and a filler-choice regression.
 - A local app on port 5173, planning documents and a demo recording shot list. The user writes and submits the entry.

@@ -7,7 +7,7 @@
 - Three fixed recipe cards and one-click local sample entry.
 - Joint basket calculation and fair baseline; sample totals R550 and R743 including one delivery each.
 - All tied cheapest per-look configurations retained; deduplicate identical configurations only.
-- Exact product/component links integrated. Prices remain the supplied 17 October snapshot, not live quotes.
+- Exact product/component links integrated. Prices are the 26 October 2026 snapshot, re-checked on every retailer page; not live quotes.
 - Unit checks prove approval identity invalidation and guarded asset loading. Three genuine outputs and the desktop/mobile approval journey are verified.
 - Three expressly authorised bonus units used; no purchased credits, old render assets, deployment, public repository or submission from this task.
 

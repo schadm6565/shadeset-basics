@@ -18,4 +18,4 @@ The local proof of concept is complete. Public release, video recording and subm
 | Checks/review | 15 tests pass; prior independent implementation/approval reviews; final contained rendering-parameter and asset delta self-reviewed |
 | Handoff | README, MIT licence, app map, screenshots, recording plan and factual shipping checklist |
 
-Limits: editorial colour approximations, a 17 October ZAR snapshot, no live stock or retailer partnership, synthetic fixed face only. Previews are subtle at thumbnail size and do not prove real-world colour matching. No public API, upload, checkout or account system. The key is permanent at Chad's request; the three-task rendering allowance is exhausted. No further calls are authorised by this audit.
+Limits: editorial colour approximations, a 26 October ZAR snapshot, no live stock or retailer partnership, synthetic fixed face only. Previews are subtle at thumbnail size and do not prove real-world colour matching. No public API, upload, checkout or account system. The key is permanent at Chad's request; the three-task rendering allowance is exhausted. No further calls are authorised by this audit.

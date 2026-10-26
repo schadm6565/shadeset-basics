@@ -65,7 +65,7 @@ The agent proposed dependency-free modules and Chad approved them. The supplied 
 Approved by Chad on 26 October 2026. Chad reviewed this document and approved it (his words: "i did look at everything and approved it, i just forgot to update it"); this record was updated at 20:45 SAST to reflect that review.
 
 ## Catalogue Evidence Gate
-Supplied 17 October prices are valid research inputs for algorithm development, but a retailer homepage is not an exact product link. Before claiming a complete purchasable recommendation, verify exact palette/case URLs and configuration terms. Preserve the supplied snapshot separately from any later price changes. Missing sources must be disclosed and keep this release gate incomplete; do not silently remove required catalogue offers to make checks pass.
+Prices and contents were checked on every exact retailer product page on 26 October 2026 (devpost/evidence/price-check-2026-10-26.md): all 21 prices, both delivery fees and all three ready-made palette shade lists match the catalogue, and every item was listed as in stock. Prices remain a dated snapshot, not live quotes.
 
 ## Public sharing checkpoint
 https://github.com/schadm6565/shadeset-basics is public and anonymously verified at commit 344d7c3. Chad explicitly authorised that snapshot and its history. The ongoing UI redesign remains local until completed and checked; no video URL or completed Devpost submission has been recorded.
