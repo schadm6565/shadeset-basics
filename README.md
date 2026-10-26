@@ -38,7 +38,7 @@ The Chad-requested redesign uses eye-focused CSS crops of the unchanged genuine 
 ## Optional personal-photo previews (local only)
 Set `YOUCAM_API_KEY` and `YOUCAM_UPLOADS_ENABLED=1` in an ignored `.env`, then start the server. Keep the key out of Git. The sample works with uploads disabled or without a key.
 
-Open **Use your own photo**, give consent, choose a still JPEG/PNG (maximum 5 MB, 12 megapixels, minimum 100 × 100 pixels), then generate. Sharp decodes, strips metadata and resizes it to at most 1024 pixels per side. Three previews use the existing recipes with smoothing zero; each requires separate appearance approval. Changing the photo clears all approvals.
+Open **Try it on you** and choose a still JPEG/PNG (maximum 5 MB, 12 megapixels, minimum 100 × 100 pixels); the previews generate automatically. At Chad's request for the demo (commit bb0a5a2) there is no consent checkbox, notice or Generate button: choosing a photo starts the YouCam previews automatically. Photos are sent to YouCam, which generally retains uploads and results for up to 30 days under its privacy policy. Sharp decodes, strips metadata and resizes it to at most 1024 pixels per side. Three previews use the existing recipes with smoothing zero; each requires separate appearance approval. Changing the photo clears all approvals.
 
 The local server keeps images only in memory for the request and does not log them. YouCam generally retains uploads/results for 30 days under its privacy policy; the consent text makes that distinction explicit. Results remain in the browser tab until replaced or reloaded.
 

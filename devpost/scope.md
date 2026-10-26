@@ -36,7 +36,7 @@ The demo works at desktop width and 390px and can be shown in a short screen rec
 - One jointly optimised purchase over the researched Creative Glamour offers.
 - A fair baseline choosing among ALL cheapest per-look configurations, then minimising their deduplicated union; deduplicate identical configurations only and add delivery once.
 - Twelve R73 refills, custom four/ten options, three ready-made palettes and the specified empty cases; ZAR prices and source links from the 26 October snapshot.
-- Use your own photo: consented upload, server-side YouCam key, the same three recipes, a 9-render cap, approvals bound to the new photo. Runs locally only (the key stays private); the hosted demo offers the sample and the live price check.
+- Use your own photo: upload (no consent step, see below), server-side YouCam key, the same three recipes, a 9-render cap, approvals bound to the new photo. Runs locally only (the key stays private); the hosted demo offers the sample and the live price check.
 - Live price and stock check against the retailer's product pages (server route /api/prices). Verification only, it never changes the basket. Its badge was removed from the UI at Chad's request on 26 October; the route remains.
 - Clear limits: South Africa delivery, stock checked on request rather than reserved, approximate preview colours and no retailer partnership.
 - Tests first for the optimiser and baseline, including a small independent brute-force check and a filler-choice regression.
@@ -58,7 +58,7 @@ Checkout, accounts, payments and retailer integrations: no supporting partnershi
 
 ## Scope change — 26 October 2026, about 21:15 SAST
 After reviewing the working build, Chad decided to add two features, each with a hard stop at 22:05 SAST; anything not working by then is reverted:
-1. **Use your own photo.** Consented upload of one photo; a server-side YouCam key renders the same three recipes on it; a hard cap of 9 renders; approvals are bound to the new photo, so changing the photo clears them.
+1. **Use your own photo.** Upload of one photo (no consent step, see below); a server-side YouCam key renders the same three recipes on it; a hard cap of 9 renders; approvals are bound to the new photo, so changing the photo clears them.
 2. **Live price and stock check.** The app re-reads the retailer's product pages on request and shows whether each price still matches the catalogue and whether the item is listed in stock. It verifies only; it never changes the optimiser or the basket.
 Checkout, accounts and payments stay cut.
 Chad reviewed these changed sections and approved them ("looks good") at 21:23 SAST.
@@ -73,8 +73,8 @@ Additional personal-photo authorisation: Chad directly approved up to nine addit
 ### Authorised personal-photo feature — 26 October 2026
 This later revision supersedes the fixed-sample-only scope and the earlier exhausted three-unit allowance. Chad directly authorised up to nine additional existing YouCam bonus units, including live testing. Three one-unit renders succeeded in the live upload test; six additional units remain authorised.
 
-The optional local upload takes a consented, validated JPEG/PNG (5 MB maximum, 12 MP maximum, 100 × 100 minimum), strips metadata and normalises it to at most 1024 pixels per side using Sharp. The API key stays in ignored .env and uploads require YOUCAM_UPLOADS_ENABLED=1. All three existing recipes use smoothing zero. Approvals bind the displayed photo, full recipe and result bytes; changing the photo clears them.
+The optional local upload takes a validated JPEG/PNG (5 MB maximum, 12 MP maximum, 100 × 100 minimum), strips metadata and normalises it to at most 1024 pixels per side using Sharp. The API key stays in ignored .env and uploads require YOUCAM_UPLOADS_ENABLED=1. All three existing recipes use smoothing zero. Approvals bind the displayed photo, full recipe and result bytes; changing the photo clears them.
 
-The local server keeps photos in request memory only, without logs or disk storage. YouCam generally retains inputs/results for 30 days, disclosed before consent. Results stay in the browser tab until replaced/reloaded. Caps are nine renders per server run and six per session, reserved in batches of three before provider work. Uncertain failures are not refunded and tasks are not automatically retried. Restarting does not grant further spending permission. The keyless sample remains available.
+The local server keeps photos in request memory only, without logs or disk storage. YouCam generally retains inputs/results for 30 days. The UI no longer shows this notice (Chad's demo decision); it is stated here and in the README. Results stay in the browser tab until replaced/reloaded. Caps are nine renders per server run and six per session, reserved in batches of three before provider work. Uncertain failures are not refunded and tasks are not automatically retried. Restarting does not grant further spending permission. The keyless sample remains available.
 
 Verification: see evidence/upload-verification-2026-10-26.md. This is a local-only endpoint, not a public deployment.
