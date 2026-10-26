@@ -1,6 +1,6 @@
 // Prices are integer cents. Retain configuration identities even when their
 // coverage is equal: free filler choices can change the fair baseline union.
-export function cheapestKits(required, offers, {single=false}={}) {
+export function cheapestKits(required, offers) {
  const shades=[...new Set(required)];
  if (!shades.length) return [{items:[],subtotal:0}];
  if(shades.length>20) throw new Error('Catalogue target exceeds supported size');
@@ -24,7 +24,6 @@ export function cheapestKits(required, offers, {single=false}={}) {
    const value=cost[mask]+group.price;
    if(value>cost[next]) continue;
    if(value<cost[next]) {cost[next]=value; paths[next].clear();}
-   if(single&&paths[next].size) continue;
    for(const items of paths[mask].values()) for(const offer of group.offers) {
     const kit=[...items,offer].sort((a,b)=>a.id.localeCompare(b.id));
     paths[next].set(JSON.stringify(kit.map(x=>x.id)),kit);
@@ -36,21 +35,15 @@ export function cheapestKits(required, offers, {single=false}={}) {
 function delivered(kit, delivery) {return {...kit,delivery:kit.items.length?delivery:0,total:kit.subtotal+(kit.items.length?delivery:0)};}
 export function compareLooks(looks, offers, delivery=9500) {
  if(!Number.isSafeInteger(delivery)||delivery<0) throw new Error('Invalid delivery');
- // Only one joint kit is shown, so tied joint kits need not be enumerated.
- const jointOptions=cheapestKits(looks.flatMap(r=>r.shades),offers,{single:true});
+ const jointOptions=cheapestKits(looks.flatMap(r=>r.shades),offers);
  if(!jointOptions.length) throw new Error('Catalogue cannot cover these shades');
  const separate=looks.map(r=>cheapestKits(r.shades,offers));
- let best=null;const seen=new Set();
+ let best=null;
  function choose(index,union) {
-  // Identical partial unions lead to identical outcomes; explore each once.
-  const key=index+'|'+[...union.keys()].sort().join(',');
-  if(seen.has(key)) return; seen.add(key);
   const subtotal=[...union.values()].reduce((sum,o)=>sum+o.price,0);
   if(best&&subtotal>best.subtotal) return;
-  // Admissible bound: every remaining look still adds at least its cheapest extra.
-  if(best&&index<separate.length){let bound=0;for(let i=index;i<separate.length;i++){let least=Infinity;for(const kit of separate[i]){let extra=0;for(const item of kit.items)if(!union.has(item.id))extra+=item.price;if(extra<least)least=extra;}if(least>bound)bound=least;}if(subtotal+bound>best.subtotal)return;}
   if(index===separate.length) {
-   if(subtotal<best.subtotal) best={items:[...union.values()],subtotal};
+   if(!best||subtotal<best.subtotal) best={items:[...union.values()],subtotal};
    return;
   }
   for(const kit of separate[index]) {
@@ -59,9 +52,6 @@ export function compareLooks(looks, offers, delivery=9500) {
    choose(index+1,next);
   }
  }
- // Seed the search with a greedy union so the bound prunes from the start.
- {const union=new Map();for(const kits of separate){let pick=kits[0],least=Infinity;for(const kit of kits){let extra=0;for(const item of kit.items)if(!union.has(item.id))extra+=item.price;if(extra<least){least=extra;pick=kit;}}for(const item of pick.items)union.set(item.id,item);}
-  best={items:[...union.values()],subtotal:[...union.values()].reduce((sum,o)=>sum+o.price,0)};}
  choose(0,new Map());
  const joint=delivered(jointOptions[0],delivery),baseline=delivered(best,delivery);
  const saving=baseline.total-joint.total;

@@ -1,4 +1,4 @@
-import {recipes,coreRecipes,offers,colours} from './catalogue.js';
+import {recipes,offers,colours} from './catalogue.js';
 import {compareLooks} from './optimiser.js';
 import {ApprovalSession} from './approval.js';
 import {loadPreviews} from './previews.js';
@@ -24,7 +24,7 @@ async function toggleLook(recipe){
  if(!previews.size){if(selected.has(recipe.id))selected.delete(recipe.id);else selected.add(recipe.id);renderResult();return;}
  if(selected.has(recipe.id)){approvals.reject(recipe.id);selected.delete(recipe.id);renderResult();return;}
  const displayed=previews.get(recipe.id).identity,version=++actionVersion;busy=true;renderResult();
- try{const loaded=await decodePreviewSet(photoMode==='own'?await verifyPersonalPreviews([...previews.values()],coreRecipes,colours):await loadPreviews(recipes,colours));if(version!==actionVersion)return;installPreviews(loaded);approvals.approve(recipe.id,displayed);selected.add(recipe.id);}
+ try{const loaded=await decodePreviewSet(photoMode==='own'?await verifyPersonalPreviews([...previews.values()],recipes,colours):await loadPreviews(recipes,colours));if(version!==actionVersion)return;installPreviews(loaded);approvals.approve(recipe.id,displayed);selected.add(recipe.id);}
  catch(error){if(version!==actionVersion)return;if(photoMode==='own'){photoMode='pending';approvals.clear();installPreviews([]);document.querySelector('#sample-notice').textContent='Personal preview verification failed. All approvals cleared; choose your photo again or use the sample.';}else if(error.message.includes('changed')){document.querySelector('#sample-notice').textContent='A preview changed. Inspect it again before approving; affected approvals were cleared.';}else{installPreviews([]);document.querySelector('#sample-notice').textContent='Preview verification failed. Appearance approvals were cleared; only recipe selection is available.';}}
  finally{if(version===actionVersion){busy=false;renderResult();}}
 }
@@ -36,8 +36,7 @@ function element(tag,className,text) {
 }
 function renderLooks() {
  const container=document.querySelector('#looks');container.replaceChildren();
- const shown=photoMode==='own'?coreRecipes:recipes;
- for(const [index,recipe] of shown.entries()) {
+ for(const [index,recipe] of recipes.entries()) {
   const card=element('article','look-card');
   card.append(element('p','eyebrow',`0${index+1} / ${recipe.occasion.toUpperCase()}`),element('h3','',recipe.name));
   const preview=element('div','preview-missing');
@@ -72,7 +71,7 @@ function renderResult() {
  const root=document.querySelector('#result');root.replaceChildren();
  const looks=recipes.filter(r=>selected.has(r.id));
  document.body.classList.toggle('has-basket',looks.length>0);
- document.querySelector('#announcement').textContent=previews.size?`${looks.length} of ${recipes.length} looks approved.`:`${looks.length} of ${recipes.length} recipes selected.`;
+ document.querySelector('#announcement').textContent=previews.size?`${looks.length} of 3 looks approved.`:`${looks.length} of 3 recipes selected.`;
  if(!looks.length){root.append(element('div','empty',previews.size?'Approve a look above to see a complete costed basket. Nothing is approved for you.':'Select a recipe above to see a complete costed basket. Nothing is selected for you.'));return;}
  let result;try{result=compareLooks(looks,offers);}catch{root.append(element('div','notice','This catalogue cannot cover the selected shades. No incomplete basket is shown.'));return;}
  const layout=element('div','results-grid'),items=element('div');items.append(basketList(result.joint,looks));
@@ -92,7 +91,7 @@ renderLooks();renderResult();
 
 setupPhotoUpload({
  onChange(){document.body.classList.remove('show-looks');actionVersion++;busy=false;photoMode='pending';approvals.clear();installPreviews([]);document.querySelector('#sample-notice').textContent='';},
- async onResult(data,isCurrent){const version=actionVersion;const loaded=await decodePreviewSet(await personalPreviewSet(data,coreRecipes,colours));if(!isCurrent()||version!==actionVersion)return;photoMode='own';installPreviews(loaded);document.body.classList.add('show-looks');},
+ async onResult(data,isCurrent){const version=actionVersion;const loaded=await decodePreviewSet(await personalPreviewSet(data,recipes,colours));if(!isCurrent()||version!==actionVersion)return;photoMode='own';installPreviews(loaded);document.body.classList.add('show-looks');},
  async onSample(){document.body.classList.add('show-looks');const version=++actionVersion;busy=false;photoMode='sample';approvals.clear();installPreviews([]);try{const loaded=await decodePreviewSet(await loadPreviews(recipes,colours));if(version===actionVersion)installPreviews(loaded);}catch{}},
  onError(){photoMode='pending';approvals.clear();installPreviews([]);document.querySelector('#sample-notice').textContent='No personal-photo previews are approved. Retry within the remaining quota, or use the sample.';}
 });

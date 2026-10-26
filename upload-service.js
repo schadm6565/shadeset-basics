@@ -1,7 +1,7 @@
 import sharp from 'sharp';
 import {randomBytes} from 'node:crypto';
 import {readFile} from 'node:fs/promises';
-import {coreRecipes as recipes,colours} from './src/catalogue.js';
+import {recipes,colours} from './src/catalogue.js';
 import {renderRecipe} from './src/previews.js';
 import {makeIdentity} from './src/approval.js';
 

@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {createServer,request as httpRequest} from 'node:http';
 import sharp from 'sharp';
 import {createUploadHandler,normalisePhoto,providerAssetURL,renderYouCam} from '../upload-service.js';
-import {coreRecipes as recipes,colours} from '../src/catalogue.js';
+import {recipes,colours} from '../src/catalogue.js';
 import {makeIdentity} from '../src/approval.js';
 import {renderRecipe} from '../src/previews.js';
 import {personalPreviewSet,verifyPersonalPreviews} from '../src/upload-ui.js';

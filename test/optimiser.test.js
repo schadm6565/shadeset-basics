@@ -1,7 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {cheapestKits, compareLooks} from '../src/optimiser.js';
-import {offers, coreRecipes as recipes, recipes as allRecipes} from '../src/catalogue.js';
+import {offers, recipes} from '../src/catalogue.js';
 
 test('sample calculation gives the fair baseline without arbitrary filler inflation', () => {
  const result = compareLooks(recipes, offers, 9500);
