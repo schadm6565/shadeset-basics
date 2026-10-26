@@ -10,6 +10,7 @@
 <div class="loader" aria-hidden="true"><span class="loader-word">ShadeSet</span></div>
 <header class="site-header">
   <a class="wordmark" href="/">ShadeSet</a>
+  <button id="back-home" class="back-link" type="button"><span aria-hidden="true">←</span> Start over</button>
 </header>
 
 <main>
@@ -33,16 +34,27 @@
 
   <section id="sample" hidden aria-labelledby="sample-heading">
     <div class="section-head" data-reveal>
-      <button id="back-home" class="back-link" type="button"><span aria-hidden="true">←</span> Back</button>
-      <p class="eyebrow">Step 01 — The looks</p>
+      <p class="eyebrow">Step 01 — Choose a face</p>
       <h2 id="sample-heading" tabindex="-1">Pick your looks.</h2>
       <p id="sample-notice" class="notice" role="status">Loading previews…</p>
     </div>
     <div class="photo-upload">
-      <label for="own-photo" class="photo-button">Take or upload a photo</label>
       <input id="own-photo" class="visually-hidden" type="file" accept="image/jpeg,image/png">
-      <button id="sample-photo" class="sample-choice" type="button">Use the sample face</button>
-      <input id="photo-consent" type="checkbox" checked hidden><p class="consent">Choosing a photo sends it to YouCam for the previews · <a href="https://www.perfectcorp.com/perfectbeauty/youcam/privacy-policy-api" target="_blank" rel="noopener noreferrer">kept up to 30 days</a></p>
+      <label for="own-photo" class="choice-card choice-own">
+        <span class="choice-no">A</span>
+        <span class="choice-title">Your photo</span>
+        <span class="choice-sub">Take a selfie or upload one. Your three looks are rendered on your face.</span>
+        <span class="choice-cta">Take or upload a photo <span aria-hidden="true">→</span></span>
+        <span class="choice-note">Sent to YouCam for the previews · kept up to 30 days</span>
+      </label>
+      <button id="sample-photo" class="choice-card choice-sample" type="button">
+        <img src="/public/sample.png" alt="">
+        <span class="choice-no">B</span>
+        <span class="choice-title">The sample face</span>
+        <span class="choice-sub">No upload. See the three looks on a synthetic face.</span>
+        <span class="choice-cta">Use the sample face <span aria-hidden="true">→</span></span>
+      </button>
+      <input id="photo-consent" type="checkbox" checked hidden>
       <button id="generate-photo" type="button" hidden disabled>Generate</button>
       <p id="photo-status" role="status" aria-live="polite"></p>
     </div>

@@ -4,8 +4,8 @@ export const snapshot = '2026-10-26';
 export const shadeNames = ['vanilla','taupe','chocolate','gold','cocoa-plum','stone','nude','d-choc','woody','bronze','caramel','dusty'];
 export const colours = {vanilla:'#e5cba5',taupe:'#897064',chocolate:'#604333',gold:'#c59648','cocoa-plum':'#704653'};
 export const recipes = [
- {id:'soft-taupe',name:'Soft taupe',occasion:'Everyday',shades:['vanilla','taupe','chocolate'],pattern:'3colors1',intensity:40,placements:['Inner corner','Centre lid','Outer corner']},
- {id:'golden-hour',name:'Golden hour',occasion:'Dinner',shades:['vanilla','gold','chocolate'],pattern:'3colors1',intensity:60,placements:['Inner corner','Centre lid','Outer corner']},
+ {id:'soft-taupe',name:'Soft taupe',occasion:'Everyday',shades:['vanilla','taupe','chocolate'],pattern:'3colors1',intensity:90,placements:['Inner corner','Centre lid','Outer corner']},
+ {id:'golden-hour',name:'Golden hour',occasion:'Dinner',shades:['vanilla','gold','chocolate'],pattern:'3colors1',intensity:90,placements:['Inner corner','Centre lid','Outer corner']},
  {id:'plum-after-dark',name:'Plum after dark',occasion:'Evening',shades:['vanilla','cocoa-plum','chocolate'],pattern:'3colors8',intensity:100,placements:['Inner corner','Upper lid','Outer lower lashes']}
 ];
 export function combinations(values, size) {

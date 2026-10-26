@@ -581,3 +581,54 @@ body:not(.show-looks) #looks, body:not(.show-looks) .basket-area, body:not(.show
 .photo-upload .sample-choice:hover { background: var(--ink); color: #fff; }
 .photo-upload .consent { flex-basis: 100%; order: 3; }
 #photo-status { order: 4; }
+
+/* Choice screen: two clear cards, Back in the header */
+.site-header .back-link { display: none; margin: 0; }
+.in-sample .site-header .back-link { display: inline-flex; gap: 8px; align-items: center; font-size: 12px; }
+.in-sample .site-header { border-bottom: 1px solid var(--line); }
+.photo-upload { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 8px 0 40px; }
+.choice-card {
+  position: relative; display: flex; flex-direction: column; justify-content: flex-end; gap: 10px;
+  min-height: clamp(300px, 46vh, 460px); padding: 28px; margin: 0; text-align: left; cursor: pointer;
+  border: 1px solid var(--line); background: var(--surface); color: var(--ink); overflow: hidden; font: inherit;
+  transition: border-color .2s ease, transform .4s cubic-bezier(.16, 1, .3, 1);
+}
+.choice-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.choice-own { background: #0d0d0c; color: #f4f4f1; border-color: #0d0d0c; }
+.choice-sample img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; filter: saturate(.95); }
+.choice-sample::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(13, 13, 12, .78) 0%, rgba(13, 13, 12, .15) 55%, transparent 100%); }
+.choice-sample > span { position: relative; z-index: 1; color: #f4f4f1; }
+.choice-no { position: absolute !important; top: 24px; left: 28px; font-family: var(--mono); font-size: 11px; opacity: .7; }
+.choice-title { font-size: clamp(30px, 3.4vw, 48px); font-weight: 500; letter-spacing: -0.045em; line-height: 1; }
+.choice-sub { font-size: 15px; line-height: 1.45; opacity: .78; max-width: 26em; }
+.choice-cta { margin-top: 10px; display: inline-flex; gap: 10px; align-items: center; font-weight: 500; font-size: 16px; }
+.choice-cta span { transition: transform .25s ease; }
+.choice-card:hover .choice-cta span { transform: translateX(4px); }
+.choice-note { font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .04em; opacity: .6; }
+.photo-upload input[type="file"]:focus-visible + .choice-own { outline: 2px solid var(--accent); outline-offset: 3px; }
+#photo-status { grid-column: 1 / -1; }
+/* After a choice, the cards become a compact switcher */
+.show-looks .choice-card { min-height: 0; padding: 18px 22px; flex-direction: row; align-items: center; flex-wrap: wrap; gap: 6px 14px; }
+.show-looks .choice-card img, .show-looks .choice-sample::after, .show-looks .choice-sub, .show-looks .choice-note, .show-looks .choice-no { display: none; }
+.show-looks .choice-title { font-size: 20px; letter-spacing: -0.02em; }
+.show-looks .choice-cta { margin: 0 0 0 auto; font-size: 14px; }
+@media (max-width: 720px) { .photo-upload { grid-template-columns: 1fr; } .choice-card { min-height: 260px; } }
+.photo-upload .choice-card { display: flex; max-width: none; line-height: 1.2; }
+.photo-upload .show-looks .choice-card, .show-looks .photo-upload .choice-card { display: flex; }
+/* Face guide on the "your photo" card */
+.choice-own::before {
+  content: ""; position: absolute; left: 50%; top: 14%; width: 34%; aspect-ratio: 3 / 4; transform: translateX(-50%);
+  border: 1.5px dashed rgba(244, 244, 241, .35); border-radius: 50% / 45%;
+}
+.choice-own::after {
+  content: ""; position: absolute; left: 50%; top: calc(14% + 2px); width: calc(34% + 40px); aspect-ratio: 3 / 4; transform: translateX(-50%);
+  background:
+    linear-gradient(#f4f4f1, #f4f4f1) top left / 18px 2px no-repeat, linear-gradient(#f4f4f1, #f4f4f1) top left / 2px 18px no-repeat,
+    linear-gradient(#f4f4f1, #f4f4f1) top right / 18px 2px no-repeat, linear-gradient(#f4f4f1, #f4f4f1) top right / 2px 18px no-repeat,
+    linear-gradient(#f4f4f1, #f4f4f1) bottom left / 18px 2px no-repeat, linear-gradient(#f4f4f1, #f4f4f1) bottom left / 2px 18px no-repeat,
+    linear-gradient(#f4f4f1, #f4f4f1) bottom right / 18px 2px no-repeat, linear-gradient(#f4f4f1, #f4f4f1) bottom right / 2px 18px no-repeat;
+  opacity: .55;
+}
+.show-looks .choice-own::before, .show-looks .choice-own::after { display: none; }
+.choice-own::before { left: 74%; } .choice-own::after { left: 74%; }
+@media (max-width: 720px) { .choice-own::before, .choice-own::after { display: none; } }
