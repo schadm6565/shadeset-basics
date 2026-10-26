@@ -26,19 +26,20 @@ export function setupPhotoUpload({onChange,onResult,onSample,onError}){
  const status=document.querySelector('#photo-status');
  let token='',enabled=false,remaining=0,inFlight=false,generation=0,controller;
  const controls=()=>{submit.disabled=inFlight||!enabled||remaining<3||!consent.checked||!file.files?.length;file.disabled=inFlight;consent.disabled=inFlight;};
- const quotaText=()=>`${remaining} renders available for this session/run; each photo uses three. Maximum nine per server run and six per session.`;
+ const quotaText=()=>consent.checked?`${Math.floor(remaining/3)} photo tries left.`:'Tick the box, then choose a photo.';
  async function refresh(){
-  try{const response=await fetch('/api/upload/status',{cache:'no-store'});if(!response.ok)throw Error();const data=await response.json();token=data.token;enabled=data.enabled;remaining=data.remaining;status.textContent=enabled?quotaText():'Personal-photo previews are unavailable on this server. The sample still works.';}
+  try{const response=await fetch('/api/upload/status',{cache:'no-store'});if(!response.ok)throw Error();const data=await response.json();token=data.token;enabled=data.enabled;remaining=data.remaining;status.textContent=enabled?quotaText():'Own-photo previews run in the local version. The sample works here.';}
   catch{enabled=false;status.textContent='Own-photo previews run in the local version, which holds the private YouCam key. The sample works here.';}
   controls();
  }
- consent.addEventListener('change',controls);
+ const autoGenerate=()=>{controls();if(!submit.disabled)submit.click();else if(enabled)status.textContent=quotaText();};
+ consent.addEventListener('change',autoGenerate);
  file.addEventListener('change',()=>{
   generation++;onChange();
   const chosen=file.files?.[0];
   if(chosen&&(!['image/jpeg','image/png'].includes(chosen.type)||chosen.size>5*1024*1024||chosen.size===0)){file.value='';status.textContent='Choose a JPEG or PNG no larger than 5 MB.';}
-  else status.textContent=enabled?quotaText():'Personal-photo previews are unavailable. Use the sample.';
-  controls();
+  else status.textContent=enabled?quotaText():'Own-photo previews run in the local version. The sample works here.';
+  autoGenerate();
  });
  sample.addEventListener('click',async()=>{
   generation++;controller?.abort();file.value='';consent.checked=false;onSample();
@@ -47,7 +48,7 @@ export function setupPhotoUpload({onChange,onResult,onSample,onError}){
  submit.addEventListener('click',async()=>{
   const chosen=file.files?.[0];if(inFlight||!chosen||!consent.checked||!enabled||remaining<3)return;
   const version=++generation;onChange();inFlight=true;controller=new AbortController();controls();
-  status.textContent='Generating three YouCam previews. This may take up to three minutes. Keep this tab open.';
+  status.textContent='Creating your three looks… about 30–60 seconds.';
   try{
    const response=await fetch('/api/upload',{method:'POST',headers:{'Content-Type':chosen.type,'X-Photo-Consent':'yes','X-Upload-Token':token},body:chosen,signal:controller.signal});
    const data=await response.json();if(Number.isFinite(data.remaining))remaining=data.remaining;
@@ -55,7 +56,7 @@ export function setupPhotoUpload({onChange,onResult,onSample,onError}){
    if(!response.ok)throw Error(data.error||'The preview could not be completed.');
    await onResult(data,()=>version===generation);
    if(version!==generation)return;
-   file.value='';consent.checked=false;status.textContent='Your three YouCam previews are ready. Approve the looks you like. '+quotaText();
+   file.value='';consent.checked=false;status.textContent='Your looks are ready. Approve the ones you like.';
   }catch(error){if(version===generation){onError();status.textContent=error.name==='AbortError'?'Upload cancelled. Reserved quota may remain used.':error.message;}}
   finally{inFlight=false;controller=undefined;controls();if(version!==generation)await refresh();}
  });

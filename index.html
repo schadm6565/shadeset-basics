@@ -36,18 +36,16 @@
       <button id="back-home" class="back-link" type="button"><span aria-hidden="true">←</span> Back</button>
       <p class="eyebrow">Step 01 — The looks</p>
       <h2 id="sample-heading" tabindex="-1">Pick your looks.</h2>
-      <p id="sample-notice" class="notice" role="status">Recipe-selection demo: genuine previews are unavailable until verified. Selecting a recipe does not approve its appearance on a face.</p>
+      <p id="sample-notice" class="notice" role="status">Loading previews…</p>
     </div>
-    <details class="photo-upload">
-      <summary>Use your own photo</summary>
-      <p>Use a clear, front-facing JPEG or PNG, up to 5 MB and 12 megapixels. Changing the photo clears every approval.</p>
-      <label><input id="photo-consent" type="checkbox"> I have permission to use this photo and consent to sending it to Perfect Corp’s YouCam API for three previews.</label>
-      <p class="small">This local server does not save or log your photo; it discards photo data after the request. YouCam generally retains uploads and results for 30 days, subject to its <a href="https://www.perfectcorp.com/perfectbeauty/youcam/privacy-policy-api" target="_blank" rel="noopener noreferrer">privacy policy</a>. Results stay in this tab until replaced or reloaded.</p>
-      <label for="own-photo">Choose your photo</label>
-      <input id="own-photo" type="file" accept="image/jpeg,image/png">
-      <div class="photo-actions"><button id="generate-photo" type="button" disabled>Generate my three looks</button><button id="sample-photo" type="button">Use sample photo</button></div>
-      <p id="photo-status" role="status" aria-live="polite">Checking upload availability…</p>
-    </details>
+    <div class="photo-upload">
+      <label for="own-photo" class="photo-button">Take or upload a photo</label>
+      <input id="own-photo" class="visually-hidden" type="file" accept="image/jpeg,image/png">
+      <button id="sample-photo" class="sample-choice" type="button">Use the sample face</button>
+      <label class="consent"><input id="photo-consent" type="checkbox"> Send my photo to YouCam for previews · <a href="https://www.perfectcorp.com/perfectbeauty/youcam/privacy-policy-api" target="_blank" rel="noopener noreferrer">kept up to 30 days</a></label>
+      <button id="generate-photo" type="button" hidden disabled>Generate</button>
+      <p id="photo-status" role="status" aria-live="polite"></p>
+    </div>
     <div id="looks" class="looks"></div>
 
     <section class="basket-area" aria-labelledby="basket-heading">

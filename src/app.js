@@ -16,7 +16,7 @@ function installPreviews(loaded){
  clearPreviewURLs();previews=new Map(loaded.map(p=>[p.recipeId,p]));
  for(const recipe of recipes){const preview=previews.get(recipe.id);if(preview)approvals.update(recipe.id,preview.identity);else approvals.remove(recipe.id);}
  selected.clear();for(const id of approvals.approvedIds())selected.add(id);
- document.querySelector('#sample-notice').textContent=previews.size?(photoMode==='own'?'YouCam preview of your photo. Approve each look explicitly. Colours are approximate; physical results may differ.':'Inspect the sample-face previews, then approve the looks you like. Colours are approximate; they do not guarantee a physical result.'):'Recipe-selection demo: genuine sample-face previews are unavailable. Selecting a recipe does not approve its appearance on a face.';
+ document.querySelector('#sample-notice').textContent=previews.size?(photoMode==='own'?'YouCam preview of your photo. Approve each look explicitly. Colours are approximate; physical results may differ.':'Approve the looks you like. Colour is approximate.'):'Recipe-selection demo: genuine sample-face previews are unavailable. Selecting a recipe does not approve its appearance on a face.';
  renderLooks();renderResult();
 }
 async function toggleLook(recipe){
@@ -89,9 +89,9 @@ document.querySelector('#reset').addEventListener('click',()=>{actionVersion++;b
 renderLooks();renderResult();
 
 setupPhotoUpload({
- onChange(){actionVersion++;busy=false;photoMode='pending';approvals.clear();installPreviews([]);document.querySelector('#sample-notice').textContent='New photo selected. All approvals cleared. Generate its previews or return to the sample.';},
- async onResult(data,isCurrent){const version=actionVersion;const loaded=await decodePreviewSet(await personalPreviewSet(data,recipes,colours));if(!isCurrent()||version!==actionVersion)return;photoMode='own';installPreviews(loaded);},
- async onSample(){const version=++actionVersion;busy=false;photoMode='sample';approvals.clear();installPreviews([]);try{const loaded=await decodePreviewSet(await loadPreviews(recipes,colours));if(version===actionVersion)installPreviews(loaded);}catch{}},
+ onChange(){document.body.classList.remove('show-looks');actionVersion++;busy=false;photoMode='pending';approvals.clear();installPreviews([]);document.querySelector('#sample-notice').textContent='New photo selected. All approvals cleared. Generate its previews or return to the sample.';},
+ async onResult(data,isCurrent){const version=actionVersion;const loaded=await decodePreviewSet(await personalPreviewSet(data,recipes,colours));if(!isCurrent()||version!==actionVersion)return;photoMode='own';installPreviews(loaded);document.body.classList.add('show-looks');},
+ async onSample(){document.body.classList.add('show-looks');const version=++actionVersion;busy=false;photoMode='sample';approvals.clear();installPreviews([]);try{const loaded=await decodePreviewSet(await loadPreviews(recipes,colours));if(version===actionVersion)installPreviews(loaded);}catch{}},
  onError(){photoMode='pending';approvals.clear();installPreviews([]);document.querySelector('#sample-notice').textContent='No personal-photo previews are approved. Retry within the remaining quota, or use the sample.';}
 });
 
@@ -120,9 +120,10 @@ loadPreviews(recipes,colours).then(decodePreviewSet).then(loaded=>{if(initialVer
   const res=await fetch('/api/prices',{cache:'no-store'});if(!res.ok)return;
   const r=await res.json();const time=new Date(r.checkedAt).toLocaleTimeString('en-ZA',{hour:'2-digit',minute:'2-digit'});
   const unknown=(r.stockUnknown||[]).length;
-  badge.textContent=r.changed||r.unreadable||r.outOfStock.length||unknown
-   ?`Live check ${time}: ${r.match}/${r.total} prices match · ${r.changed} changed · ${r.unreadable} unreadable · ${r.outOfStock.length} not in stock · ${unknown} stock unknown — confirm with the retailer`
+  const allInStock=Array.isArray(r.items)&&r.items.length===r.total&&r.total>0&&r.items.every(item=>item.availability==='InStock');
+  badge.textContent=r.changed||r.unreadable||r.outOfStock.length||unknown||!allInStock
+   ?`Live check ${time}: ${r.match}/${r.total} prices match · ${r.changed} changed · ${r.unreadable} unreadable · ${r.outOfStock.length} not in stock · ${unknown} stock unknown — check with the retailer`
    :`Live check ${time}: all ${r.total} refill and case prices match the retailer today · all in stock`;
-  badge.dataset.state=r.changed||r.outOfStock.length||unknown?'warn':'ok';badge.hidden=false;
+  badge.dataset.state=r.changed||r.unreadable||r.outOfStock.length||unknown||!allInStock?'warn':'ok';badge.hidden=false;
  }catch{}
 })();
